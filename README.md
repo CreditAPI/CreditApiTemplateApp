@@ -7,7 +7,7 @@ https://creditapi.ru
 
 1. Склонируйте репозиторий `git clone https://github.com/CreditAPI/CreditApiTemplateApp.git`
 
-2. Загрузите необходимые модули выполнив команду `npm update`
+2. Загрузите необходимые модули выполнив команду `npm install`
 
 3. Укажите основные настройки в файле `src/assets/js/settings.js` :
 ```
