@@ -1,0 +1,36 @@
+<div class="container my-dashboard-container">
+    <div class="row">
+        <div class="col-md-3">
+            <app-sidemenu></app-sidemenu>
+        </div>
+        <div class="col-md-9">
+            <div class="card p-5 bg-light bg-gradient-light" >
+                
+                <h2 i18n="@@dashboard.my_loans.title">My loans</h2>
+                <div>
+                    <button *ngIf="!loading && !has_active" type="button" class="btn btn-outline-primary btn-block w-25 mb-3 float-right" [routerLink]="['/dashboard/newloan']" i18n="@@dashboard.my_loans.buttons.new">+ new application</button>
+                </div>
+                <table class="table" *ngIf="loans && loans.length>0">
+                    <tr>
+                        <th i18n="@@dashboard.my_loans.date">Date</th>
+                        <th class="text-right" i18n="@@dashboard.my_loans.amount">Amount</th>
+                        <th class="text-right" i18n="@@dashboard.my_loans.term">Term</th>
+                        <th class="text-center" i18n="@@dashboard.my_loans.status">Status</th>
+                    </tr>
+                    <tbody>
+                        <tr *ngFor="let loan of loans">
+                            <td>{{loan.createdAt|date:"shortDate"}}</td>
+                            <td class="text-right">{{loan.amount.toFixed(2)}}</td>
+                            <td class="text-right">{{loan.term}}</td>
+                            <td class="text-center">
+                                <span *ngIf="![0,20,21,25,50,51,60].includes(loan.status)">{{loan.statusName}}</span>
+                                <a href="#" *ngIf="loan.status==60" [routerLink]="['/dashboard']">{{loan.statusName}}</a>
+                                <a *ngIf="[0,20,21,25,50,51].includes(loan.status)" [routerLink]="['/application',loan.objectId]" >{{loan.statusName}}</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

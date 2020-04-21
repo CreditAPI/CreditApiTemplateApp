@@ -1,0 +1,27 @@
+<div class="container my-container mt-100px bg-light"*ngIf="user" >
+    <div *ngIf="!wait && user.verificationStarted && !user.phoneVerified">
+      <h2 i18n="@@verification.enter_code">Please, enter 5-digit code</h2>
+      <p class="title"></p>
+      <div class="pt-3">
+        <div class="form-label-group" >
+          <input type="text" id="sms_code" 
+                  class="form-control" 
+                  placeholder="Code" 
+                  i18n-placeholder="@@verification.code"
+                  #sms_code>  
+          <label for="sms_code" i18n="@@verification.code">Code</label>
+        </div>
+        <button class="btn btn-primary" (click)="check_sms_code(sms_code.value)">
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loading"></span>
+          <span i18n="@@verification.buttons.next">Next</span>
+        </button>
+      </div>
+    </div>
+    <div *ngIf="wait">
+      <h2 i18n="@@verification.wait">Please, wait</h2>
+      <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  </div>
+  

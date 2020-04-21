@@ -1,0 +1,36 @@
+<div class="container my-dashboard-container">
+    <div class="row">
+        <div class="col-md-3">
+            <app-sidemenu></app-sidemenu>
+        </div>
+        <div class="col-md-9">
+            <div class="card ">
+                <div class="card-body p-3 bg-light bg-gradient-light">
+                    <h2><span i18n="@@dashboard.cards.linked_card_title">Linked card</span> {{card?.number}}</h2>
+                    <div class="mt-5">
+                        <span class="text-secondary" i18n="@@dashboard.cards.number">Number</span>: {{card?.number}}<br>
+                        <span class="text-secondary" i18n="@@dashboard.cards.holder">Holder</span>: {{card?.holder}}<br>
+                        <span class="text-secondary" i18n="@@dashboard.cards.valid_by">Valid by</span>: {{card?.expiration|date:"shortDate"}}<br>
+                        <span class="btn btn-primary mt-2" (click)="open(content)" i18n="@@dashboard.cards.button.unlink">Unlink</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title" i18n="@@dashboard.cards.confirm.title">Please, confirm</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <p><strong i18n="@@dashboard.cards.confirm.subtitle">Are you sure you want to unlink this card?</strong></p>
+        <p><span class="text-danger" i18n="@@dashboard.cards.confirm.warning">This operation can not be undone.</span></p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" ngbAutofocus class="btn btn-outline-secondary" (click)="d('Cancel')" i18n="@@cancel">Cancel</button>
+      <button type="button"  class="btn btn-primary" (click)="unlink(card?.objectId);"  i18n="@@yes">Yes</button>
+    </div>
+</ng-template>

@@ -1,0 +1,25 @@
+<div class="container my-dashboard-container">
+    <div class="row">
+        <div class="col-md-3">
+            <app-sidemenu></app-sidemenu>
+        </div>
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-body bg-light bg-gradient-light">
+                    <h2 i18n="@@dashboard.new_loan.title">New loan application</h2>
+                    <div class="new_loan_container pt-5" *ngIf="creditProduct">
+                        <app-calculator [creditProduct]="creditProduct"></app-calculator>
+                    </div>
+                    <div class="pt-2" *ngIf="!creditProduct">
+                        <p i18n="@@dashboard.new_loan.choose_product">Choose credit product</p>
+                        <ul>
+                            <li *ngFor="let cp of creditProducts; let i=index">
+                                <span (click)="show(i)">{{cp.label}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

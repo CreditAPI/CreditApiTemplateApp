@@ -1,0 +1,50 @@
+<div class="container my-container mt-100px bg-light" >
+    <div *ngIf="!loan || [0,20,21].includes(loan.status)">
+        <h2 i18n="@@application.wait.title">Please, wait...</h2>
+        <p class="title" i18n="@@application.wait.subtitle">We are checking your application</p>
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div *ngIf="loan && loan.status==25">
+        <h2 i18n="@@application.wait_more.title">We need more time</h2>
+        <p class="title" i18n="@@application.wait_more.subtitle">We need more time to check your application. Please come back later</p>
+    </div>
+    <div *ngIf="loan && loan.status==51">
+        <h2 i18n="@@application.preapproved.title">Loan pre-approved</h2>
+        <p class="title" i18n="@@application.preapproved.subtitle">Your application is pre-approved.</p>
+    </div>
+    <div *ngIf="loan && loan.status==50">
+        <h2 i18n="@@application.approved.title">Loan approved</h2>
+        <p class="title" i18n="@@application.approved.subtitle">Your application is approved</p>
+    </div>
+    <div *ngIf="loan && [40,41].includes(loan?.status)">
+        <h2 i18n="@@application.declined.title">Declined</h2>
+        <p class="title" i18n="@@application.declined.subtitle">Sorry, your application is declined</p>
+    </div>
+    <div *ngIf="loan && [25,50,51].includes(loan.status)">
+        <span class="btn btn-outline-secondary" (click)="openCancelModal(cancel_modal)"  i18n="@@application.buttons.cancel">Cancel application</span>
+    </div>
+    <div *ngIf="loan && [50,51].includes(loan.status)">
+        <button class="btn  btn-primary " (click)="getMoney()" [disabled]="loading">
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loading"></span>
+            <span i18n="@@application.buttons.getmoney">Get money</span>
+        </button>
+    </div>
+</div>
+<ng-template #cancel_modal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title" i18n="@@application.cancel.confirm.title">Please, confirm</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <p><strong i18n="@@application.cancel.confirm.subtitle">Are you sure you want to cancel application?</strong></p>
+        <p><span class="text-danger" i18n="@@application.cancel.confirm.warning">This operation can not be undone.</span></p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" ngbAutofocus class="btn btn-outline-secondary" (click)="d('Cancel')" i18n="@@cancel">Cancel</button>
+      <button type="button"  class="btn btn-primary" (click)="cancel(loan?.objectId);"  i18n="@@yes">Yes</button>
+    </div>
+</ng-template>

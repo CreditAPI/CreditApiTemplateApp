@@ -1,0 +1,39 @@
+<div class="container my-dashboard-container" *ngIf="loan">
+    <div class="row">
+        <div class="col-md-3">
+            <app-sidemenu></app-sidemenu>
+        </div>
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-body p-3 bg-light bg-gradient-light">
+                    <h2 i18n="@@dashboard.current_loan.title">Current loan</h2>
+                    <span class="text-secondary" i18n="@@dashboard.current_loan.agreement_number">Agreement #</span>: {{loan?.agreementNumber}}<br>
+                    <span class="text-secondary" i18n="@@dashboard.current_loan.issued_at">Issued At</span>: {{loan?.issuedAt|date:"shortDate"}}<br>
+                    <span class="text-secondary" i18n="@@dashboard.current_loan.amount">Amount</span>: {{loan?.amount.toFixed(2)}}<br>
+                    <span class="text-secondary" i18n="@@dashboard.current_loan.term">Term</span>: {{loan?.term}}<br>
+                    <span class="text-secondary" i18n="@@dashboard.current_loan.next_payment">Next payment</span>: {{loan?.nextPaymentDate|date:"shortDate"}}<br>
+                    <div *ngIf="loan?.paymentSchedule">
+                        <h5 class="pt-3" i18n="@@dashboard.current_loan.payment_schedule.title">Payment schedule</h5>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th i18n="@@dashboard.current_loan.payment_schedule.date">Date</th>
+                                    <th class="text-right" i18n="@@dashboard.current_loan.payment_schedule.amount">Amount</th>
+                                    <th class="text-center" i18n="@@dashboard.current_loan.payment_schedule.status">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let pmnt of loan.paymentSchedule">
+                                    <td>{{pmnt.date|date:"shortDate"}}</td>
+                                    <td class="text-right">{{pmnt.amount.toFixed(2)}}</td>
+                                    <td class="text-center">{{pmnt.status}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <span class="clickable text-secondary text-sm" i18n="@@dashboard.current_loan.button.early_payment">Early payment</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

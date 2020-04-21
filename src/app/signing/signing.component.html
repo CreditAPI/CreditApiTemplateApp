@@ -1,0 +1,30 @@
+<div class="text-center mt-50px"><h2 i18n="@@signing.title">Document signing</h2></div>
+<div class="container " >
+    <div class="row justify-content-center">
+        <div class="col-md-9 align-self-center">
+            <div class="card">
+                <div class="card-body">
+                    <div *ngIf="loading">
+                        <h2 i18n="@@signing.wait">Please, wait</h2>
+                        <div class="spinner-border" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                    <div *ngIf="!loading">
+                         {{content}}
+                    </div>
+                </div>
+                <div class="card-footer" *ngIf="show_buttons">
+                    <div>
+                        <input type="checkbox" id="agree_flag" #agree>
+                        <label i18n="@@signing.i_agree">I agree with this document</label>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-outline-primary mr-5" [routerLink]="['/dashboard']" i18n="@@signing.buttons.cancel">Cancel</button>
+                        <button class="btn btn-primary ml-5" (click)="sign(agree)" i18n="@@signing.buttons.sign">Sign</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

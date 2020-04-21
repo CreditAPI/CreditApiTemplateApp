@@ -1,0 +1,26 @@
+<div class="row" *ngIf="creditProduct">
+    <div class="col-12">
+        <div class="form-group">
+            <label for="formControlRange" i18n="@@calculator.loan_amount">Loan amount</label>
+            <input type="number" class="form-control form-control-sm w-auto float-right calculator-input" id="amount" [(ngModel)]="amount">
+            <input type="range" class="custom-range" [(ngModel)]="amount" min="{{creditProduct.min_amount}}" max="{{creditProduct.max_amount}}" step="{{creditProduct.step_amount}}" id="slider-amount">
+            <span class="badge badge-secondary">{{creditProduct.min_amount}}</span>
+            <span class="badge badge-secondary float-right">{{creditProduct.max_amount}}</span>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="form-group">
+            <label for="formControlRange" i18n="@@calculator.loan_term">Loan term</label>
+            <input type="number" class="form-control form-control-sm w-auto float-right calculator-input " id="term" [(ngModel)]="term">
+            <input type="range" class="custom-range" [(ngModel)]="term" min="{{creditProduct.min_term}}" max="{{creditProduct.max_term}}" step="{{creditProduct.step_term}}" id="slider-term">
+            <span class="badge badge-secondary">{{creditProduct.min_term}}</span>
+            <span class="badge badge-secondary float-right">{{creditProduct.max_term}}</span>
+        </div>
+    </div>
+    <div class="col-12">
+        <button class="btn btn-primary float-right" (click)="new_application()" i18n="@@calculator.buttons.get_money">Get money</button>
+    </div>
+</div>
+<div *ngIf="!creditProduct && !loading">
+    <span i18n="@@calculator.product_not_found">Credit product not found or not available</span>
+</div>

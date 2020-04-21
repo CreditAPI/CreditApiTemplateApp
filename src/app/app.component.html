@@ -1,0 +1,53 @@
+
+<nav class="navbar navbar-expand-lg navbar-light my-header" *ngIf="initialized">
+  <a class="navbar-brand"  [routerLink]="[homelink?'/dashboard':'/']"  [innerHTML]="brand"></a>
+  <button class="navbar-toggler" (click)="isMenuCollapsed = !isMenuCollapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isMenuCollapsed">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item" *ngIf="homelink">
+        <a class="nav-link" href="{{homelink}}" i18n="@@navbar.items.home">Home</a>
+      </li>
+      <li class="nav-item" *ngIf="!homelink">
+        <span class="nav-link pointer" [routerLink]="['/']" i18n="@@navbar.items.home">Home</span>
+      </li>
+      <li class="nav-item">
+        <span class="nav-link pointer"  [routerLink]="['/documents']" i18n="@@navbar.items.documents">Documents</span>
+      </li>
+      <li class="nav-item">
+        <span class="nav-link pointer" *ngIf="!user && !location.isCurrentPathEqualTo('/login')" href="#" [routerLink]="['/login']" i18n="@@navbar.items.login">Login</span>
+      </li>
+      <li class="nav-item">
+        <span class="pointer nav-link" *ngIf="!user && location.isCurrentPathEqualTo('/login')"  [routerLink]="['/register']" i18n="@@navbar.items.signup">Register</span>
+      </li>
+      <li class="nav-item dropdown" *ngIf="user">
+        <div ngbDropdown class="d-inline-block">
+          <span class="nav-link dropdown-toggle pointer" (click)="null"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ngbDropdownToggle i18n="@@navbar.items.account">
+            My Account
+          </span>
+          <div ngbDropdownMenu class="dropdown-menu bg-light bg-gradient-light" aria-labelledby="navbarDropdown">
+            <span class="pointer dropdown-item bg-transparent" href="#" [routerLink]="['/dashboard']" i18n="@@navbar.items.dashboard">Dashboard</span>
+            <!--<a class="dropdown-item" href="#" i18n="@@navbar.items.change_password">Change  password</a>-->
+            <div class="dropdown-divider"></div>
+            <span class="pointer dropdown-item" href="#" (click)="logout()" i18n="@@navbar.items.logout">Logout</span>
+         </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+<main role="main" class="flex-shrink-0" *ngIf="initialized">
+<router-outlet ></router-outlet>
+</main>
+<app-app-toasts aria-live="polite" aria-atomic="true"></app-app-toasts>
+<footer class="footer mt-auto py-3 my-footer " *ngIf="initialized">
+  <div class="container">
+    {{organization}}, <span i18n="@@footer.company_id" *ngIf="organization_id">Reg # </span> {{organization_id}} <br>
+    <span i18n="@@footer.loan_orinated_by">Loan originated by </span> {{lender}}, <span i18n="@@footer.company_id" *ngIf="lender_id">Reg # </span> {{lender_id}} <br>
+    {{license}} <br>
+    <span class="clickable" [routerLink]="['document','privacy_policy']" i18n="@@footer.docs.privacy_policy">Privacy policy</span> <br>
+    <span class="clickable" [routerLink]="['document','important_information']" i18n="@@footer.important_information">Important information</span> 
+  </div>
+</footer>

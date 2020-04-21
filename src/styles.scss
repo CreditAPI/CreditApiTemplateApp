@@ -1,0 +1,259 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+/*Edit these parameters to customize*/
+$theme-colors: (
+  "primary": #C5CFD1, //Main buttons
+  "secondary": #D6DCDE, //Secondary buttons
+  "light": #fff // rgba(250,250,240,0.95), // Cards
+);
+$enable-gradients:true;
+$my-body-bg: linear-gradient(var(--light),#fff); // url("assets/img/whg.jpg") no-repeat center center fixed;// #fff;
+$my-header-bg: transparent; //var(--light);
+$my-footer-bg: transparent; //var(--light);
+$my-body-font: 1rem/1.5 var(--font-family-sans-serif);
+/*End Edit these parameters to customize*/
+
+
+
+@import "node_modules/bootstrap/scss/bootstrap.scss"; 
+input.ng-invalid.ng-touched {
+  @extend .is-invalid; 
+}
+input.ng-valid.ng-touched {
+  @extend .is-valid; 
+}
+  .navbar-brand img {
+    max-width:150px;
+    max-height:80px;
+  }
+
+  .navbar  .nav-link:active, 
+  .navbar .nav-link:focus{
+    outline: none;
+  }
+
+  .calculator-input {
+    max-width: 7em;
+  }
+  .calculator-input.ng-invalid,
+  .calculator-input.ng-valid{
+    background-image: none !important;
+    padding-right:0 !important;
+  }
+
+  .my-body {
+    background: $my-body-bg;
+    background-size: cover;
+    font: $my-body-font;
+  }
+  .my-header {
+    background: $my-header-bg;
+  }
+  .my-footer {
+    background: $my-footer-bg;
+    font-size:0.8em;
+  }
+
+  .form-signin {
+    width: 100%;
+    max-width: 420px;
+    padding: 15px;
+    margin: auto;
+  }
+  
+  .form-select-group label{
+    font-size: 12px;
+    color: #777;
+    line-height: 0.35;
+    display: block;
+    margin-left: 0.5rem;
+  }
+
+  .form-label-group {
+    position: relative;
+    margin-bottom: 1rem;
+  }
+  
+  .form-label-group > input,
+  .form-label-group > label {
+    height: 3.125rem;
+    padding: .75rem;
+  }
+  
+  .form-label-group > label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    margin-bottom: 0; /* Override default `<label>` margin */
+    line-height: 1.5;
+    color: #495057;
+    pointer-events: none;
+    cursor: text; /* Match the input under the label */
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    transition: all .1s ease-in-out;
+  }
+  
+  .form-label-group input::-webkit-input-placeholder {
+    color: transparent;
+  }
+  
+  .form-label-group input:-ms-input-placeholder {
+    color: transparent;
+  }
+  
+  .form-label-group input::-ms-input-placeholder {
+    color: transparent;
+  }
+  
+  .form-label-group input::-moz-placeholder {
+    color: transparent;
+  }
+  
+  .form-label-group input::placeholder {
+    color: transparent;
+  }
+  
+  .form-label-group input:not(:placeholder-shown){
+    padding-top: 1.25rem;
+    padding-bottom: .25rem;
+  }
+  
+  .form-label-group input:not(:placeholder-shown) ~ label{
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    font-size: 12px;
+    color: #777;
+  }
+
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .calendar,.calendar:active {
+    width:2.75rem;
+    background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAcCAYAAAAEN20fAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEUSURBVEiJ7ZQxToVAEIY/YCHGxN6XGOIpnpaEsBSeQC9ArZbm9TZ6ADyBNzAhQGGl8Riv4BLAWAgmkpBYkH1b8FWT2WK/zJ8ZJ4qiI6XUI3ANnGKWBnht2/ZBDRK3hgVGNsCd7/ui+JkEIrKtqurLpEWaphd933+IyI3LEIdpCYCiKD6HcuOa/nwOa0ScJEnk0BJg0UTUWJRl6RxCYEzEmomsIlPU3IPW+grIAbquy+q6fluy/28RIBeRMwDXdXMgXLj/B2uimRXpui4D9sBeRLKl+1N+L+t6RwbWrZliTTTr1oxYtzVWiTQAcRxvTX+eJMnlUDaO1vpZRO5NS0x48sIwfPc87xg4B04MCzQi8hIEwe4bl1DnFMCN2zsAAAAASUVORK5CYII=")!important;
+    background-repeat:no-repeat;
+    background-size:23px;
+    background-position:50%;
+    border-top-right-radius: 0.25rem !important;
+    border-bottom-right-radius: 0.25rem !important;
+  }
+  input[type='checkbox']{
+    margin-right: 0.5rem;
+  }
+  
+
+
+  .clickable,
+  .pointer{
+    cursor:pointer;
+  }
+  .clickable:hover {
+    border-bottom: 1px dashed;
+  }
+
+  .document-content{
+    white-space:pre;
+    border:1px solid #ccc;
+    padding: 1em;
+    margin: 1em;
+  }
+
+  .prompt-value{
+    position: absolute;
+    z-index: 100000;
+    background: #fff;
+    color: #000;
+    padding:0.5em 0;
+    margin-right: 1rem;
+    display:none;
+    margin-top: -1rem;
+    border-radius: 0.3rem;
+    line-height: 1.8;
+    list-style: none;
+    width:100%;
+  }
+  .prompt-value li {
+    border-bottom: 1px solid #ccc;
+    padding: 0 0.5em;
+  }
+  .prompt-value .available:hover {
+    background:var(--secondary);
+    cursor:pointer;
+  }
+  .prompt-value .unavailable{
+    color:#afafaf;
+  }
+ 
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+  
+  /* Fallback for Edge
+  -------------------------------------------------- */
+  @supports (-ms-ime-align: auto) {
+    .form-label-group > label {
+      display: none;
+    }
+    .form-label-group input::-ms-input-placeholder {
+      color: #777;
+    }
+  }
+  
+  /* Fallback for IE
+  -------------------------------------------------- */
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .form-label-group > label {
+      display: none;
+    }
+    .form-label-group input:-ms-input-placeholder {
+      color: #777;
+    }
+  }
+
+.my-dashboard-container {
+  margin-top:100px;
+}
+
+.my-container {
+  padding:30px 30px 65px 65px;
+  border-radius: 10px;
+}
+.mt-50px {
+  margin-top:50px;
+}
+.mt-100px {
+  margin-top:100px;
+}
+.pt-100px {
+  padding-top:100px;
+}
+.pb-100px {
+  padding-bottom:100px;
+}
+.mainpage {
+  background-size:cover !important;
+}
+
+.my-wizard .card {
+  background:none;
+  border:none;
+}
+.my-wizard .card .card-header{
+  background:none;
+}
+.w-100 .slider.slider-horizontal {
+  width:100%;
+}

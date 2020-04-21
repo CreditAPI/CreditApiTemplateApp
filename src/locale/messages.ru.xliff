@@ -1,0 +1,1108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="ngb.alert.close" datatype="html">
+        <source>Close</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/alert/alert.d.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      <target>Закрыть</target></trans-unit>
+      <trans-unit id="ngb.carousel.previous" datatype="html">
+        <source>Previous</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/carousel/carousel.d.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      <target>Назад</target></trans-unit>
+      <trans-unit id="ngb.carousel.next" datatype="html">
+        <source>Next</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/carousel/carousel.d.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      <target>Вперед</target></trans-unit>
+      <trans-unit id="ngb.datepicker.previous-month" datatype="html">
+        <source>Previous month</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation.d.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation.d.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      <target>Предыдущий месяц</target></trans-unit>
+      <trans-unit id="ngb.datepicker.next-month" datatype="html">
+        <source>Next month</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation.d.ts</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation.d.ts</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      <target>Следующий месяц</target></trans-unit>
+      <trans-unit id="ngb.datepicker.select-month" datatype="html">
+        <source>Select month</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation-select.d.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation-select.d.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      <target>Выбрать месяц</target></trans-unit>
+      <trans-unit id="ngb.datepicker.select-year" datatype="html">
+        <source>Select year</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation-select.d.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation-select.d.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      <target>Выбрать год</target></trans-unit>
+      <trans-unit id="ngb.pagination.first" datatype="html">
+        <source>««</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      <target>««</target></trans-unit>
+      <trans-unit id="ngb.pagination.previous" datatype="html">
+        <source>«</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      <target>«</target></trans-unit>
+      <trans-unit id="ngb.pagination.next" datatype="html">
+        <source>»</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      <target>»</target></trans-unit>
+      <trans-unit id="ngb.pagination.last" datatype="html">
+        <source>»»</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      <target>»»</target></trans-unit>
+      <trans-unit id="ngb.pagination.first-aria" datatype="html">
+        <source>First</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      <target>В начало</target></trans-unit>
+      <trans-unit id="ngb.pagination.previous-aria" datatype="html">
+        <source>Previous</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      <target>Назад</target></trans-unit>
+      <trans-unit id="ngb.pagination.next-aria" datatype="html">
+        <source>Next</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+      <target>Вперед</target></trans-unit>
+      <trans-unit id="ngb.pagination.last-aria" datatype="html">
+        <source>Last</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+      <target>В конец</target></trans-unit>
+      <trans-unit id="ngb.progressbar.value" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{getPercentValue()}}"/>%</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/progressbar/progressbar.d.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      <target>%</target></trans-unit>
+      <trans-unit id="ngb.timepicker.increment-hours" datatype="html">
+        <source>Increment hours</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      <target>+ час</target></trans-unit>
+      <trans-unit id="ngb.timepicker.HH" datatype="html">
+        <source>HH</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      <target>ЧЧ</target></trans-unit>
+      <trans-unit id="ngb.timepicker.hours" datatype="html">
+        <source>Hours</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      <target>Часы</target></trans-unit>
+      <trans-unit id="ngb.timepicker.decrement-hours" datatype="html">
+        <source>Decrement hours</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      <target>- час</target></trans-unit>
+      <trans-unit id="ngb.timepicker.increment-minutes" datatype="html">
+        <source>Increment minutes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      <target>+ минута</target></trans-unit>
+      <trans-unit id="ngb.timepicker.MM" datatype="html">
+        <source>MM</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      <target>ММ</target></trans-unit>
+      <trans-unit id="ngb.timepicker.minutes" datatype="html">
+        <source>Minutes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      <target>минуты</target></trans-unit>
+      <trans-unit id="ngb.timepicker.decrement-minutes" datatype="html">
+        <source>Decrement minutes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+      <target>- минута</target></trans-unit>
+      <trans-unit id="ngb.timepicker.increment-seconds" datatype="html">
+        <source>Increment seconds</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">54</context>
+        </context-group>
+      <target>- секунда</target></trans-unit>
+      <trans-unit id="ngb.timepicker.SS" datatype="html">
+        <source>SS</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">57</context>
+        </context-group>
+      <target>CC</target></trans-unit>
+      <trans-unit id="ngb.timepicker.seconds" datatype="html">
+        <source>Seconds</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">59</context>
+        </context-group>
+      <target>секунды</target></trans-unit>
+      <trans-unit id="ngb.timepicker.decrement-seconds" datatype="html">
+        <source>Decrement seconds</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+      <target>- секунда</target></trans-unit>
+      <trans-unit id="ngb.timepicker.PM" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{ i18n.getAfternoonPeriod() }}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">76</context>
+        </context-group>
+      <target>ПП</target></trans-unit>
+      <trans-unit id="ngb.timepicker.AM" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{ i18n.getMorningPeriod() }}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">77</context>
+        </context-group>
+      <target>ДП</target></trans-unit>
+      <trans-unit id="ngb.toast.close-aria" datatype="html">
+        <source>Close</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/toast/toast.d.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      <target>Закрыть</target></trans-unit>
+      <trans-unit id="navbar.items.home" datatype="html">
+        <source>Home</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      <target>Главная</target></trans-unit>
+      <trans-unit id="navbar.items.documents" datatype="html">
+        <source>Documents</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      <target>Документы</target></trans-unit>
+      <trans-unit id="navbar.items.login" datatype="html">
+        <source>Login</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      <target>Вход</target></trans-unit>
+      <trans-unit id="navbar.items.signup" datatype="html">
+        <source>Register</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      <target>Регистрация</target></trans-unit>
+      <trans-unit id="navbar.items.account" datatype="html">
+        <source>
+            My Account
+          </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      <target>Профиль</target></trans-unit>
+      <trans-unit id="navbar.items.dashboard" datatype="html">
+        <source>Dashboard</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      <target>Личный кабинет</target></trans-unit>
+      <trans-unit id="navbar.items.logout" datatype="html">
+        <source>Logout</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      <target>Выход</target></trans-unit>
+      <trans-unit id="login.title" datatype="html">
+        <source>Please, Log In</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/security/login/login.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      <target>Пожалуйста, авторизуйтесь</target></trans-unit>
+      <trans-unit id="login.subtitle" datatype="html">
+        <source>You can use your phone number or email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/security/login/login.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      <target>Вы можете использовать Email или телефон в качестве логина</target></trans-unit>
+      <trans-unit id="login.phone_or_email" datatype="html">
+        <source>Phone or Email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/security/login/login.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/security/login/login.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      <target>Телефон или Email</target></trans-unit>
+      <trans-unit id="login.password" datatype="html">
+        <source>Password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/security/login/login.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/security/login/login.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      <target>Пароль</target></trans-unit>
+      <trans-unit id="login.register" datatype="html">
+        <source>Register</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/security/login/login.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      <target>Регистрация</target></trans-unit>
+      <trans-unit id="login.buttons.signin" datatype="html">
+        <source> Sign in</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/security/login/login.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      <target>Войти</target></trans-unit>
+      <trans-unit id="login.remember_me" datatype="html">
+        <source>Remember me</source>
+      <target>Запомнить меня</target></trans-unit>
+      <trans-unit id="documentmodal.title" datatype="html">
+        <source>View document</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/services/document-modal.service.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      <target>Просмотр документа</target></trans-unit>
+      <trans-unit id="signup.title" datatype="html">
+        <source>Please, enter your mobile phone and email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/security/signup/signup.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      <target>Пожалуйста, введите номер мобильного телефона и email</target></trans-unit>
+      <trans-unit id="signup.subtitle" datatype="html">
+        <source>We'll send a code to verify it</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/security/signup/signup.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      <target>Мы отправим вам СМС с кодом для подтверждения.</target></trans-unit>
+      <trans-unit id="signup.phone" datatype="html">
+        <source>Mobile phone</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/security/signup/signup.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/security/signup/signup.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      <target>Мобильный телефон</target></trans-unit>
+      <trans-unit id="signup.email" datatype="html">
+        <source>Email address</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/security/signup/signup.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/security/signup/signup.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      <target>Email адрес</target></trans-unit>
+      <trans-unit id="signup.password" datatype="html">
+        <source>Password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/security/signup/signup.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/security/signup/signup.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      <target>Пароль</target></trans-unit>
+      <trans-unit id="signup.i_agree" datatype="html">
+        <source>I agree with </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/security/signup/signup.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      <target>Я согласен с </target></trans-unit>
+      <trans-unit id="signup.terms" datatype="html">
+        <source> terms </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/security/signup/signup.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      <target> политикой обработки данных </target></trans-unit>
+      <trans-unit id="signup.and" datatype="html">
+        <source> and </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/security/signup/signup.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      <target> и </target></trans-unit>
+      <trans-unit id="signup.conditions" datatype="html">
+        <source>conditions</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/security/signup/signup.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      <target> соглашением об электронном взаимодействии</target></trans-unit>
+      <trans-unit id="signup.buttons.signup" datatype="html">
+        <source> Sign up</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/security/signup/signup.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      <target>Зарегистрироваться</target></trans-unit>
+      <trans-unit id="wizard.title" datatype="html">
+        <source>Please, fill the application</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/wizard/wizard.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      <target>Пожалуйста, заполните анкету</target></trans-unit>
+      <trans-unit id="wizard.buttons.next" datatype="html">
+        <source>Next</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/wizard/wizard.component.html</context>
+          <context context-type="linenumber">57</context>
+        </context-group>
+      <target>Далее</target></trans-unit>
+      <trans-unit id="wizard.buttons.finish" datatype="html">
+        <source>Finish</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/wizard/wizard.component.html</context>
+          <context context-type="linenumber">58</context>
+        </context-group>
+      <target>Далее</target></trans-unit>
+      <trans-unit id="dashboard.current_loan.title" datatype="html">
+        <source>Current loan</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/current-loan/current-loan.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      <target>Текущий займ</target></trans-unit>
+      <trans-unit id="dashboard.current_loan.agreement_number" datatype="html">
+        <source>Agreement #</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/current-loan/current-loan.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      <target>Номер договора</target></trans-unit>
+      <trans-unit id="dashboard.current_loan.issued_at" datatype="html">
+        <source>Issued At</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/current-loan/current-loan.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      <target>Выдан</target></trans-unit>
+      <trans-unit id="dashboard.current_loan.amount" datatype="html">
+        <source>Amount</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/current-loan/current-loan.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      <target>Сумма займа</target></trans-unit>
+      <trans-unit id="dashboard.current_loan.term" datatype="html">
+        <source>Term</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/current-loan/current-loan.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      <target>Срок займа</target></trans-unit>
+      <trans-unit id="dashboard.current_loan.next_payment" datatype="html">
+        <source>Next payment</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/current-loan/current-loan.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      <target>Следующий платеж</target></trans-unit>
+      <trans-unit id="dashboard.current_loan.payment_schedule.title" datatype="html">
+        <source>Payment schedule</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/current-loan/current-loan.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      <target>График платежей</target></trans-unit>
+      <trans-unit id="dashboard.current_loan.payment_schedule.date" datatype="html">
+        <source>Date</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/current-loan/current-loan.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      <target>Дата</target></trans-unit>
+      <trans-unit id="dashboard.current_loan.payment_schedule.amount" datatype="html">
+        <source>Amount</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/current-loan/current-loan.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      <target>Сумма</target></trans-unit>
+      <trans-unit id="dashboard.current_loan.payment_schedule.status" datatype="html">
+        <source>Status</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/current-loan/current-loan.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      <target>Статус</target></trans-unit>
+      <trans-unit id="dashboard.current_loan.button.early_payment" datatype="html">
+        <source>Early payment</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/current-loan/current-loan.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      <target>Досрочное погашение</target></trans-unit>
+      <trans-unit id="dashboard.side_menu.my_loans" datatype="html">
+        <source>My loans</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/sidemenu/sidemenu.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      <target>Мои займы</target></trans-unit>
+      <trans-unit id="dashboard.side_menu.logout" datatype="html">
+        <source>Logout</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/sidemenu/sidemenu.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      <target>Выход</target></trans-unit>
+      <trans-unit id="dashboard.side_menu.linked_cards.title" datatype="html">
+        <source>Linked cards</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/sidemenu/sidemenu.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      <target>Привязанные карты</target></trans-unit>
+      <trans-unit id="dashboard.side_menu.linked_cards.new" datatype="html">
+        <source>+ Add new card</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/sidemenu/sidemenu.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      <target>Добавить карту</target></trans-unit>
+      <trans-unit id="dashboard.my_loans.title" datatype="html">
+        <source>My loans</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/my-loans/my-loans.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      <target>Мои займы</target></trans-unit>
+      <trans-unit id="dashboard.my_loans.buttons.new" datatype="html">
+        <source>+ new application</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/my-loans/my-loans.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      <target>Новая заявка</target></trans-unit>
+      <trans-unit id="dashboard.my_loans.date" datatype="html">
+        <source>Date</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/my-loans/my-loans.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      <target>Дата</target></trans-unit>
+      <trans-unit id="dashboard.my_loans.amount" datatype="html">
+        <source>Amount</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/my-loans/my-loans.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      <target>Сумма</target></trans-unit>
+      <trans-unit id="dashboard.my_loans.term" datatype="html">
+        <source>Term</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/my-loans/my-loans.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      <target>Срок</target></trans-unit>
+      <trans-unit id="dashboard.my_loans.status" datatype="html">
+        <source>Status</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/my-loans/my-loans.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      <target>Статус</target></trans-unit>
+      <trans-unit id="calculator.loan_amount" datatype="html">
+        <source>Loan amount</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/services/calculator/calculator.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      <target>Сумма займа</target></trans-unit>
+      <trans-unit id="calculator.loan_term" datatype="html">
+        <source>Loan term</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/services/calculator/calculator.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      <target>Срок займа</target></trans-unit>
+      <trans-unit id="calculator.buttons.get_money" datatype="html">
+        <source>Get money</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/services/calculator/calculator.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      <target>Получить деньги</target></trans-unit>
+      <trans-unit id="calculator.product_not_found" datatype="html">
+        <source>Credit product not found or not available</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/services/calculator/calculator.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      <target>Кредитный продукт не найден или недоступен</target></trans-unit>
+      <trans-unit id="dashboard.new_loan.title" datatype="html">
+        <source>New loan application</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/new-loan/new-loan.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      <target>Новая заявка</target></trans-unit>
+      <trans-unit id="dashboard.new_loan.choose_product" datatype="html">
+        <source>Choose credit product</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/new-loan/new-loan.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      <target>Выберите кредитный продукт</target></trans-unit>
+      <trans-unit id="dashboard.cards.linked_card_title" datatype="html">
+        <source>Linked card</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/cards/cards.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      <target>Карта</target></trans-unit>
+      <trans-unit id="dashboard.cards.number" datatype="html">
+        <source>Number</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/cards/cards.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      <target>Номер</target></trans-unit>
+      <trans-unit id="dashboard.cards.holder" datatype="html">
+        <source>Holder</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/cards/cards.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      <target>Владелец</target></trans-unit>
+      <trans-unit id="dashboard.cards.valid_by" datatype="html">
+        <source>Valid by</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/cards/cards.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      <target>Действительна до</target></trans-unit>
+      <trans-unit id="dashboard.cards.button.unlink" datatype="html">
+        <source>Unlink</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/cards/cards.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      <target>Отвязать</target></trans-unit>
+      <trans-unit id="dashboard.cards.confirm.title" datatype="html">
+        <source>Please, confirm</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/cards/cards.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      <target>Пожалуйста, подтвердите</target></trans-unit>
+      <trans-unit id="dashboard.cards.confirm.subtitle" datatype="html">
+        <source>Are you sure you want to unlink this card?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/cards/cards.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      <target>Вы уверены, что хотите отвязать карту?</target></trans-unit>
+      <trans-unit id="dashboard.cards.confirm.warning" datatype="html">
+        <source>This operation can not be undone.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/cards/cards.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      <target>Эта операция необратима</target></trans-unit>
+      <trans-unit id="cancel" datatype="html">
+        <source>Cancel</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/cards/cards.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/application/application.component.html</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+      <target>Отмена</target></trans-unit>
+      <trans-unit id="yes" datatype="html">
+        <source>Yes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/cards/cards.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/application/application.component.html</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+      <target>Да</target></trans-unit>
+      <trans-unit id="application.wait.title" datatype="html">
+        <source>Please, wait...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/application/application.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      <target>Пожалуйста, ожидайте</target></trans-unit>
+      <trans-unit id="application.wait.subtitle" datatype="html">
+        <source>We are checking your application</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/application/application.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      <target>Мы проверяем вашу заявку...</target></trans-unit>
+      <trans-unit id="application.wait_more.title" datatype="html">
+        <source>We need more time</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/application/application.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      <target>Требуется дополнительное время</target></trans-unit>
+      <trans-unit id="application.wait_more.subtitle" datatype="html">
+        <source>We need more time to check your application. Please come back later</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/application/application.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      <target>Для рассмотрения вашей заявки нам потребовалось дополнительное время.  Вы сможете уточнить статус рассмотрения позже.</target></trans-unit>
+      <trans-unit id="application.preapproved.title" datatype="html">
+        <source>Loan pre-approved</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/application/application.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      <target>Одобрено</target></trans-unit>
+      <trans-unit id="application.preapproved.subtitle" datatype="html">
+        <source>Your application is pre-approved.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/application/application.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      <target>Ваша заявка на займ предварительно одобрена! Сейчас Вы можете нажать кнопку "Получить деньги", однако имейте ввиду, что мы оставляем за собой право запросить дополнительную информацию перед перечислением средств.</target></trans-unit>
+      <trans-unit id="application.approved.title" datatype="html">
+        <source>Loan approved</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/application/application.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      <target>Одобрено</target></trans-unit>
+      <trans-unit id="application.approved.subtitle" datatype="html">
+        <source>Your application is approved</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/application/application.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      <target>Ваша заявка на займ одобрена! Можете получить деньги</target></trans-unit>
+      <trans-unit id="application.declined.title" datatype="html">
+        <source>Declined</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/application/application.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      <target>Отказ</target></trans-unit>
+      <trans-unit id="application.declined.subtitle" datatype="html">
+        <source>Sorry, your application is declined</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/application/application.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      <target>К сожалению, мы вынуждены отказать Вам.</target></trans-unit>
+      <trans-unit id="application.buttons.cancel" datatype="html">
+        <source>Cancel application</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/application/application.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      <target>Отменить заявку</target></trans-unit>
+      <trans-unit id="application.buttons.getmoney" datatype="html">
+        <source>Get money</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/application/application.component.html</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      <target>Получить деньги</target></trans-unit>
+      <trans-unit id="application.cancel.confirm.title" datatype="html">
+        <source>Please, confirm</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/application/application.component.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      <target>Пожалуйста, подтвердите</target></trans-unit>
+      <trans-unit id="application.cancel.confirm.subtitle" datatype="html">
+        <source>Are you sure you want to cancel application?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/application/application.component.html</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      <target>Вы уверены что хотите отменить заявку?</target></trans-unit>
+      <trans-unit id="application.cancel.confirm.warning" datatype="html">
+        <source>This operation can not be undone.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/application/application.component.html</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+      <target>Данная операция необратима.</target></trans-unit>
+      <trans-unit id="choosecard.title" datatype="html">
+        <source>Please, choose card</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/choose-card/choose-card.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      <target>Пожалуйста, выберите карту для получения средств</target></trans-unit>
+      <trans-unit id="choosecard.add_new" datatype="html">
+        <source>Add new card</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/choose-card/choose-card.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      <target>Добавить новую карту</target></trans-unit>
+      <trans-unit id="choosecard.button.next" datatype="html">
+        <source>Next</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/choose-card/choose-card.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      <target>Далее</target></trans-unit>
+      <trans-unit id="choosecard.wait" datatype="html">
+        <source>Please, wait</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/choose-card/choose-card.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      <target>Пожалуйста, ожидайте</target></trans-unit>
+      <trans-unit id="documents.choose_document" datatype="html">
+        <source>Please, choose the document</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/documents/documents.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      <target>Выберите документ из списка слева</target></trans-unit>
+      <trans-unit id="verification.enter_code" datatype="html">
+        <source>Please, enter 5-digit code</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/verification/verification.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      <target>Пожалуйста, введите код, отправленный на ваш мобильный телефон посредством СМС</target></trans-unit>
+      <trans-unit id="verification.code" datatype="html">
+        <source>Code</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/verification/verification.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/verification/verification.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      <target>Код</target></trans-unit>
+      <trans-unit id="verification.buttons.next" datatype="html">
+        <source>Next</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/verification/verification.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      <target>Далее</target></trans-unit>
+      <trans-unit id="verification.wait" datatype="html">
+        <source>Please, wait</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/verification/verification.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      <target>Пожалуйста, ожидайте</target></trans-unit>
+      <trans-unit id="signing.title" datatype="html">
+        <source>Document signing</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/signing/signing.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      <target>Подписание документа</target></trans-unit>
+      <trans-unit id="signing.wait" datatype="html">
+        <source>Please, wait</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/signing/signing.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      <target>Пожалуйста, ожидайте</target></trans-unit>
+      <trans-unit id="signing.i_agree" datatype="html">
+        <source>I agree with this document</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/signing/signing.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      <target>Я прочитал текст данного документа и полностью согласен с его условиями</target></trans-unit>
+      <trans-unit id="signing.buttons.cancel" datatype="html">
+        <source>Cancel</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/signing/signing.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      <target>Отмена</target></trans-unit>
+      <trans-unit id="signing.buttons.sign" datatype="html">
+        <source>Sign</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/signing/signing.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      <target>Подписать</target></trans-unit>
+      <trans-unit id="1519954996184640001">
+        <source>Error</source>
+        <target>Ошибка</target>
+      </trans-unit>
+      <trans-unit id="3586674587150281199">
+        <source>Last name</source>
+        <target>Фамилия</target>
+      </trans-unit>
+      <trans-unit id="5342432350421167093">
+        <source>First name</source>
+        <target>Имя</target>
+      </trans-unit>
+      <trans-unit id="1727501772388732413">
+        <source>Patronymic</source>
+        <target>Отчество</target>
+      </trans-unit>
+      <trans-unit id="3948439187870398089">
+        <source>Gender</source>
+        <target>Пол</target>
+      </trans-unit>
+      <trans-unit id="8012344910054029733">
+        <source>Male</source>
+        <target>Мужской</target>
+      </trans-unit>
+      <trans-unit id="8780288282078058831">
+        <source>Female</source>
+        <target>Женский</target>
+      </trans-unit>
+      <trans-unit id="3179148736830644140">
+        <source>Date of birth</source>
+        <target>Дата рождения</target>
+      </trans-unit>
+      <trans-unit id="7245838845334735865">
+        <source>Place of birth</source>
+        <target>Место рождения</target>
+      </trans-unit>
+      <trans-unit id="7707176955005055131">
+        <source>Series</source>
+        <target>Серия</target>
+      </trans-unit>
+      <trans-unit id="6370642728789544052">
+        <source>Number</source>
+        <target>Номер</target>
+      </trans-unit>
+      <trans-unit id="4963968823340600468">
+        <source>Issued at</source>
+        <target>Дата выдачи</target>
+      </trans-unit>
+      <trans-unit id="4339957697235888761">
+        <source>Issued by</source>
+        <target>Кем выдан</target>
+      </trans-unit>
+      <trans-unit id="4380041352922682719">
+        <source>Authority code</source>
+        <target>Код подразделения</target>
+      </trans-unit>
+      <trans-unit id="2122400483789320681">
+        <source>SNILS</source>
+        <target>СНИЛС</target>
+      </trans-unit>
+      <trans-unit id="2314075913167237221">
+        <source>City</source>
+        <target>Город</target>
+      </trans-unit>
+      <trans-unit id="1847047605496409443">
+        <source>Street</source>
+        <target>Улица</target>
+      </trans-unit>
+      <trans-unit id="1125666118611359006">
+        <source>House</source>
+        <target>Дом</target>
+      </trans-unit>
+      <trans-unit id="8086948833275257352">
+        <source>Flat</source>
+        <target>Квартира</target>
+      </trans-unit>
+      <trans-unit id="6660341951260646499">
+        <source>ZIP</source>
+        <target>Индекс</target>
+      </trans-unit>
+      <trans-unit id="2702200797962830082">
+        <source>Region</source>
+        <target>Номер региона</target>
+      </trans-unit>
+      <trans-unit id="533514919473799257">
+        <source>Can't load document.</source>
+        <target>Ошибка загрузки документа</target>
+      </trans-unit>
+      <trans-unit id="593744063736680523">
+        <source>Successfull</source>
+        <target>Успешно</target>
+      </trans-unit>
+      <trans-unit id="2603040931614109319">
+        <source>Card successfully unlinked</source>
+        <target>Карта отвязана</target>
+      </trans-unit>
+      <trans-unit id="7814464029439947640">
+        <source>Loan application successfully canceled</source>
+        <target>Заявка отменена</target>
+      </trans-unit>
+      <trans-unit id="6972305677580887454">
+        <source>Please, choose an option</source>
+        <target>Пожалуйста, выберите один из предложенных вариантов</target>
+      </trans-unit>
+      <trans-unit id="8596714115665389898">
+        <source>No document name provided</source>
+        <target>Отсутствует имя документа</target>
+      </trans-unit>
+      <trans-unit id="5984574397847510001">
+        <source>Basic info</source>
+        <target>Общая информация</target>
+      </trans-unit>
+      <trans-unit id="4145401886320675784">
+        <source>Passport</source>
+        <target>Паспорт</target>
+      </trans-unit>
+      <trans-unit id="6304432362546770951">
+        <source>Address</source>
+        <target>Адрес</target>
+      </trans-unit>
+      <trans-unit id="2328411138723912351">
+        <source>Super loans</source>
+        <target>КРЕДИТ Ко</target>
+      </trans-unit>
+      <trans-unit id="5526579718472211568">
+        <source>SuperLOANS</source>
+        <target>КРЕДИТ Ко</target>
+      </trans-unit>
+      <trans-unit id="footer.loan_orinated_by">
+        <source>Loan originated by</source>
+        <target>Рассмотрение заявок и выдачу кредитов осуществляет</target>
+      </trans-unit>
+      <trans-unit id="footer.docs.privacy_policy">
+        <source>Privacy policy</source>
+        <target>Положение об обработке персональных данных</target>
+      </trans-unit>
+      <trans-unit id="footer.important_information">
+        <source>Important information</source>
+        <target>Важная информация для клиентов</target>
+      </trans-unit>
+      <trans-unit id="documentmodal.buttons.close">
+        <source>Close</source>
+        <target>Закрыть</target>
+      </trans-unit>
+      <trans-unit id="footer.company_id">
+        <source>Reg #</source>
+        <target>ОГРН </target>
+      </trans-unit>
+      <trans-unit id="4625007022649544856">
+        <source>Please, correct mistakes</source>
+        <target>Пожалуйста, исправьте ошибки </target>
+      </trans-unit>
+      <trans-unit id="104401718693356321">
+        <source>Residential address</source>
+        <target>Адрес места жительства</target>
+      </trans-unit>
+      <trans-unit id="180184350021182111">
+        <source>Registration address</source>
+        <target>Адрес места регистрации</target>
+      </trans-unit>
+      <trans-unit id="8738588904200748521">
+        <source>Registration address is the same as residential address</source>
+        <target>Совпадает с адресом места жительства</target>
+      </trans-unit>
+      <trans-unit id="6759205696902713848">
+        <source>Warning</source>
+        <target>Предупреждение</target>
+      </trans-unit>
+      <trans-unit id="6971258678731380307">
+        <source>Please, choose city first</source>
+        <target>Пожалуйста, сначала выберите город</target>
+      </trans-unit>
+      <trans-unit id="6445038222328364127">
+        <source>Please, choose street first</source>
+        <target>Пожалуйста, сначала выберите улицу</target>
+      </trans-unit>
+      <trans-unit id="6184974545055846031">
+        <source>Please, check app settings</source>
+        <target>Проверьте настройки приложения</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

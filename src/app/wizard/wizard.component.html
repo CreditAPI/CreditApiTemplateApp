@@ -1,0 +1,68 @@
+<div class="container my-container mt-100px bg-light" *ngIf="form">
+  <h2 i18n="@@wizard.title">Please, fill the application</h2>
+  <form (ngSubmit)="save()" [formGroup]="form" >
+    <ngb-accordion #acc="ngbAccordion" [closeOthers]="true" activeIds="panel-0" class="my-wizard">
+        <ngb-panel *ngFor="let group of application; let i=index"   id="panel-{{i}}"  title="{{group.label}}">
+          <ng-template ngbPanelContent>
+            <div class="row">
+              <ng-container *ngFor="let field of group.fields ">
+                <div class="col-md-{{field.col_size||4}}" [hidden]="field.type=='hidden'">
+                  <div class="title pt-2 pb-2" *ngIf="field.type=='title'" ><h5>{{field.label}}</h5></div>
+                  <div class="form-label-group" *ngIf="form.controls[field.name] && !['choice','date','checkbox','title'].includes(field.type)" >
+                    <input [type]="field.type||'text'" 
+                            id="{{field.name}}" 
+                            class="form-control" 
+                            placeholder="{{field.label}}" 
+                            [formControlName]="field.name" 
+                            [mask]="field.mask||null" 
+                            [showMaskTyped]="field.mask_typed"
+                            (keyup)="field.autocompleteAddress?onAddressChange($event):null"
+                            autocomplete="off">  
+                    <label for="{{field.name}}">{{field.label}}</label>
+                  </div>
+                  <div class="form-label-group input-group" *ngIf="form.controls[field.name] && field.type=='date'">
+                      <input type="text" id="{{field.name}}" class="form-control" placeholder="{{field.label}}" [formControlName]="field.name" ngbDatepicker #d="ngbDatepicker" container="body">  
+                      <div class="input-group-append">
+                        <span class="input-group-text calendar" (click)="d.toggle()"></span>
+                      </div>
+                      <label for="{{field.name}}">{{field.label}}</label>
+                  </div>
+                  <div class="form-select-group" *ngIf="form.controls[field.name] && field.type=='choice'">
+                    <label for="{{field.name}}">{{field.label}}</label>
+                    <select id="{{field.name}}" class="form-control" [formControlName]="field.name" >
+                      <option *ngFor="let choice of field.choices |keyvalue" value="{{choice.key}}">{{choice.value}}</option>
+                    </select>
+                  </div>
+                  <div class="form-label-group" *ngIf="!form.controls[field.name]  && !['choice','date','checkbox','title'].includes(field.type)" >
+                    <input [type]="field.type||'text'" id="{{field.name}}" class="form-control" placeholder="{{field.label}}" [mask]="field.mask" [showMaskTyped]="true"  >
+                    <label for="{{field.name}}">{{field.label}}</label>
+                  </div>
+                  <div class="form-label-group input-group" *ngIf="!form.controls[field.name] && field.type=='date'">
+                    <input type="text" id="{{field.name}}" class="form-control" placeholder="{{field.label}}"  ngbDatepicker #d="ngbDatepicker" container="body">  
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                    </div>
+                    <label for="{{field.name}}">{{field.label}}</label>
+                  </div>
+                  <div class="pb-2" *ngIf="!form.controls[field.name] && field.type=='checkbox'">
+                    <input type="checkbox" id="{{field.name}}" (change)="checkbox_change($event)">  
+                    <label for="{{field.name}}">{{field.label}}</label>
+                  </div>
+                  <div class="form-select-group" *ngIf="!form.controls[field.name] && field.type=='choice'">
+                    <label for="{{field.name}}">{{field.label}}</label>
+                    <select id="{{field.name}}" class="form-control" >
+                      <option *ngFor="let choice of field.choices |keyvalue" value="{{choice.key}}">{{choice.value}}</option>
+                    </select>
+                  </div>
+                  <ul class="prompt-value" (click)="onAddressChoose($event,field.name)"></ul>
+                </div>
+              </ng-container>
+            </div>
+            <span class="btn btn-primary" *ngIf="i<(application.length-1)" ngbpaneltoggle (click)="acc.toggle('panel-'+(i+1))"  i18n="@@wizard.buttons.next">Next</span>
+            <button class="btn btn-primary" *ngIf="i==(application.length-1)" type="submit" i18n="@@wizard.buttons.finish">Finish</button>
+          </ng-template>
+        </ngb-panel>
+
+      </ngb-accordion>
+    </form>
+</div>

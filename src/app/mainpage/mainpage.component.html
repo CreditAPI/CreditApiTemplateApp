@@ -1,0 +1,14 @@
+<div class="mainpage w-100 pt-100px pb-100px">
+<div class="container my-container" >
+    <div class="row">
+        <div class="col-md-7" [innerHTML]="content"></div>
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body bg-light bg-gradient-light" *ngIf="creditProduct">
+                    <app-calculator [creditProduct]="creditProduct"></app-calculator>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

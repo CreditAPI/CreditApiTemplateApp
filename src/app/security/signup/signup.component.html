@@ -1,0 +1,32 @@
+<form (ngSubmit)="doSignUp()" [formGroup]="form" class="form-signin bg-light bg-gradient-light mt-5 pt-3">
+    <div class="text-center mb-4">
+      <h1 class="h3 mb-3 font-weight-normal" i18n="@@signup.title">Please, enter your mobile phone and email</h1>
+      <p i18n="@@signup.subtitle">We'll send a code to verify it</p>
+    </div>
+  
+    <div class="form-label-group">
+      <input type="text" id="inputPhone" formControlName="phone" class="form-control" placeholder="Mobile phone" prefix="+7" mask="(000) 000-0000" i18n-placeholder="@@signup.phone" required autofocus >
+      <label for="inputPhone" i18n="@@signup.phone">Mobile phone</label>
+    </div>
+
+    <div class="form-label-group">
+        <input type="email" id="inputEmail" formControlName="email" class="form-control" placeholder="Email address" i18n-placeholder="@@signup.email" required autofocus>
+        <label for="inputEmail" i18n="@@signup.email">Email address</label>
+    </div>
+
+    <div class="form-label-group">
+      <input type="password" id="inputPassword" formControlName="password" class="form-control" i18n-placeholder="@@signup.password" placeholder="Password" required>
+      <label for="inputPassword" i18n="@@signup.password">Password</label>
+    </div>
+  
+    <div class="checkbox mb-3">
+      <input type="checkbox" formControlName="agree_flag"> 
+      <label>
+        <span i18n="@@signup.i_agree">I agree with </span> <span class="clickable" (click)="ms.show('terms')" i18n="@@signup.terms">terms</span> <span i18n="@@signup.and"> and </span> <span class="clickable"  (click)="ms.show('conditions')"  i18n="@@signup.conditions">conditions</span> 
+      </label>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block"  type="submit" [disabled]="!form.valid">
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loading"></span>
+      <span i18n="@@signup.buttons.signup"> Sign up</span>
+    </button>
+</form>

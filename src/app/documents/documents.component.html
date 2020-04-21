@@ -1,0 +1,33 @@
+<div class="container-fluid pt-5">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body bg-light bg-gradient-light">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item text-left bg-transparent" *ngFor="let document of documents"><span class="btn btn-link" [routerLink]="['/document',document.name]">{{document.title}}</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-body bg-light bg-gradient-light">
+                    <div *ngIf="content">
+                        <h5>{{document?.title}}</h5>
+                        <div class="document-content">
+                            {{content}}
+                        </div>
+                    </div>
+                    <div *ngIf="!content && !loading">
+                        <p i18n="@@documents.choose_document">Please, choose the document</p>
+                    </div>
+                    <div *ngIf="loading">
+                        <div class="spinner-border" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="card mb-3">
+    <div class="card-body bg-light bg-gradient-light">
+        <p class="title mb-0">{{user?.last_name}} {{user?.first_name}}</p>
+        <span class="text-secondary">{{user?.email}}</span>
+        <ul class="list-group list-group-flush mt-5">
+            <li class="list-group-item bg-transparent" ><span class="clickable" [routerLink]="['/dashboard/myloans']" i18n="@@dashboard.side_menu.my_loans">My loans</span></li>
+            <!--<li><a href="#" i18n="@@dashboard.side_menu.change_password">Change password</a></li>-->
+            <li class="list-group-item bg-transparent text-left" ><span class="clickable"  (click)="logout()" i18n="@@dashboard.side_menu.logout">Logout</span></li>
+        </ul>
+    </div>
+</div>
+
+<div class="card ">
+    <div class="card-body bg-light bg-gradient-light">
+        <p i18n="@@dashboard.side_menu.linked_cards.title">Linked cards</p>
+        <ul class="list-group list-group-flush bg-transparent">
+            <li *ngFor="let card of cards; let i=index" class="list-group-item bg-transparent" >
+                <span class="clickable" [routerLink]="['/dashboard/cards',i]">{{card.number}}</span>
+            </li>
+            <li class="list-group-item bg-transparent">
+                <span class="clickable"  (click)="newCard()" i18n="@@dashboard.side_menu.linked_cards.new">+ Add new card</span>
+            </li>
+        </ul>
+    </div>
+</div>

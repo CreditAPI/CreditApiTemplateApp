@@ -1,0 +1,27 @@
+<form (ngSubmit)="doLogin()" [formGroup]="form" class="form-signin bg-light bg-gradient-light mt-5 pt-3">
+    <div class="text-center mb-4">
+      <h1 class="h3 mb-3 font-weight-normal" i18n="@@login.title">Please, Log In</h1>
+      <p i18n="@@login.subtitle">You can use your phone number or email</p>
+    </div>
+  
+    <div class="form-label-group">
+      <input type="text" id="inputUsername" class="form-control" placeholder="Phone or Email" formControlName="username"  i18n-placeholder="@@login.phone_or_email" required autofocus>
+      <label for="inputUsername" i18n="@@login.phone_or_email">Phone or Email</label>
+    </div>
+  
+    <div class="form-label-group">
+      <input type="password" id="inputPassword" class="form-control" formControlName="password"  i18n-placeholder="@@login.password"  placeholder="Password" required>
+      <label for="inputPassword" i18n="@@login.password">Password</label>
+    </div>
+  
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me" > <span i18n="@@login.remember_me">Remember me</span>
+      </label>
+      <span class="btn btn-link float-right" [routerLink]="['/register']" i18n="@@login.register">Register</span>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block"  type="submit" [disabled]="!form.valid">
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loading"></span>
+      <span i18n="@@login.buttons.signin"> Sign in</span>
+    </button>
+  </form>
