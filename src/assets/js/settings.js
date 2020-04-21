@@ -5,5 +5,5 @@
     window["env"]["CreditApiHost"] = "https://sbapi.creditapi.ru/api";
     window["env"]["CreditApiOrgId"] = 'PUT YOUR ORG ID HERE';
     window["env"]["MyUrl"] = 'PUT YOUR DOMAIN URL HERE';
-    window["env"]["HomeLink"] = 'PUT YOUR DOMAIN URL HERE';
+    window["env"]["HomeLink"] = '';
   })(this);
