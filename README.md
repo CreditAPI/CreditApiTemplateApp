@@ -3,14 +3,19 @@ https://creditapi.ru
 # CreditApiTemplateApp
 ## Шаблон сайта по выдаче онлайн-кредитов при помощи сервиса creditapi.ru
 
-### Настройки
+### Начало работы
 
-Перед началом работы необходимо указать настройки в файле `src/assets/js/settings.js`. 
+1. Склонируйте репозиторий `git clone https://github.com/CreditAPI/CreditApiTemplateApp.git`
 
+2. Загрузите необходимые модули выполнив команду `npm update`
+
+3. Укажите основные настройки в файле `src/assets/js/settings.js` :
+```
     CreditApiHost // Сервер creditAPI, по умолчанию sandbox -  https://sbapi.creditapi.ru/api
     CreditApiOrgId // ID  организации доступен в личном кабинете на сайте creditapi.ru
     MyUrl // доменное имя вашего сайта. Необходимо для переадресации пользователя после привязки карты
     HomeLink // Ссылка на домашнюю страницу вашего сайта (при размещении личного кабинете на поддомене)
+```
 
 ### Разработка 
 
