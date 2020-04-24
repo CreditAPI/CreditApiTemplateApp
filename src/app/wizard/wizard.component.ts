@@ -19,6 +19,8 @@ export class WizardComponent implements OnInit {
   geolocation;
   autocomplete;
   gm_session_token;
+  newfiles={};
+  form_disabled=false;
   application= [{"label":$localize`Basic info`,
                 "fields":[{name: "last_name","label":$localize`Last name`},
                           {name: "first_name","label":$localize`First name`},
@@ -34,24 +36,24 @@ export class WizardComponent implements OnInit {
                          {name: "passport.code","label":$localize`Authority code`,mask:"000-000",mask_typed:true},
                          {name: "passport.snils","label":$localize`SNILS`,mask:"00000000000",mask_typed:true}]},
                 {"label":$localize`Address`,
-                "fields":[{name: "res","label":$localize`Residential address`,col_size:12,type:"title"},
+                "fields":[{name: "res","label":$localize`Residential address`,col_size:12,type:"title",unmapped:true},
                          {name: "address_res.city","label":$localize`City`,autocompleteAddress:"city"},
                          {name: "address_res.street","label":$localize`Street`,autocompleteAddress:"street"},
                          {name: "address_res.house","label":$localize`House`,autocompleteAddress:"house"},
                          {name: "address_res.flat","label":$localize`Flat`},
                          {name: "address_res.index","label":$localize`ZIP`},
                          {name: "address_res.region","label":$localize`Region`,type:"hidden"},
-                         {name: "req","label":$localize`Registration address`,col_size:12,type:"title"},
-                         {name: "address_the_same","label":$localize`Registration address is the same as residential address`,col_size:12,type:"checkbox"},
+                         {name: "req","label":$localize`Registration address`,col_size:12,type:"title",unmapped:true},
+                         {name: "address_the_same","label":$localize`Registration address is the same as residential address`,col_size:12,type:"checkbox",unmapped:true},
                          {name: "address_reg.city","label":$localize`City`,autocompleteAddress:"city"},
                          {name: "address_reg.street","label":$localize`Street`,autocompleteAddress:"street"},
                          {name: "address_reg.house","label":$localize`House`,autocompleteAddress:"house"},
                          {name: "address_reg.flat","label":$localize`Flat`},
                          {name: "address_reg.index","label":$localize`ZIP`},
                          {name: "address_reg.region","label":$localize`Region`,type:"hidden"}]},
+                {"label":$localize`Documents`,
+                "fields":[{name: "car_title","label":$localize`Car title`,type:"file",value:{name:$localize`Choose file`,url:'assets/img/noimage.jpeg'}}]}
   ];
-
-  known_errors={'Please, correct mistakes':$localize`Please, correct mistakes`}
 
   constructor(private el: ElementRef,
              private fb: FormBuilder,
@@ -63,6 +65,7 @@ export class WizardComponent implements OnInit {
   ngOnInit(): void {
     CreditApi.getApplicationFields().then(fields=>{
       this.fields=fields;
+      this.excludeNotExistedFields(fields);
       this.generateForm(fields);
       this.geolocate();
     }).catch(err=>{
@@ -74,7 +77,20 @@ export class WizardComponent implements OnInit {
     this.form = this.fb.group(this.getFormdata(fields));
   }
 
-
+  excludeNotExistedFields(fields){
+    var count=0;
+    for (var i in this.application) {
+      count=0;
+      for (var j in this.application[i].fields) {
+        let appfieldname=this.application[i].fields[j].name.split(".")[0];
+        if ((!fields[appfieldname]) && (!this.application[i].fields[j]['unmapped'])) {
+          this.application[i].fields.splice(parseInt(j),1);
+        } else count++;
+      }
+      if (count==0)
+        this.application.splice(parseInt(i),1);
+    }
+  }
 
   getFormdata(fields,pre=''){
     var formdata={}; 
@@ -101,6 +117,8 @@ export class WizardComponent implements OnInit {
               formdata[pre+i]=[{year:y,month:m,day:d},validators];
             } else
               formdata[pre+i]=['',validators];
+            break;
+          case 'FILE':
             break;
           default:
             if (user)
@@ -173,8 +191,11 @@ export class WizardComponent implements OnInit {
         switch(fields[i].type) {
           case 'DATE':
             let d=this.form.controls[pre+i].value;
-
             obj[i]=d.year+'-'+(d.month>9?d.month:'0'+d.month)+'-'+(d.day>9?d.day:'0'+d.day);
+            break;
+          case 'FILE':
+            if (this.newfiles[i])
+              obj[i]=this.newfiles[i];
             break;
           case 'INTEGER':
             obj[i]=parseInt(this.form.controls[pre+i].value);
@@ -190,7 +211,7 @@ export class WizardComponent implements OnInit {
   }
 
   geolocate(){
-    if (navigator.geolocation) {
+    if ((this.fields['geolocation'])&&(navigator.geolocation)) {
         var that=this;
         navigator.geolocation.getCurrentPosition(function(position) {
           that.geolocation = {
@@ -199,6 +220,49 @@ export class WizardComponent implements OnInit {
           };
         });
     }
+  }
+
+  onFileChange(event,field){
+    if(event.target.files.length > 0) {
+      this.readFile(event.target.files[0],field);      
+    }
+  }
+  onFileDropped(event,field){
+    event.preventDefault();
+    this.readFile(event.dataTransfer.files[0],field);
+  }
+  onDragOver(event) {
+    event.preventDefault();
+    event.stopPropagation();
+  } 
+  onDragEnter(event){
+    event.target.classList.add("dragover");
+  }
+  onDragLeave(event){
+    event.target.classList.remove("dragover");
+  }
+
+  readFile(file,field){
+    if (file.size>10000000) {
+      this.toast.show($localize`Warning`,$localize`File too large`,'bg-warning text-light');
+      return;
+    }
+    field.value.name=file.name;
+    const reader = new FileReader();
+    reader.onload = e => {
+      field.value.url = reader.result;
+      CreditApi.uploadFile(file.name,file.type,reader.result).then(pfile=>{
+        this.newfiles[field.name]=pfile;
+        this.newfiles[field.name]["__type"]="File";
+        console.log('Saved',this.newfiles[field.name]);
+        this.form_disabled=false;
+      }).catch(err=>{
+        this.toast.show($localize`Error`,err.message,'bg-danger text-light');
+        this.form_disabled=false;
+      });
+    }
+    this.form_disabled=true;
+    reader.readAsDataURL(file);
   }
 
 

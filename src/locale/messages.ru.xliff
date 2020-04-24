@@ -1103,6 +1103,278 @@
         <source>Please, check app settings</source>
         <target>Проверьте настройки приложения</target>
       </trans-unit>
+      <trans-unit id="loan_status.preview">
+        <source>Not sended</source>
+        <target>Новая заявка</target>
+      </trans-unit>
+      <trans-unit id="loan_status.new">
+        <source>Not sended</source>
+        <target>Новая заявка</target>
+      </trans-unit>
+      <trans-unit id="loan_status.checking">
+        <source>Checking</source>
+        <target>Проверка</target>
+      </trans-unit>
+      <trans-unit id="loan_status.declined">
+        <source>Declined</source>
+        <target>Отказ</target>
+      </trans-unit>
+      <trans-unit id="loan_status.canceled">
+        <source>Canceled</source>
+        <target>Отменен</target>
+      </trans-unit>
+      <trans-unit id="loan_status.approved">
+        <source>Approved</source>
+        <target>Одобрен</target>
+      </trans-unit>
+      <trans-unit id="loan_status.active">
+        <source>Active</source>
+        <target>Активный</target>
+      </trans-unit>
+      <trans-unit id="loan_status.wiring_in_process">
+        <source>Wiring</source>
+        <target>Перечисление...</target>
+      </trans-unit>
+      <trans-unit id="loan_status.paid">
+        <source>Paid</source>
+        <target>Возвращен</target>
+      </trans-unit>
+      <trans-unit id="errors.please_agree">
+        <source>Please read with documents and check agree flag</source>
+        <target>Пожалуйста, внимательно ознакомьтесь с документом и подтвердите согласие с его условиями</target>
+      </trans-unit>
+      <trans-unit id="errors.please_correct_mistakes">
+        <source>Please, correct mistakes</source>
+        <target>Пожалуйста, исправьте ошибки</target>
+      </trans-unit>
+      <trans-unit id="errors.credit_product_error">
+        <source>Credit product error</source>
+        <target>Ошибка настройки кредитного продукта</target>
+      </trans-unit>
+      <trans-unit id="errors.changing_not_allowed">
+        <source>Changing is not allowed</source>
+        <target>Изменения запрещены</target>
+      </trans-unit>
+      <trans-unit id="errors.unknow_field">
+        <source>Unknow field</source>
+        <target>Неизвестное поле</target>
+      </trans-unit>
+      <trans-unit id="errors.value_should_be_number">
+        <source>Value should be number</source>
+        <target>Значение должно быть числом</target>
+      </trans-unit>
+      <trans-unit id="errors.value_should_be_string">
+        <source>Value should be string</source>
+        <target>Значение должно строкой</target>
+      </trans-unit>
+      <trans-unit id="errors.value_should_be_object">
+        <source>Value should be object</source>
+        <target>Значение должно быть объектом</target>
+      </trans-unit>
+      <trans-unit id="errors.value_should_be_date">
+        <source>Value should be date</source>
+        <target>Значение должно быть датой</target>
+      </trans-unit>
+      <trans-unit id="errors.value_should_be_boolean">
+        <source>Value should be boolean</source>
+        <target>Значение должно быть булевым</target>
+      </trans-unit>
+      <trans-unit id="errors.value_too_long">
+        <source>Value is too long</source>
+        <target>Недопустимая длина значения</target>
+      </trans-unit>
+      <trans-unit id="errors.invalid_value">
+        <source>Invalid value</source>
+        <target>Значение недопустимо</target>
+      </trans-unit>
+      <trans-unit id="errors.org_id_required">
+        <source>OrgID header is required</source>
+        <target>Не найден заголовок организации</target>
+      </trans-unit>
+      <trans-unit id="errors.access_denied">
+        <source>Access denied"</source>
+        <target>Доступ запрещен</target>
+      </trans-unit>
+      <trans-unit id="errors.not_found">
+        <source>Not found</source>
+        <target>Не найдено</target>
+      </trans-unit>
+      <trans-unit id="errors.phone_is_required">
+        <source>Phone is required</source>
+        <target>Необходимо заполнить поле Телефон</target>
+      </trans-unit>
+      <trans-unit id="errors.invalid_phone">
+        <source>Invalid phone</source>
+        <target>Некорректное значение поля Телефон</target>
+      </trans-unit>
+      <trans-unit id="errors.email_is_required">
+        <source>Email is required</source>
+        <target>Необходимо заполнить поле Email</target>
+      </trans-unit>
+      <trans-unit id="errors.not_initialized">
+        <source>Not initialized</source>
+        <target>Не инициализировано</target>
+      </trans-unit>
+      <trans-unit id="errors.invalid_userdata">
+        <source>Invalid userdata</source>
+        <target>Данные содержат ошибки</target>
+      </trans-unit>
+      <trans-unit id="errors.unauthorized">
+        <source>Unauthorized</source>
+        <target>Не авторизован</target>
+      </trans-unit>
+      <trans-unit id="errors.missed_parameter">
+        <source>Missed parameter</source>
+        <target>Не хватает параметра</target>
+      </trans-unit>
+      <trans-unit id="errors.forbidden">
+        <source>Forbidden</source>
+        <target>Запрещено</target>
+      </trans-unit>
+      <trans-unit id="errors.phone_is_not_yet_verified">
+        <source>Can't create a loan - phone is not yet verified</source>
+        <target>Невозможно создать новую заявку на займ - телефон еще не подтвержден</target>
+      </trans-unit>
+      <trans-unit id="errors.email_is_not_yet_verified">
+        <source>Can't create a loan - email is not yet verified</source>
+        <target>Невозможно создать новую заявку на займ - Email еще не подтвержден</target>
+      </trans-unit>
+      <trans-unit id="errors.credit_product_not_found">
+        <source>Credit product not found</source>
+        <target>Кредитный продукт не найден</target>
+      </trans-unit>
+      <trans-unit id="errors.credit_product_is_not_available">
+        <source>Credit product is not available</source>
+        <target>Кредитный продукт не доступен</target>
+      </trans-unit>
+      <trans-unit id="errors.loan_amount_too_small">
+        <source>Loan amount too small</source>
+        <target>Сумма займа меньше допустимой</target>
+      </trans-unit>
+      <trans-unit id="errors.loan_amount_too_large">
+        <source>Loan amount too large</source>
+        <target>Сумма займа больше допустимой</target>
+      </trans-unit>
+      <trans-unit id="errors.loan_term_too_small">
+        <source>Loan term too small</source>
+        <target>Срок займа меньше допустимого</target>
+      </trans-unit>
+      <trans-unit id="errors.loan_term_too_large">
+        <source>Loan term too large</source>
+        <target>Срок займа больше допустимого</target>
+      </trans-unit>
+      <trans-unit id="errors.card_not_found">
+        <source>Card not found</source>
+        <target>Карта не найдена</target>
+      </trans-unit>
+      <trans-unit id="errors.inappropriate_сard">
+        <source>Inappropriate сard</source>
+        <target>Использование данной карты невозможно</target>
+      </trans-unit>
+      <trans-unit id="errors.credit_history_agreement_not_signed">
+        <source>Credit history agreement not signed</source>
+        <target>Необходимо подписать Согласие на проверку кредитной истории</target>
+      </trans-unit>
+      <trans-unit id="errors.credit_history_agreement_expired">
+        <source>Credit history agreement expired and should be signed again</source>
+        <target>Необходимо повторно подписать Согласие на проверку кредитной истории</target>
+      </trans-unit>
+      <trans-unit id="errors.loan_not_found">
+        <source>Loan not found"</source>
+        <target>Займ/заявка не найден(а)</target>
+      </trans-unit>
+      <trans-unit id="errors.loan_cannot_be_canceled">
+        <source>This loan can't be canceled</source>
+        <target>Данный заявка не может быть отменена</target>
+      </trans-unit>
+      <trans-unit id="errors.successfully_canceled">
+        <source>Successfully canceled</source>
+        <target>Успешно отменено</target>
+      </trans-unit>
+      <trans-unit id="errors.inappropriate_loan_status">
+        <source>Inappropriate loan status</source>
+        <target>Неподходящий статус заявки/займа</target>
+      </trans-unit>
+      <trans-unit id="errors.inappropriate_decision">
+        <source>Inappropriate decision</source>
+        <target>Неподходящее решение</target>
+      </trans-unit>
+      <trans-unit id="errors.unable_unlink_since_loan_active">
+        <source>Unable to unlink card with active loan/applications</source>
+        <target>Невозможно отвязать карту, т.к. она использовалась для получения текущего займа</target>
+      </trans-unit>
+      <trans-unit id="errors.loan_preview_not_found">
+        <source>Loan preview not found</source>
+        <target>Заявка не найдена</target>
+      </trans-unit>
+      <trans-unit id="errors.successfully_signed">
+        <source>Successfully signed</source>
+        <target>Успешно подписано</target>
+      </trans-unit>
+      <trans-unit id="errors.verification_already_started">
+        <source>Verification already started</source>
+        <target>Верификация уже начата</target>
+      </trans-unit>
+      <trans-unit id="errors.phone_already_verified">
+        <source>Phone already verified</source>
+        <target>Телефон уже верифицирован</target>
+      </trans-unit>
+      <trans-unit id="errors.sms_code_is_required">
+        <source>SMS code is required</source>
+        <target>Необходимо ввести СМС-код</target>
+      </trans-unit>
+      <trans-unit id="errors.wrong code">
+        <source>wrong code</source>
+        <target>Неправильный код</target>
+      </trans-unit>
+      <trans-unit id="errors.inopropriate_status">
+        <source>Inopropriate status"</source>
+        <target>Неподходящий статус</target>
+      </trans-unit>
+      <trans-unit id="errors.only_one_application_allowed">
+        <source>Only one active application/loan allowed</source>
+        <target>У вас уже имеется активный кредит или заявка</target>
+      </trans-unit>
+      <trans-unit id="calculator.return_amount">
+        <source>Return amount</source>
+        <target>К возврату</target>
+      </trans-unit>
+      <trans-unit id="calculator.return_date">
+        <source>Return date</source>
+        <target>Дата возврата</target>
+      </trans-unit>
+      <trans-unit id="calculator.currency">
+        <source>rub</source>
+        <target>руб</target>
+      </trans-unit>
+      <trans-unit id="calculator.type_term.days">
+        <source>days</source>
+        <target>в днях</target>
+      </trans-unit>
+      <trans-unit id="calculator.type_term.weeks">
+        <source>weeks</source>
+        <target>в неделях</target>
+      </trans-unit>
+      <trans-unit id="calculator.type_term.months">
+        <source>months</source>
+        <target>в месяцах</target>
+      </trans-unit>
+      <trans-unit id="4733307402565258070">
+        <source>Documents</source>
+        <target>Документы</target>
+      </trans-unit>
+      <trans-unit id="3826644746438737512">
+        <source>Car title</source>
+        <target>Скан ПТС</target>
+      </trans-unit>
+      <trans-unit id="3142649024295180156">
+        <source>Choose file</source>
+        <target>Выберите файл</target>
+      </trans-unit>
+      <trans-unit id="1588348847644481261">
+        <source>File too large</source>
+        <target>Файл слишком большой</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

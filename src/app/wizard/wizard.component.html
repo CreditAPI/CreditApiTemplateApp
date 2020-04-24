@@ -1,4 +1,4 @@
-<div class="container my-container mt-100px bg-light" *ngIf="form">
+<div class="container my-container mt-100px bg-light mb-4" *ngIf="form">
   <h2 i18n="@@wizard.title">Please, fill the application</h2>
   <form (ngSubmit)="save()" [formGroup]="form" >
     <ngb-accordion #acc="ngbAccordion" [closeOthers]="true" activeIds="panel-0" class="my-wizard">
@@ -8,7 +8,7 @@
               <ng-container *ngFor="let field of group.fields ">
                 <div class="col-md-{{field.col_size||4}}" [hidden]="field.type=='hidden'">
                   <div class="title pt-2 pb-2" *ngIf="field.type=='title'" ><h5>{{field.label}}</h5></div>
-                  <div class="form-label-group" *ngIf="form.controls[field.name] && !['choice','date','checkbox','title'].includes(field.type)" >
+                  <div class="form-label-group" *ngIf="form.controls[field.name] && !['file','choice','date','checkbox','title'].includes(field.type)" >
                     <input [type]="field.type||'text'" 
                             id="{{field.name}}" 
                             class="form-control" 
@@ -27,13 +27,21 @@
                       </div>
                       <label for="{{field.name}}">{{field.label}}</label>
                   </div>
+                  <div class="pb-4 file-control" *ngIf="field.type=='file'" (drop)="onFileDropped($event,field)" (dragover)="onDragOver($event)" (dragenter)="onDragEnter($event)" (dragleave)="onDragLeave($event)">
+                    <label class="file-label">{{field.label}}</label>
+                    <img [src]="field.value.url">
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" [id]="field.name"  (change)="onFileChange($event,field)">
+                      <label class="custom-file-label" [for]="field.name">{{field.value.name}}</label>
+                    </div>
+                  </div>
                   <div class="form-select-group" *ngIf="form.controls[field.name] && field.type=='choice'">
                     <label for="{{field.name}}">{{field.label}}</label>
                     <select id="{{field.name}}" class="form-control" [formControlName]="field.name" >
                       <option *ngFor="let choice of field.choices |keyvalue" value="{{choice.key}}">{{choice.value}}</option>
                     </select>
                   </div>
-                  <div class="form-label-group" *ngIf="!form.controls[field.name]  && !['choice','date','checkbox','title'].includes(field.type)" >
+                  <div class="form-label-group" *ngIf="!form.controls[field.name]  && !['file','choice','date','checkbox','title'].includes(field.type)" >
                     <input [type]="field.type||'text'" id="{{field.name}}" class="form-control" placeholder="{{field.label}}" [mask]="field.mask" [showMaskTyped]="true"  >
                     <label for="{{field.name}}">{{field.label}}</label>
                   </div>
@@ -59,7 +67,7 @@
               </ng-container>
             </div>
             <span class="btn btn-primary" *ngIf="i<(application.length-1)" ngbpaneltoggle (click)="acc.toggle('panel-'+(i+1))"  i18n="@@wizard.buttons.next">Next</span>
-            <button class="btn btn-primary" *ngIf="i==(application.length-1)" type="submit" i18n="@@wizard.buttons.finish">Finish</button>
+            <button class="btn btn-primary" *ngIf="i==(application.length-1)" type="submit" i18n="@@wizard.buttons.finish" [disabled]="form_disabled">Finish</button>
           </ng-template>
         </ngb-panel>
 

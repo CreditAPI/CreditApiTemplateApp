@@ -1,4 +1,4 @@
-<form (ngSubmit)="doSignUp()" [formGroup]="form" class="form-signin bg-light bg-gradient-light mt-5 pt-3">
+<form (ngSubmit)="doSignUp()" [formGroup]="form" class="form-signin bg-light bg-gradient-light mt-5 pt-3 mb-4 ">
     <div class="text-center mb-4">
       <h1 class="h3 mb-3 font-weight-normal" i18n="@@signup.title">Please, enter your mobile phone and email</h1>
       <p i18n="@@signup.subtitle">We'll send a code to verify it</p>
@@ -21,9 +21,9 @@
   
     <div class="checkbox mb-3">
       <input type="checkbox" formControlName="agree_flag"> 
-      <label>
+      <span>
         <span i18n="@@signup.i_agree">I agree with </span> <span class="clickable" (click)="ms.show('terms')" i18n="@@signup.terms">terms</span> <span i18n="@@signup.and"> and </span> <span class="clickable"  (click)="ms.show('conditions')"  i18n="@@signup.conditions">conditions</span> 
-      </label>
+      </span>
     </div>
     <button class="btn btn-lg btn-primary btn-block"  type="submit" [disabled]="!form.valid">
       <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loading"></span>

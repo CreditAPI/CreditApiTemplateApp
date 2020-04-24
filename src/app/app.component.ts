@@ -15,7 +15,7 @@ import  Mainpage  from './mainpage/mainpage.js';
 export class AppComponent {
   initialized=false;
   public isMenuCollapsed = true;
-  public user;
+  creditApi=CreditApi;
   public location;
   brand= environment['brand']||$localize`SuperLOANS`;
   homelink;
@@ -60,7 +60,6 @@ export class AppComponent {
         if ((!user)&&(!regex_opened.test(current_path)))
           this.router.navigate(['/login']);
         else {
-          this.user=user;
           if ((this.homelink)&&((current_path=='')||(current_path=='/')))
             this.router.navigate(['/dashboard']);
         }
@@ -83,6 +82,8 @@ export class AppComponent {
         this.license=website['license']||'';
         if (website['label'])
           window.document.title=website['label'];
+        else
+          window.document.title=website['CreditApi Template'];
         if (website['logo']) {
           this.brand='<img src="'+website['logo'].url+'" alt="" />';
         } else if (website['brandname'])
@@ -94,7 +95,7 @@ export class AppComponent {
           if (website['body_background_type']=='color') {
             bodystyle+=' background:'+website['body_background']+' !important;';
           } else if (website['body_background_type']=='image') { 
-            bodystyle=' background:url("' + website['body_image'].url+'") no-repeat center center fixed !important; ';
+            bodystyle=' background:url("' + website['body_image'].url+'") no-repeat center center fixed !important; background-size: cover !important';
           }
         }
         if (website['font']) {
@@ -173,6 +174,9 @@ export class AppComponent {
 
   logout(){
     CreditApi.logout();
+    localStorage.removeItem('amount');
+    localStorage.removeItem('term');
+    localStorage.removeItem('product');
     this.router.navigate(['login']);
   }
 }

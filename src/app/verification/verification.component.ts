@@ -28,9 +28,10 @@ export class VerificationComponent implements OnInit {
         this.wait=false;
       }).catch(err=>{
         console.log(err);
-        this.toast.show($localize`Error`,err.message,'bg-danger text-light');
         if ((err.code)&&(err.code==11)) {
           this.router.navigate(['/wizard']);
+        } else {
+          this.toast.show($localize`Error`,err.message,'bg-danger text-light');
         }
       });
     } else if (((CreditApi.User))&&(!CreditApi.User.verificationFinished)) {

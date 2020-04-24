@@ -1,23 +1,38 @@
 <div class="row" *ngIf="creditProduct">
     <div class="col-12">
         <div class="form-group">
-            <label for="formControlRange" i18n="@@calculator.loan_amount">Loan amount</label>
-            <input type="number" class="form-control form-control-sm w-auto float-right calculator-input" id="amount" [(ngModel)]="amount">
-            <input type="range" class="custom-range" [(ngModel)]="amount" min="{{creditProduct.min_amount}}" max="{{creditProduct.max_amount}}" step="{{creditProduct.step_amount}}" id="slider-amount">
+            <label for="formControlRange" i18n="@@calculator.loan_amount" class="range_label">Loan amount</label>
+            <input type="number" class="form-control form-control-sm w-auto float-right calculator-input" id="amount" [(ngModel)]="amount" (change)="calculateReturn()">
+            <input type="range" class="custom-range" [(ngModel)]="amount" min="{{creditProduct.min_amount}}" max="{{creditProduct.max_amount}}" step="{{creditProduct.step_amount}}" id="slider-amount" (change)="calculateReturn()" (input)="calculateReturn()">
             <span class="badge badge-secondary">{{creditProduct.min_amount}}</span>
             <span class="badge badge-secondary float-right">{{creditProduct.max_amount}}</span>
         </div>
     </div>
     <div class="col-12">
         <div class="form-group">
-            <label for="formControlRange" i18n="@@calculator.loan_term">Loan term</label>
-            <input type="number" class="form-control form-control-sm w-auto float-right calculator-input " id="term" [(ngModel)]="term">
-            <input type="range" class="custom-range" [(ngModel)]="term" min="{{creditProduct.min_term}}" max="{{creditProduct.max_term}}" step="{{creditProduct.step_term}}" id="slider-term">
+            <label for="formControlRange" ><span i18n="@@calculator.loan_term" class="range_label">Loan term</span> <span class="text-secondary range_label_description">{{term_type}}</span></label>
+            <input type="number" class="form-control form-control-sm w-auto float-right calculator-input " id="term" [(ngModel)]="term" (change)="calculateReturn()">
+            <input type="range" class="custom-range" [(ngModel)]="term" min="{{creditProduct.min_term}}" max="{{creditProduct.max_term}}" step="{{creditProduct.step_term}}" id="slider-term" (change)="calculateReturn()" (input)="calculateReturn()">
             <span class="badge badge-secondary">{{creditProduct.min_term}}</span>
             <span class="badge badge-secondary float-right">{{creditProduct.max_term}}</span>
         </div>
     </div>
     <div class="col-12">
+        <div class="calculated_values">
+            <span i18n="@@calculator.loan_amount">Loan amount</span> <span class="float-right">{{amount}} {{currency}}</span>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="calculated_values">
+            <span i18n="@@calculator.return_amount">Return amount</span> <span class="float-right"><span class="payments_count" *ngIf="payments_count>1">{{payments_count}}x</span>{{return_amount}} {{currency}}</span>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="calculated_values">
+            <span i18n="@@calculator.return_date">Return date</span> <span class="float-right">{{return_date|date:"shortDate"}}</span>
+        </div>
+    </div>
+    <div class="col-12 pt-2">
         <button class="btn btn-primary float-right" (click)="new_application()" i18n="@@calculator.buttons.get_money">Get money</button>
     </div>
 </div>

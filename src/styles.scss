@@ -49,6 +49,7 @@ input.ng-valid.ng-touched {
   }
   .my-header {
     background: $my-header-bg;
+    min-height:60px;
   }
   .my-footer {
     background: $my-footer-bg;
@@ -61,14 +62,38 @@ input.ng-valid.ng-touched {
     padding: 15px;
     margin: auto;
   }
+  .file-control img {
+    max-width: 100%;
+    border-top-right-radius: 0.25rem;
+    border-top-left-radius: 0.25rem;
+    border-top: 1px solid #ced4da;
+    border-left: 1px solid #ced4da;
+    border-right: 1px solid #ced4da;
+  }
+   img.dragover  {
+    border-color: #b4c167 !important;
+    cursor: copy !important;
+  }
+
+  .file-control .custom-file-label {
+    //border-top: none;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
   
-  .form-select-group label{
+  .file-control .custom-file-label::after {
+    border-top-right-radius: 0;
+  }
+
+  .form-select-group label,
+  .file-control .file-label {
     font-size: 12px;
     color: #777;
     line-height: 0.35;
     display: block;
     margin-left: 0.5rem;
   }
+  
 
   .form-label-group {
     position: relative;
@@ -151,6 +176,7 @@ input.ng-valid.ng-touched {
     margin-right: 0.5rem;
   }
   
+  
 
 
   .clickable,
@@ -193,7 +219,22 @@ input.ng-valid.ng-touched {
   .prompt-value .unavailable{
     color:#afafaf;
   }
- 
+  
+  .calculated_values {
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: .875rem;
+  }
+  .calculated_values .payments_count {
+    font-size: .7rem;
+  }
+
+  .range_label {
+    text-transform: uppercase;
+  }
+  .range_label_description {
+    font-size: .875rem;
+  }
 
   @media (min-width: 768px) {
     .bd-placeholder-img-lg {
