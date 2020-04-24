@@ -30,7 +30,6 @@ export class AppComponent {
   }
 
   initialize() {
-    //console.log(environment);http://localhost:4200/?websiteID=uUbDAaTrft
     var current_path=this.location.path().split('?')[0];
     var regex_opened = /(document|register|^$|^\/$)/
     var params=this.getQueryParameters();
@@ -80,6 +79,13 @@ export class AppComponent {
         this.lender=website['lender']||'';
         this.lender_id=website['lender_id']||'';
         this.license=website['license']||'';
+        if (website['css_theme']) {
+          let link = document.createElement('link');
+          link.rel  = 'stylesheet';
+          link.type = 'text/css';
+          link.href=website['css_theme'];
+          document.head.append(link);
+        }
         if (website['label'])
           window.document.title=website['label'];
         else
@@ -88,7 +94,6 @@ export class AppComponent {
           this.brand='<img src="'+website['logo'].url+'" alt="" />';
         } else if (website['brandname'])
           this.brand=website['brandname'];
-        //console.log(website);
         let node = document.createElement('style');
         var bodystyle="";
         if (website['body_background_type']) {
@@ -108,7 +113,6 @@ export class AppComponent {
         if (website['homepage_type']){
           if (website['homepage_type']=='external') {
             this.homelink=website['homepage_content'];
-            //console.log('changing homelink to '+website['homepage_content']);
           } else {
             this.homelink=null;
             if (website['homepage_background_image']) {

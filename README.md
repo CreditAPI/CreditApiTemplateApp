@@ -23,23 +23,8 @@ https://creditapi.ru
 
 
 ### Кастомизация
-
-Основные настройки цветов доступны в файле `src/styles.csss`
-
-```scss
-$theme-colors: (
-  "primary": #C5CFD1, //Основной цвет элементов управления
-  "secondary": #D6DCDE, //Второй цвет 
-  "light": #fff // Цвет подложки
-);
-$enable-gradients:true; //использование градиентов
-$my-body-bg: linear-gradient(var(--light),#fff);  //Цвет фона (может быть изображением)
-$my-header-bg: transparent; //цвет заголовка
-$my-footer-bg: transparent; // цвет подвала
-$my-body-font: 1rem/1.5 var(--font-family-sans-serif); //шрифт по умолчанию
-```
-
-Для полноценной кастомизации вы можете использовать [темы](https://themes.getbootstrap.com/) для Bootstrap
+Настройка тем осуществляется при помощи CSS-файлов. Загрузка тем осуществляется в файле styles.css
+Вы можете использовать любые CSS-темы для [Bootstrap](https://getbootstrap.com/)  или создать свою.
 
 ## Размещение личного кабинета на поддомене
 
