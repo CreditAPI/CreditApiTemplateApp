@@ -1375,6 +1375,26 @@
         <source>File too large</source>
         <target>Файл слишком большой</target>
       </trans-unit>
+      <trans-unit id="2106778283891955208">
+        <source>Car title back</source>
+        <target>Обратная сторона ПТС</target>
+      </trans-unit>
+      <trans-unit id="2398655724453891613">
+        <source>Additional info</source>
+        <target>Дополнительная информация</target>
+      </trans-unit>
+      <trans-unit id="5063592068425399238">
+        <source>Passport first page</source>
+        <target>Первая страница паспорта</target>
+      </trans-unit>
+      <trans-unit id="1345895392640560650">
+        <source>Passport second page</source>
+        <target>Страница паспорта с пропиской</target>
+      </trans-unit>
+      <trans-unit id="7516081371486687359">
+        <source>Error file uploading</source>
+        <target>Ошибка загрузки файла</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

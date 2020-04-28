@@ -1,4 +1,8 @@
 @import "node_modules/bootstrap/scss/bootstrap.scss"; 
+
+.my-header {
+  min-height:60px;
+}
 input.ng-invalid.ng-touched {
   @extend .is-invalid; 
 }
@@ -32,7 +36,7 @@ input.ng-valid.ng-touched {
     padding: 15px;
     margin: auto;
   }
-  .file-control img {
+  .file-control img.preview {
     max-width: 100%;
     border-top-right-radius: 0.25rem;
     border-top-left-radius: 0.25rem;
@@ -40,7 +44,7 @@ input.ng-valid.ng-touched {
     border-left: 1px solid #ced4da;
     border-right: 1px solid #ced4da;
   }
-   img.dragover  {
+  .file-control img.preview.dragover  {
     border-color: #b4c167 !important;
     cursor: copy !important;
   }
@@ -49,14 +53,31 @@ input.ng-valid.ng-touched {
     //border-top: none;
     border-top-right-radius: 0;
     border-top-left-radius: 0;
+    overflow-x:scroll;
   }
   
   .file-control .custom-file-label::after {
     border-top-right-radius: 0;
   }
+  .file-control-overlay {
+    position: absolute;
+    top: 0;
+    padding-right: 5rem;
+    left: 0;
+    width: calc(100% - 30px);
+    height: calc(100% - 36px);
+    background: rgba(255, 255, 255, 0.7);
+    box-sizing: border-box;
+    margin-left: 15px;
+    margin-top: 12px;
+    border-radius: 4px;
+  }
+  .file-control .loading-indicator {
+    margin-top: 40%;
+    margin-left: 70%;
+  }
 
-  .form-select-group label,
-  .file-control .file-label {
+  .form-select-group label{
     font-size: 12px;
     color: #777;
     line-height: 0.35;
@@ -64,6 +85,12 @@ input.ng-valid.ng-touched {
     margin-left: 0.5rem;
   }
   
+  .file-control .file-label {
+    font-size: 12px;
+    color: #777;
+    display: block;
+    margin-left: 0.5rem;
+  }
 
   .form-label-group {
     position: relative;

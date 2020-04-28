@@ -6,6 +6,7 @@ import { AppToastService } from './../services/app-toast.service';
 import { environment } from './../../environments/environment';
 import { Router } from '@angular/router';
 import {KladrApiService} from './../services/kladr/kladr-api.service';
+import { Ng2ImgMaxService } from 'ng2-img-max';
 
 @Component({
   selector: 'app-wizard',
@@ -52,43 +53,83 @@ export class WizardComponent implements OnInit {
                          {name: "address_reg.index","label":$localize`ZIP`},
                          {name: "address_reg.region","label":$localize`Region`,type:"hidden"}]},
                 {"label":$localize`Documents`,
-                "fields":[{name: "car_title","label":$localize`Car title`,type:"file",value:{name:$localize`Choose file`,url:'assets/img/noimage.jpeg'}}]}
+                "fields":[{name: "passport_scan_first","label":$localize`Passport first page`,type:"file",value:{name:$localize`Choose file`,url:'assets/img/noimage.jpeg',loading:false}},
+                          {name: "passport_scan_second","label":$localize`Passport second page`,type:"file",value:{name:$localize`Choose file`,url:'assets/img/noimage.jpeg',loading:false}},
+                          {name: "car_title","label":$localize`Car title`,type:"file",value:{name:$localize`Choose file`,url:'assets/img/noimage.jpeg',loading:false}},
+                          {name: "car_title_back","label":$localize`Car title back`,type:"file",value:{name:$localize`Choose file`,url:'assets/img/noimage.jpeg',loading:false}}
+                         ]}
   ];
 
   constructor(private el: ElementRef,
              private fb: FormBuilder,
              private toast: AppToastService,
              private kladr: KladrApiService,
+             private imageResizer: Ng2ImgMaxService,
              private router: Router) { 
   }
 
   ngOnInit(): void {
     CreditApi.getApplicationFields().then(fields=>{
       this.fields=fields;
-      this.excludeNotExistedFields(fields);
-      this.generateForm(fields);
+      this.excludeNotExistedFields();
+      this.includeNotListedFields();
+      this.generateForm();
       this.geolocate();
     }).catch(err=>{
       this.toast.show($localize`Error`,err.message,'bg-danger text-light');
     });
   }
 
-  generateForm(fields){
-    this.form = this.fb.group(this.getFormdata(fields));
+  generateForm(){
+    this.form = this.fb.group(this.getFormdata(this.fields));
   }
 
-  excludeNotExistedFields(fields){
+  excludeNotExistedFields(){
     var count=0;
     for (var i in this.application) {
       count=0;
-      for (var j in this.application[i].fields) {
+      for (var j=0;j<this.application[i].fields.length;j++) {
         let appfieldname=this.application[i].fields[j].name.split(".")[0];
-        if ((!fields[appfieldname]) && (!this.application[i].fields[j]['unmapped'])) {
-          this.application[i].fields.splice(parseInt(j),1);
-        } else count++;
+        //console.log('Checking '+j+'('+appfieldname+')')
+        if ((!this.fields[appfieldname]) && (!this.application[i].fields[j]['unmapped'])) {
+          //console.log('excluding '+j+'('+appfieldname+')')
+          this.application[i].fields.splice(j,1);
+          j-=1;
+        } else { 
+          count++;
+          if (this.fields[appfieldname]) { 
+            this.fields[appfieldname].included=true;
+            if ((this.fields[appfieldname].type=='FILE')&&(CreditApi.User[appfieldname])) {
+               this.application[i].fields[j]['value']={name:CreditApi.User[appfieldname].name,url:CreditApi.User[appfieldname].url,loading:false};
+            }
+          }
+        }
       }
       if (count==0)
         this.application.splice(parseInt(i),1);
+    }
+  }
+  includeNotListedFields(){
+    var newfields=[];
+    var types={'FILE':'file','STRING':'text', 'INTEGER':'number', 'FLOAT':'number', 'DATE' : 'date', 'TEXT':'textarea', 'BOOLEAN': "checkbox" };
+    for (var i in this.fields) {
+      if (!this.fields[i]['included']) {
+        if (types[this.fields[i].type]) {
+          let newfield={name:i,label:i,type:types[this.fields[i].type]};
+          if (this.fields[i]['required'])
+            newfield['required']=this.fields[i]['required'];
+          if (this.fields[i].type=='FILE') {
+            if (CreditApi.User[i])
+              newfield['value']={name:CreditApi.User[i].name,url:CreditApi.User[i].url,loading:false};
+            else
+              newfield['value']={name:$localize`Choose file`,url:'assets/img/noimage.jpeg',loading:false};
+          }
+          newfields.push(newfield);
+        }
+      }
+    }
+    if (newfields.length>0) {
+      this.application.push({"label":$localize`Additional info`,"fields":newfields});
     }
   }
 
@@ -159,9 +200,9 @@ export class WizardComponent implements OnInit {
     }
     let data=this.getDataFromForm(this.fields);
     data['geolocation']=this.geolocation;
-    console.log('DATA',data);
+    //console.log('DATA',data);
     CreditApi.saveUserdata(data).then(fields=>{
-      console.log('SAVED');
+      //console.log('SAVED');
       //this.toast.show($localize`Success`,'Successfully saved','bg-success');//do we need show it?
       if (!CreditApi.User.verificationFinished) {
         this.router.navigate(['/verification']);
@@ -229,6 +270,7 @@ export class WizardComponent implements OnInit {
   }
   onFileDropped(event,field){
     event.preventDefault();
+    event.target.classList.remove("dragover");
     this.readFile(event.dataTransfer.files[0],field);
   }
   onDragOver(event) {
@@ -243,28 +285,67 @@ export class WizardComponent implements OnInit {
   }
 
   readFile(file,field){
-    if (file.size>10000000) {
-      this.toast.show($localize`Warning`,$localize`File too large`,'bg-warning text-light');
-      return;
-    }
-    field.value.name=file.name;
-    const reader = new FileReader();
-    reader.onload = e => {
-      field.value.url = reader.result;
-      CreditApi.uploadFile(file.name,file.type,reader.result).then(pfile=>{
-        this.newfiles[field.name]=pfile;
-        this.newfiles[field.name]["__type"]="File";
-        console.log('Saved',this.newfiles[field.name]);
-        this.form_disabled=false;
-      }).catch(err=>{
-        this.toast.show($localize`Error`,err.message,'bg-danger text-light');
-        this.form_disabled=false;
-      });
-    }
     this.form_disabled=true;
-    reader.readAsDataURL(file);
+    var prev_value=field.value;
+    field.value.name=file.name;
+    field.value.loading=true;
+    this.imageResizer.resizeImage(file,1500,10000).subscribe(result => {
+      if (result.size<=1048576) {//1MB
+        this.uploadFile(result,field,prev_value);
+      } else {
+        this.imageResizer.compressImage(result,1).subscribe(result2=>{
+          this.uploadFile(result2,field,prev_value);
+        },error=>{
+          field.value=prev_value;
+          field.value.loading=false;
+          field
+          this.form_disabled=false;
+          this.toast.show($localize`Error`,error.error,'bg-danger text-light');
+        });
+      }
+    },error=>{
+      field.value=prev_value;
+      field.value.loading=false;
+      this.form_disabled=false;
+      this.toast.show($localize`Error`,error.error,'bg-danger text-light');
+    });
   }
 
+  uploadFile(file,field,prev_value){
+      const reader = new FileReader();
+      reader.onload = e => {
+        field.value.url = reader.result;
+        CreditApi.uploadFile(file.name,file.type,this.b64toBlob(reader.result,file.type)).then(pfile=>{ 
+          this.newfiles[field.name]=pfile;
+          this.newfiles[field.name]["__type"]="File";
+          this.form_disabled=false;
+          field.value.loading=false;
+        }).catch(err=>{
+          field.value=prev_value;
+          field.value.loading=false;
+          if (err.message=="")
+            this.toast.show($localize`Error`,$localize`Error file uploading`,'bg-danger text-light');
+          else {
+            console.log(err);
+            this.toast.show($localize`Error`,err.message,'bg-danger text-light');
+          }
+          this.form_disabled=false;
+        });
+      }
+      reader.readAsDataURL(file);
+  }
+
+  b64toBlob(dataURI,type) {
+
+    var byteString = atob(dataURI.split(',')[1]);
+    var ab = new ArrayBuffer(byteString.length);
+    var ia = new Uint8Array(ab);
+
+    for (var i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+    }
+    return new Blob([ab], { type: type});
+} 
 
   onAddressChange(event){
     if (event.target.value.trim()!='') {

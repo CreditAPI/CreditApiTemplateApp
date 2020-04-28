@@ -6,7 +6,7 @@
           <ng-template ngbPanelContent>
             <div class="row">
               <ng-container *ngFor="let field of group.fields ">
-                <div class="col-md-{{field.col_size||4}}" [hidden]="field.type=='hidden'">
+                <div class="col-md-{{field.col_size||4}} col-sm-{{field.col_size||6}}" [hidden]="field.type=='hidden'">
                   <div class="title pt-2 pb-2" *ngIf="field.type=='title'" ><h5>{{field.label}}</h5></div>
                   <div class="form-label-group" *ngIf="form.controls[field.name] && !['file','choice','date','checkbox','title'].includes(field.type)" >
                     <input [type]="field.type||'text'" 
@@ -29,10 +29,15 @@
                   </div>
                   <div class="pb-4 file-control" *ngIf="field.type=='file'" (drop)="onFileDropped($event,field)" (dragover)="onDragOver($event)" (dragenter)="onDragEnter($event)" (dragleave)="onDragLeave($event)">
                     <label class="file-label">{{field.label}}</label>
-                    <img [src]="field.value.url">
+                    <img class="preview" [src]="field.value.url">
                     <div class="custom-file">
                       <input type="file" class="custom-file-input" [id]="field.name"  (change)="onFileChange($event,field)">
                       <label class="custom-file-label" [for]="field.name">{{field.value.name}}</label>
+                    </div>
+                    <div *ngIf="field.value.loading" class="file-control-overlay">
+                      <div class="spinner-border loading-indicator">
+                        <span class="sr-only">Loading...</span>
+                      </div>
                     </div>
                   </div>
                   <div class="form-select-group" *ngIf="form.controls[field.name] && field.type=='choice'">

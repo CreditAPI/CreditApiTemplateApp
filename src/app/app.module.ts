@@ -23,6 +23,7 @@ import { DocumentsComponent } from './documents/documents.component';
 import { VerificationComponent } from './verification/verification.component';
 import { SigningComponent } from './signing/signing.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
+import { Ng2ImgMaxModule } from 'ng2-img-max';
 
 const maskoptions: Partial<IConfig> | (() => Partial<IConfig>) = {} = {};
 
@@ -53,6 +54,7 @@ const maskoptions: Partial<IConfig> | (() => Partial<IConfig>) = {} = {};
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
+    Ng2ImgMaxModule,
     NgxMaskModule.forRoot(maskoptions)
   ],
   providers: [],
