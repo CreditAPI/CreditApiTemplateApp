@@ -11,6 +11,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./application.component.scss']
 })
 export class ApplicationComponent implements OnInit {
+  creditApi=CreditApi;
   app_id;
   loan;
   loading=false;

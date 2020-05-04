@@ -6,6 +6,12 @@
             <span class="sr-only">Loading...</span>
         </div>
     </div>
+    <div *ngIf="creditApi.last_message_unreaded" class="alert alert-warning" role="alert">
+        <small i18n="@@application.you_have_new_message">You have new message</small>
+        <h5>{{creditApi.last_message.title}}</h5>
+        <p>{{creditApi.last_message.content}}</p>
+        <a [routerLink]="['/dashboard/mymessages']" i18n="@@application.go_to_messages">Go to messages</a>
+    </div>
     <div *ngIf="loan && loan.status==25">
         <h2 i18n="@@application.wait_more.title">We need more time</h2>
         <p class="title" i18n="@@application.wait_more.subtitle">We need more time to check your application. Please come back later</p>

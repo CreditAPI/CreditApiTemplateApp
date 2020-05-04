@@ -13,6 +13,7 @@ import { DocumentsComponent } from './documents/documents.component';
 import { VerificationComponent } from './verification/verification.component';
 import { SigningComponent } from './signing/signing.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
+import { MessagesComponent } from './dashboard/messages/messages.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path:'application/:id',component:ApplicationComponent},
   {path:'dashboard',component:CurrentLoanComponent},
   {path:'dashboard/myloans',component:MyLoansComponent},
+  {path:'dashboard/mymessages',component:MessagesComponent},
   {path:'dashboard/newloan',component:NewLoanComponent},
   {path:'dashboard/cards/:i',component:CardsComponent},
   {path:'documents',component:DocumentsComponent},

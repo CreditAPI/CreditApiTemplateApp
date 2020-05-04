@@ -53,6 +53,9 @@ export class AppComponent {
       .then(res=>{
         return CreditApi.refreshUser();
       }).then(user=>{
+        if (environment['ShowMessages']) {
+          CreditApi.enableLastMessageAutoupdate();
+        }
         if (this.homelink)
           regex_opened = /(document|register$)/
         this.initialized=true;
@@ -85,6 +88,9 @@ export class AppComponent {
           link.type = 'text/css';
           link.href=website['css_theme'];
           document.head.append(link);
+        }
+        if (website['show_messages']) {
+           environment['ShowMessages']=website['show_messages'];
         }
         if (website['label'])
           window.document.title=website['label'];

@@ -8,7 +8,8 @@ export const environment = {
   CreditApiOrgId: window["env"]["CreditApiOrgId"]||"",
   MyUrl: window["env"]["MyUrl"]||"",
   HomeLink: window["env"]["HomeLink"]||"",
-  websiteID: window["env"]["websiteID"]||""
+  websiteID: window["env"]["websiteID"]||"",
+  ShowMessages: window["env"]["ShowMessages"]||"no"
 };
 
 /*

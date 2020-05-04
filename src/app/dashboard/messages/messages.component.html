@@ -1,0 +1,65 @@
+<div class="container my-dashboard-container mb-4 ">
+    <div class="row">
+        <div class="col-md-3">
+            <app-sidemenu></app-sidemenu>
+        </div>
+        <div class="col-md-9">
+            <div class="card p-5 bg-light bg-gradient-light candropfile" (drop)="onFileDropped($event)" (dragover)="onDragOver($event)" (dragenter)="onDragEnter($event)" (dragleave)="onDragLeave($event)">                
+                <h2 i18n="@@dashboard.my_messages.title">My messages</h2>
+                <div  class="message-history-container" #messagehistory>
+                    <ng-container *ngFor="let message of messages">
+                      <div [class]="(!message.sender_email||message.sender_email==user.email)?'message':'message-incoming'">
+                        <small>{{message.sender_email}}</small>
+                        <div class="clear"></div>
+                        <h5>{{message.title}}</h5>
+                        {{message.content}}
+                        <div class="clear"></div>
+                        <ng-container *ngIf="message.attachments?.length>0">
+                          <div class="attachment"><b i18n="@@dashboard.my_messages.attachments">Attachments</b></div>
+                          <div class="clear"></div>
+                          <div class="attachment" *ngFor="let attachment of message.attachments">
+                            <span class="clickable" (click)="showImage(attachment.url,modal)" >{{getOriginalFileName(attachment.name)}}</span> 
+                          </div>
+                          <div class="clear"></div>
+                        </ng-container>
+                        <small *ngIf="message.error" i18n="@@dashboard.my_messages.sending_error">Sending error</small>
+                        <small *ngIf="message.createdAt>=today_midnight || !message.createdAt">{{message.createdAt|date:'shortTime'}} <i [class]="getStatusClass(message)"></i></small>
+                        <small *ngIf="message.createdAt<today_midnight">{{message.createdAt|date:'shortDate'}} <i [class]="getStatusClass(message)"></i></small>
+                      </div>
+                    <div class="clear"></div>
+                  </ng-container>
+                </div>
+                <div>
+                    <label style="font-size:0.8em;" i18n="@@dashboard.my_messages.your_message_label">Your message</label>
+                    <textarea class="form-control" placeholder="Type your message here..." i18n-placeholder="@@dashboard.my_messages.your_message_placeholder" #messagecontent></textarea>
+                    <div class="row">
+                        <div class="col-sm-6 col-md-4">
+                            <button class="btn btn-primary mt-3 mb-3" (click)="sendMessage()" type="submit" i18n="@@dashboard.my_messages.buttons.send" >Send</button>
+                        </div>
+                        <div class="col-sm-6 col-md-8 text-right">
+                            <div class="fileinput">
+                                <input type="file" id="file_attachments" (change)="onFileChange($event)" multiple="multiple" />
+                                <label class="btn btn-link mt-3" for="file_attachments" i18n="@@dashboard.my_messages.attach_files" >Attach file(s)</label>
+                            </div>
+                            <ul class="message-attachments">
+                                <li *ngFor="let attachment of attachments" (click)="attachment.url?showImage(attachment.url,modal):''" [class]="attachment.url?'clickable':''">{{attachment.name}}<div *ngIf="attachment.loading" class="spinner-border ml-1" role="status"><span class="sr-only">Loading...</span></div></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #modal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title"  i18n="@@dashboard.my_messages.image_preview">Image preview</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <img [src]="img_preview_url" style="width:100%" />
+    </div>
+</ng-template>

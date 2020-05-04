@@ -44,7 +44,8 @@ input.ng-valid.ng-touched {
     border-left: 1px solid #ced4da;
     border-right: 1px solid #ced4da;
   }
-  .file-control img.preview.dragover  {
+  .file-control img.preview.dragover,
+  .candropfile.dragover  {
     border-color: #b4c167 !important;
     cursor: copy !important;
   }
@@ -232,7 +233,139 @@ input.ng-valid.ng-touched {
   .range_label_description {
     font-size: .875rem;
   }
-
+  .message-history-container{
+    min-height:200px;
+    max-height:300px;
+    overflow-y:scroll;
+    border: 1px solid;
+    border-radius: 5px; 
+    background-color: $input-bg;
+    border: $input-border-width solid $input-border-color;
+    margin-top: 10px;
+    margin-bottom:15px;
+    overflow-x: hidden;
+    font-size:0.9em;
+  }
+  .message-history-container .message,
+  .message-history-container .message-incoming {
+    border: 1px solid;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    max-width: 90%;
+    display: inline-block;
+    position: relative;
+  }
+  .message-history-container .message h5,
+  .message-history-container .message-incoming h5
+  {
+    margin:0;
+    font-size: 1.1em;
+  }
+  .message-history-container .message {
+    background-color: var(--light);
+    border-color: $input-border-color;
+  }
+  .message-history-container .message-incoming{
+      background-color: $input-bg;
+      border-color: $input-border-color;
+  }
+  .message-history-container .message {
+      float:right;
+  }
+  .message-history-container .message-incoming {
+    float:left;
+  }
+  
+  .message-history-container .message:after,
+  .message-history-container .message:before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 100%;
+      width: 0;
+      height: 0;
+      border-style: solid;
+  }
+  .message-history-container .message:after {
+      top: 10px;
+      border-color: transparent transparent transparent var(--light);
+      border-width: 10px;
+  }
+  
+  .message-history-container .message:before {
+      top: 9px;
+      border-color: transparent transparent transparent $input-border-color;
+      border-width: 11px;
+  }
+  
+  
+  .message-history-container .message-incoming:after,
+  .message-history-container .message-incoming:before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-style: solid;
+  }
+  .message-history-container .message-incoming:after {
+      top: 10px;
+      left: -20px;
+      border-color: transparent  $input-bg transparent transparent;
+      border-width: 10px;
+  }
+  .message-history-container .message-incoming:before {
+    left: -22px;
+      top: 9px;
+      border-color: transparent $input-border-color transparent transparent;
+      border-width: 11px;
+  }
+  
+  
+  .message-history-container .clear{
+    clear:both;
+  }
+  .message-history-container small {
+      display: block;
+      float: right; 
+      font-size: 0.7em;
+      color:#949494;
+      position:relative
+  }
+  .message-history-container .message-incoming .status {
+    display:none;
+  }
+  .message-history-container .status.readed {
+    color:#b900ff;
+  }
+  
+  .message-history-container .attachment{
+      font-size: 0.7em;
+      color: #268440;
+      font-style: italic;
+      float: right;
+      width:100%;
+      text-align: right;
+  }
+  .message-history-form-label {
+      font-size: 0.8em;
+      font-weight: normal !important;
+      color: #7f4a4a;
+      margin-bottom: 0;
+  }
+  .message-history-container .message-error{
+    float: right;
+      margin-top: -1em;
+      margin-right: 1em;
+      font-size: 0.8em;
+      color: #8c8a8a;
+  }
+  .message-history-container .message-error span{
+    color: #0078ff;
+      cursor: pointer;
+  }
+  
   @media (min-width: 768px) {
     .bd-placeholder-img-lg {
       font-size: 3.5rem;
@@ -294,4 +427,28 @@ input.ng-valid.ng-touched {
 }
 .w-100 .slider.slider-horizontal {
   width:100%;
+}
+
+.icon-check {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%23949494' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+}
+.icon-check.readed{
+  background:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%230000cc' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+}
+.fileinput input {
+  display:none;
+}
+.message-attachments{
+  list-style: none;
+  font-size: 0.8em;
+  color: var(--secondary);
+  float: right;
+}
+.message-attachments .spinner-border {
+  width: 0.8rem;
+  height: 0.8rem;
+  font-size: 0.5em;
 }

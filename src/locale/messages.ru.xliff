@@ -1395,6 +1395,54 @@
         <source>Error file uploading</source>
         <target>Ошибка загрузки файла</target>
       </trans-unit>
+      <trans-unit id="dashboard.side_menu.my_messages">
+        <source>My messages</source>
+        <target>Сообщения</target>
+      </trans-unit>
+      <trans-unit id="application.you_have_new_message">
+        <source>You have new message</source>
+        <target>Получено новое сообщение</target>
+      </trans-unit>
+      <trans-unit id="application.go_to_messages">
+        <source>Go to messages</source>
+        <target>Перейти к сообщениям</target>
+      </trans-unit>
+      <trans-unit id="dashboard.my_messages.title">
+        <source>My messages</source>
+        <target>Сообщения</target>
+      </trans-unit>
+      <trans-unit id="dashboard.my_messages.your_message_label">
+        <source>Your message</source>
+        <target>Ваше сообщение</target>
+      </trans-unit>
+      <trans-unit id="dashboard.my_messages.your_message_placeholder">
+        <source>Type your message here...</source>
+        <target>Напишите свое сообщение здесь...</target>
+      </trans-unit>
+      <trans-unit id="dashboard.my_messages.buttons.send">
+        <source>Send</source>
+        <target>Отправить</target>
+      </trans-unit>
+      <trans-unit id="dashboard.my_messages.attach_files">
+        <source>Attach file(s)</source>
+        <target>Прикрепить файлы</target>
+      </trans-unit>
+      <trans-unit id="dashboard.my_messages.attachments">
+        <source>Attachments</source>
+        <target>Вложения</target>
+      </trans-unit>
+      <trans-unit id="dashboard.my_messages.sending_error">
+        <source>Sending error</source>
+        <target>Ошибка отправки</target>
+      </trans-unit>
+      <trans-unit id="dashboard.my_messages.image_preview">
+        <source>Image preview</source>
+        <target>Просмотр изображения</target>
+      </trans-unit>
+      <trans-unit id="dashboard.my_messages.wait_until_attachments_loaded">
+        <source>Please wait until attachment(s) loaded</source>
+        <target>Пожалуйста, дождитесь окончания загрузки файлов</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

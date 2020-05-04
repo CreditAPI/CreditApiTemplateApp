@@ -6,4 +6,5 @@
     window["env"]["CreditApiOrgId"] = 'PUT YOUR ORG ID HERE';
     window["env"]["MyUrl"] = 'PUT YOUR DOMAIN URL HERE';
     window["env"]["HomeLink"] = '';
+    window["env"]["ShowMessages"] = 'no';
   })(this);

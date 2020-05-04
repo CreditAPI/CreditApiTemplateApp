@@ -10,14 +10,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./sidemenu.component.scss']
 })
 export class SidemenuComponent implements OnInit {
-  user;
+  creditApi=CreditApi;
   cards;
+  show_messages=environment['ShowMessages'];
   constructor(private toast: AppToastService,private router: Router) {  }
 
   ngOnInit(): void {
     CreditApi.getCards().then((cards)=>{
       this.cards=cards;
-      this.user=CreditApi.User;
     });
   }
 

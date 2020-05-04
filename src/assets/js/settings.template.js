@@ -5,4 +5,5 @@
     window["env"]["MyUrl"] = "${MY_URL}";
     window["env"]["websiteID"] = "${WEBSITE_ID}";
     window["env"]["HomeLink"] = "${HOMELINK}";
+    window["env"]["ShowMessages"] = "${SHOW_MESSAGES}";
   })(this);
