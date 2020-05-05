@@ -55,15 +55,23 @@ export class AppToastService {
                 'SMS code is required':$localize`:@@errors.sms_code_is_required:SMS code is required`,
                 'Wrong code':$localize`:@@errors.wrong code:wrong code`,
                 'Inopropriate status':$localize`:@@errors.inopropriate_status:Inopropriate status`,
+                'Edit application fordbidden':$localize`:@@errors.edit_application_forbidden:Edit application fordbidden`,
+                'SMS code not found or expired':$localize`:@@errors.sms_code_not_found_or_expired:SMS code not found or expired`,
+                'SMS code expired':$localize`:@@errors.sms_code_expired:SMS code expired`,
+                'Too many attempts':$localize`:@@errors.too_many_attempts:Too many attempts`,
                 'Only one active application/loan allowed':$localize`:@@errors.only_one_application_allowed:Only one active application/loan allowed`};
 
   constructor() { }
 
   show(header: string, body: any, classname: string) {
-    if (typeof body === 'object')
-      body=body['message']+ ': ' + body['field'];
+    let addl="";
+    if (typeof body === 'object') {
+      addl=": "+body['field'];
+      body=body['message'];
+    }
     if (this.known_errors[body])
       body=this.known_errors[body];
+    body+=addl;
     this.toasts.push({ header, body, classname });
   }
   remove(toast) {

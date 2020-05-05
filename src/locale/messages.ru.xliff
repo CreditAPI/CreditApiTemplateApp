@@ -1443,6 +1443,38 @@
         <source>Please wait until attachment(s) loaded</source>
         <target>Пожалуйста, дождитесь окончания загрузки файлов</target>
       </trans-unit>
+      <trans-unit id="signing.modal_sms.title">
+        <source>Please, enter SMS-code</source>
+        <target>Подписание документа</target>
+      </trans-unit>
+      <trans-unit id="signing.modal_sms.message">
+        <source>To sign this agreement please enter an SMS code sent to</source>
+        <target>Введите СМС-код отправленный на</target>
+      </trans-unit>
+      <trans-unit id="signing.modal_sms.code">
+        <source>Code</source>
+        <target>Код</target>
+      </trans-unit>
+      <trans-unit id="next">
+        <source>Next</source>
+        <target>Продолжить</target>
+      </trans-unit>
+      <trans-unit id="errors.edit_application_forbidden">
+        <source>Edit application fordbidden</source>
+        <target>Редактирование анкеты недоступно</target>
+      </trans-unit>
+      <trans-unit id="errors.sms_code_not_found_or_expired">
+        <source>SMS code not found or expired</source>
+        <target>СМС код не найден или истек срок его действия</target>
+      </trans-unit>
+      <trans-unit id="errors.sms_code_expired">
+        <source>SMS code expired</source>
+        <target>Истек срок действия СМС-кода</target>
+      </trans-unit>
+      <trans-unit id="errors.too_many_attempts">
+        <source>Too many attempts</source>
+        <target>Превышено число попыток</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

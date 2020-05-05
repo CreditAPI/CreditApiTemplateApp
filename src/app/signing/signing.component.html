@@ -21,10 +21,34 @@
                     </div>
                     <div class="text-center">
                         <button class="btn btn-outline-primary mr-5" [routerLink]="['/dashboard']" i18n="@@signing.buttons.cancel">Cancel</button>
-                        <button class="btn btn-primary ml-5" (click)="sign(agree)" i18n="@@signing.buttons.sign">Sign</button>
+                        <button class="btn btn-primary ml-5" (click)="sign(agree,modal_sms)" i18n="@@signing.buttons.sign">Sign</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<ng-template #modal_sms let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" i18n="@@signing.modal_sms.title">Please, enter SMS-code</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <p><span i18n="@@signing.modal_sms.message">To sign this agreement please enter an SMS code sent to</span> <strong> {{creditApi.User.phone}}</strong></p>
+        <div class="form-label-group" >
+            <input type="text" 
+                    class="form-control" 
+                    placeholder="Code" 
+                    i18n-placeholder="@@signing.modal_sms.code"
+                    #sms_code>  
+            <label for="sms_code" i18n="@@signing.modal_sms.code">Code</label>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" ngbAutofocus class="btn btn-outline-secondary" (click)="d('Cancel')" i18n="@@cancel">Cancel</button>
+      <button type="button"  class="btn btn-primary" (click)="signWithSMS(sms_code.value);"  i18n="@@next">Next</button>
+    </div>
+</ng-template>

@@ -31,6 +31,8 @@ export class ApplicationComponent implements OnInit {
         setTimeout(()=>{this.updateLoanStatus();},3000);
       } else if (loan.status==25) {
         setTimeout(()=>{this.updateLoanStatus();},30000);
+      } else if (loan.status==-1) {
+        this.router.navigate(['/document/sign/',loan.contract_name,loan.objectId]);
       }
     }).catch(err=>{
       console.log('ERROR',err);
