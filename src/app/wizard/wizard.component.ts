@@ -139,8 +139,10 @@ export class WizardComponent implements OnInit {
       var validators=[];
       if (fields[i].type!='OBJECT') {
         validators=[];
-        if (fields[i].required)
+        if (fields[i].required) {
           validators.push(Validators.required);
+          console.log(pre+''+i+':required');
+        }
         let parts=pre.split('.');
         let user=CreditApi.User;
         if (parts) parts.forEach(key=>{
@@ -194,8 +196,8 @@ export class WizardComponent implements OnInit {
 
   save(){
     if (!this.form.valid){
-      this.focusInvalid();
-      this.toast.show($localize`Error`,"Please, correct mistakes",'bg-danger text-light');
+      let firstInvalid=this.focusInvalid();
+      this.toast.show($localize`Error`,{message:"Please, correct mistakes",field:firstInvalid},'bg-danger text-light');
       return;
     }
     let data=this.getDataFromForm(this.fields);
@@ -217,12 +219,25 @@ export class WizardComponent implements OnInit {
   focusInvalid(){
     for (const key of Object.keys(this.form.controls)) {
       if (this.form.controls[key].invalid) {
-        const invalidControl = this.el.nativeElement.querySelector('.ng-invalid')[0];
-        this.form.controls[key].markAsTouched()
-        invalidControl.focus();
-        break;
+        this.form.controls[key].markAsTouched();
+        let field=this.findFieldByKey(key);
+        if (field) {
+          if (field['type']&&field['type']=='hidden')
+            field['type']='text';
+          return field.label;
+        }
+        return key;
      }
     }
+  }
+  findFieldByKey(key){
+    for (var i in this.application) {
+      for (var j=0;j<this.application[i].fields.length;j++) {
+        if (key==this.application[i].fields[j].name)
+          return this.application[i].fields[j];
+      }
+    }
+    return null;  
   }
 
   getDataFromForm(fields,pre=''){

@@ -1,6 +1,6 @@
 <div class="container my-container mt-100px bg-light mb-4" *ngIf="form">
   <h2 i18n="@@wizard.title">Please, fill the application</h2>
-  <form (ngSubmit)="save()" [formGroup]="form" >
+  <form (ngSubmit)="save()" [formGroup]="form" class="myform">
     <ngb-accordion #acc="ngbAccordion" [closeOthers]="true" activeIds="panel-0" class="my-wizard">
         <ngb-panel *ngFor="let group of application; let i=index"   id="panel-{{i}}"  title="{{group.label}}">
           <ng-template ngbPanelContent>

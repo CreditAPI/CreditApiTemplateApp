@@ -9,8 +9,6 @@
                 <div  class="message-history-container" #messagehistory>
                     <ng-container *ngFor="let message of messages">
                       <div [class]="(!message.sender_email||message.sender_email==user.email)?'message':'message-incoming'">
-                        <small>{{message.sender_email}}</small>
-                        <div class="clear"></div>
                         <h5>{{message.title}}</h5>
                         {{message.content}}
                         <div class="clear"></div>

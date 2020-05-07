@@ -26,6 +26,8 @@ export class ChooseCardComponent implements OnInit {
       this.router.navigate(['/dashboard']);
     } else if (!CreditApi.User) {
       this.router.navigate(['/login']);
+    } else if (localStorage.getItem('choosed_card')) {
+      this.createNewLoanApplication();
     } else {
       this.loadCards();
     }
@@ -67,6 +69,7 @@ export class ChooseCardComponent implements OnInit {
         this.toast.show($localize`Error`,err.message,'bg-danger text-light');
       });
     } else {
+      localStorage.setItem('choosed_card',this.choosed);
       this.createNewLoanApplication();
     }
   }
@@ -74,10 +77,11 @@ export class ChooseCardComponent implements OnInit {
   createNewLoanApplication(){
     if (localStorage.getItem('amount')) {
       this.loading=true;
-      CreditApi.newLoan(localStorage.getItem('product'),localStorage.getItem('amount'),localStorage.getItem('term'),this.choosed).then(loan=>{ 
+      CreditApi.newLoan(localStorage.getItem('product'),localStorage.getItem('amount'),localStorage.getItem('term'),localStorage.getItem('choosed_card')).then(loan=>{ 
         localStorage.removeItem('amount');
         localStorage.removeItem('term');
         localStorage.removeItem('product');
+        localStorage.removeItem('choosed_card');
         this.router.navigate(['/document/sign/',loan.contract_name,loan.objectId]);
       }).catch(err=>{
         console.log(err);
