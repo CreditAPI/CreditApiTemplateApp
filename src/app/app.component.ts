@@ -53,7 +53,7 @@ export class AppComponent {
       .then(res=>{
         return CreditApi.refreshUser();
       }).then(user=>{
-        if (environment['ShowMessages']) {
+        if (environment['ShowMessages']!='no') {
           CreditApi.enableLastMessageAutoupdate();
         }
         if (this.homelink)

@@ -1,0 +1,44 @@
+<div class="container my-dashboard-container mb-4 " >
+    <div class="row">
+        <div class="col-md-3">
+            <app-sidemenu></app-sidemenu>
+        </div>
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-body p-3 bg-light bg-gradient-light ">
+                    <h2 i18n="@@dashboard.change_password.title">Change password</h2>
+                    <p class="text-info pt-3" i18n="@@dashboard.change_password.warning_relogin">Warning! You will be asked to re-login after successfull password change</p>
+                    <div class="col-md-6 pt-3">
+                    <form >
+                    <div class="form-label-group" >
+                        <input type="password" 
+                                class="form-control" 
+                                placeholder="Old password" 
+                                i18n-placeholder="@@dashboard.change_password.old_password"
+                                #old_password>  
+                        <label for="old_password" i18n="@@dashboard.change_password.old_password">Old password</label>
+                    </div>
+                    <div class="form-label-group" >
+                        <input type="password" 
+                                class="form-control" 
+                                placeholder="New password" 
+                                i18n-placeholder="@@dashboard.change_password.new_password"
+                                #new_password>  
+                        <label for="new_password" i18n="@@dashboard.change_password.new_password">New password</label>
+                    </div>
+                    <div class="form-label-group" >
+                        <input type="password" 
+                                class="form-control" 
+                                placeholder="Repeat new password" 
+                                i18n-placeholder="@@dashboard.change_password.repeat_new_password"
+                                #repeat_new_password>  
+                        <label for="repeat_new_password" i18n="@@dashboard.change_password.repeat_new_password">Repeat new password</label>
+                    </div>
+                    <span class="btn btn-primary mt-2" (click)="changePassword(old_password.value,new_password.value,repeat_new_password.value)" i18n="@@dashboard.change_password.button.change">Change Password</span>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

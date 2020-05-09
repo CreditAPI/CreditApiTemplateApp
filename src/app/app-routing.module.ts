@@ -14,6 +14,7 @@ import { VerificationComponent } from './verification/verification.component';
 import { SigningComponent } from './signing/signing.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { MessagesComponent } from './dashboard/messages/messages.component';
+import { ChangePwdComponent } from './dashboard/change-pwd/change-pwd.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path:'application/:id',component:ApplicationComponent},
   {path:'dashboard',component:CurrentLoanComponent},
   {path:'dashboard/myloans',component:MyLoansComponent},
+  {path:'dashboard/changepassword',component:ChangePwdComponent},
   {path:'dashboard/mymessages',component:MessagesComponent},
   {path:'dashboard/newloan',component:NewLoanComponent},
   {path:'dashboard/cards/:i',component:CardsComponent},

@@ -59,6 +59,12 @@ export class AppToastService {
                 'SMS code not found or expired':$localize`:@@errors.sms_code_not_found_or_expired:SMS code not found or expired`,
                 'SMS code expired':$localize`:@@errors.sms_code_expired:SMS code expired`,
                 'Too many attempts':$localize`:@@errors.too_many_attempts:Too many attempts`,
+                'Password too short':$localize`:@@errors.password_too_short:Password too short`,
+                'Invalid old password':$localize`:@@errors.invalid_old_password:Invalid old password`,
+                'Password successfully changed':$localize`:@@errors.password_successfully_changed:Password successfully changed`,
+                'New passwords not match':$localize`:@@errors.new_passwords_not_match:New passwords not match`,
+                'Password reset requested. Please check your inbox':$localize`:@@errors.password_reset_requested:Password reset requested. Please check your inbox`,
+                'Invalid email':$localize`:@@errors.invalid_email:Invalid email`,
                 'Only one active application/loan allowed':$localize`:@@errors.only_one_application_allowed:Only one active application/loan allowed`};
 
   constructor() { }

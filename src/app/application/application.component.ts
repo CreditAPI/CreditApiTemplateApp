@@ -4,6 +4,7 @@ import { AppToastService } from './../services/app-toast.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-application',
@@ -11,6 +12,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./application.component.scss']
 })
 export class ApplicationComponent implements OnInit {
+  show_messages=environment['ShowMessages'];
   creditApi=CreditApi;
   app_id;
   loan;

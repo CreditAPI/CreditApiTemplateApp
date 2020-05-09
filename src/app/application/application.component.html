@@ -1,5 +1,5 @@
 <div class="container my-container mt-100px bg-light mb-4 " >
-    <div *ngIf="creditApi.last_message_unreaded" class="alert alert-warning" role="alert">
+    <div *ngIf="show_messages!='no' && creditApi.last_message_unreaded" class="alert alert-warning" role="alert">
         <small i18n="@@application.you_have_new_message">You have new message</small>
         <h5>{{creditApi.last_message.title}}</h5>
         <p>{{creditApi.last_message.content}}</p>
@@ -28,14 +28,14 @@
         <h2 i18n="@@application.declined.title">Declined</h2>
         <p class="title" i18n="@@application.declined.subtitle">Sorry, your application is declined</p>
     </div>
-    <div *ngIf="loan && [25,50,51].includes(loan.status)">
-        <span class="btn btn-outline-secondary" (click)="openCancelModal(cancel_modal)"  i18n="@@application.buttons.cancel">Cancel application</span>
-    </div>
     <div *ngIf="loan && [50,51].includes(loan.status)">
-        <button class="btn  btn-primary " (click)="getMoney()" [disabled]="loading">
+        <button class="btn  btn-primary d-inline-block float-left mr-3" (click)="getMoney()" [disabled]="loading">
             <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loading"></span>
             <span i18n="@@application.buttons.getmoney">Get money</span>
         </button>
+    </div>
+    <div *ngIf="loan && [25,50,51].includes(loan.status)">
+        <span class="btn btn-outline-secondary d-inline-block" (click)="openCancelModal(cancel_modal)"  i18n="@@application.buttons.cancel">Cancel application</span>
     </div>
 </div>
 <ng-template #cancel_modal let-c="close" let-d="dismiss">

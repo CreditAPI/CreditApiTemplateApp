@@ -1475,6 +1475,86 @@
         <source>Too many attempts</source>
         <target>Превышено число попыток</target>
       </trans-unit>
+      <trans-unit id="dashboard.change_password.title">
+        <source>Change password</source>
+        <target>Смена пароля</target>
+      </trans-unit>
+      <trans-unit id="dashboard.change_password.warning_relogin">
+        <source>Warning! You will be asked to re-login after successfull password change</source>
+        <target>Внимание! После смены пароля потребуется заново войти в личный кабинет</target>
+      </trans-unit>
+      <trans-unit id="dashboard.change_password.new_password">
+        <source>New password</source>
+        <target>Новый пароль</target>
+      </trans-unit>
+      <trans-unit id="dashboard.change_password.old_password">
+        <source>Old password</source>
+        <target>Старый пароль</target>
+      </trans-unit>
+      <trans-unit id="dashboard.change_password.repeat_new_password">
+        <source>Repeat new password</source>
+        <target>Повтор пароля</target>
+      </trans-unit>
+      <trans-unit id="dashboard.change_password.button.change">
+        <source>Change Password</source>
+        <target>Изменить пароль</target>
+      </trans-unit>
+      <trans-unit id="4648900870671159218">
+        <source>Success</source>
+        <target>Успешно</target>
+      </trans-unit>
+      <trans-unit id="dashboard.side_menu.change_password">
+        <source>Change password"</source>
+        <target>Смена пароля</target>
+      </trans-unit>
+      <trans-unit id="errors.password_too_short">
+        <source>Password too short</source>
+        <target>Пароль слишком короткий</target>
+      </trans-unit>
+      <trans-unit id="errors.invalid_old_password">
+        <source>Invalid old password</source>
+        <target>Неверно указан старый пароль</target>
+      </trans-unit>
+      <trans-unit id="errors.password_successfully_changed">
+        <source>Password successfully changed</source>
+        <target>Пароль успешно изменен</target>
+      </trans-unit>
+      <trans-unit id="errors.new_passwords_not_match">
+        <source>New passwords not match</source>
+        <target>Введенные пароли не совпадают</target>
+      </trans-unit>
+      <trans-unit id="login.forgot">
+        <source>Forgot password?</source>
+        <target>Забыли пароль?</target>
+      </trans-unit>
+      <trans-unit id="login.modal_forgot.title">
+        <source>Forgot your password?</source>
+        <target>Забыли пароль?</target>
+      </trans-unit>
+      <trans-unit id="login.modal_forgot.title.message">
+        <source>Enter your email and we'll send you a link for reset</source>
+        <target>Введите Ваш email и мы отправим Вам ссылку для восстановления</target>
+      </trans-unit>
+      <trans-unit id="login.modal_forgot.email">
+        <source>Email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="login.modal_forgot.reset_password">
+        <source>Reset password</source>
+        <target>Отправить</target>
+      </trans-unit>
+      <trans-unit id="errors.password_reset_requested">
+        <source>Password reset requested. Please check your inbox</source>
+        <target>Если указанный аккаунт существует - на Ваш email придет ссылка на изменение пароля</target>
+      </trans-unit>
+      <trans-unit id="errors.invalid_email">
+        <source>Invalid email</source>
+        <target>Некорректный email</target>
+      </trans-unit>
+      <trans-unit id="dashboard.current_loan.payment_schedule.status.scheduled">
+        <source>Scheduled</source>
+        <target>Запланировано</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

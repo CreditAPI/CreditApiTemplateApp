@@ -15,9 +15,7 @@
     </div>
   
     <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me" > <span i18n="@@login.remember_me">Remember me</span>
-      </label>
+      <span class="btn btn-link" i18n="@@login.forgot" (click)="modalService.open(modal_forgot)">Forgot password?</span>
       <span class="btn btn-link float-right" [routerLink]="['/register']" i18n="@@login.register">Register</span>
     </div>
     <button class="btn btn-lg btn-primary btn-block"  type="submit" [disabled]="!form.valid">
@@ -25,3 +23,27 @@
       <span i18n="@@login.buttons.signin"> Sign in</span>
     </button>
   </form>
+
+  <ng-template #modal_forgot let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" i18n="@@login.modal_forgot.title">Forgot your password?</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <p><span i18n="@@login.modal_forgot.title.message">Enter your email and we'll send you a link for reset</span></p>
+        <div class="form-label-group" >
+            <input type="email" 
+                    class="form-control" 
+                    placeholder="Email" 
+                    i18n-placeholder="@@login.modal_forgot.email"
+                    #email>  
+            <label for="email" i18n="@@login.modal_forgot.email">Email</label>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" ngbAutofocus class="btn btn-outline-secondary" (click)="d('Cancel')" i18n="@@cancel">Cancel</button>
+      <button type="button"  class="btn btn-primary" (click)="resetPassword(email.value);"  i18n="@@login.modal_forgot.reset_password">Reset password</button>
+    </div>
+</ng-template>

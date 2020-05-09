@@ -25,6 +25,7 @@ import { SigningComponent } from './signing/signing.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { Ng2ImgMaxModule } from 'ng2-img-max';
 import { MessagesComponent } from './dashboard/messages/messages.component';
+import { ChangePwdComponent } from './dashboard/change-pwd/change-pwd.component';
 
 const maskoptions: Partial<IConfig> | (() => Partial<IConfig>) = {} = {};
 
@@ -48,7 +49,8 @@ const maskoptions: Partial<IConfig> | (() => Partial<IConfig>) = {} = {};
     SigningComponent,
     NgbdModalContent,
     MainpageComponent,
-    MessagesComponent
+    MessagesComponent,
+    ChangePwdComponent
   ],
   imports: [
     BrowserModule,
