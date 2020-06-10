@@ -11,12 +11,20 @@ import { Location } from '@angular/common';
   styleUrls: ['./choose-card.component.scss']
 })
 export class ChooseCardComponent implements OnInit {
-  cards;
+  payment_accounts;
   choosed;
   wait=true;
   pageloadedat;
   queryparams={};
   loading=false;
+
+
+  payment_providers=[];
+  provider_manual_fields;
+  provider_label;
+  provider_save_url;
+
+
   constructor(private toast: AppToastService,private router: Router,private location: Location) { }
 
   ngOnInit(): void {
@@ -29,25 +37,26 @@ export class ChooseCardComponent implements OnInit {
     } else if (localStorage.getItem('choosed_card')) {
       this.createNewLoanApplication();
     } else {
-      this.loadCards();
+      this.loadPaymentAccounts();
+      this.loadPaymentProviders();
     }
   }
 
-  loadCards(){
-    CreditApi.getCards(true).then((cards)=>{
+  loadPaymentAccounts(){
+    CreditApi.getPayoutAccountsOnly().then((payment_accounts)=>{
       if (this.queryparams['wait']!==undefined) {     
           this.wait=true;
-          setTimeout(()=> {this.loadCards()}, 3000);
+          setTimeout(()=> {this.loadPaymentAccounts()}, 3000);
           var now=new Date();
-          if ((cards.length>0)&&((now.getTime()-this.pageloadedat.getTime())>7000)) {
+          if ((payment_accounts.length>0)&&((now.getTime()-this.pageloadedat.getTime())>7000)) {
             delete(this.queryparams['wait']);//wait some time before card will be connected
-          } else if ((cards.length==0)&&((now.getTime()-this.pageloadedat.getTime())>40000)) {
+          } else if ((payment_accounts.length==0)&&((now.getTime()-this.pageloadedat.getTime())>40000)) {
             delete(this.queryparams['wait']);//will wait longer if user have no cards
           }
       } else if (!CreditApi.User.verificationFinished) {
         this.router.navigate(['/verification']);
       }  else {
-        this.cards=cards;
+        this.payment_accounts=payment_accounts;
         this.wait=false;
       }
     }).catch(err=>{
@@ -55,15 +64,32 @@ export class ChooseCardComponent implements OnInit {
     }); 
   }
 
+  loadPaymentProviders(){
+    CreditApi.getPayoutProvidersOnly().then((payment_providers)=>{
+      this.payment_providers=payment_providers;
+    });
+  }
+
   next(){
-    if (!this.choosed)
+    if (!this.choosed) {
       this.toast.show($localize`Error`,$localize`Please, choose an option`,'bg-danger text-light');
-    else if (this.choosed=='new') {
+      return;
+    }
+    let is_new=this.choosed.indexOf("new_")==-1?false:true;
+    if (is_new) {
+      let provider_id=this.choosed.substr(4);
       this.loading=true;
-      CreditApi.linkCard(environment.MyUrl+'/choosecard?wait').then((url)=>{
+      CreditApi.linkPaymentAccount(environment.MyUrl+'/choosecard?wait',provider_id).then((result)=>{
+        if (result.type=='external') {
+          window.location.href=result.url;
+        } else if (result.type=='manual') {
+          //this.provider_label=provider.label;
+          this.provider_manual_fields=result.fields;
+          this.provider_save_url=result.url;
+        } else {
+          this.toast.show($localize`Error`,$localize`Unknow provider type: `+result.type,'bg-danger text-light');
+        }
         this.loading=false;
-        console.log('REDIRECT TO '+url);
-        window.location.href=url; 
       }).catch(err=>{
         this.loading=false;
         this.toast.show($localize`Error`,err.message,'bg-danger text-light');
@@ -119,5 +145,10 @@ export class ChooseCardComponent implements OnInit {
       });
     }
     return parameters;
+  }
+
+  onNewAccountSave(res,parent){
+    localStorage.setItem('choosed_card',res.objectId);
+    this.router.navigate(['/']).then(()=>this.router.navigate(['/choosecard']));
   }
 }

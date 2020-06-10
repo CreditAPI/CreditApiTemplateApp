@@ -6,18 +6,18 @@ import { Router } from '@angular/router';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-cards',
-  templateUrl: './cards.component.html',
-  styleUrls: ['./cards.component.scss']
+  selector: 'app-payment-account',
+  templateUrl: './payment-account.component.html',
+  styleUrls: ['./payment-account.component.scss']
 })
-export class CardsComponent implements OnInit {
-  card;
+export class PaymentAccountComponent implements OnInit {
+  payment_account;
   constructor(private _Activatedroute:ActivatedRoute,private toast: AppToastService,private router: Router,private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this._Activatedroute.paramMap.subscribe(params => { 
-      CreditApi.getCards().then((cards)=>{
-        this.card=cards[params.get('i')];
+      CreditApi.getPaymentAccounts().then((payment_accounts)=>{
+        this.payment_account=payment_accounts[params.get('i')];
       }).catch(err=>{
         this.toast.show($localize`Error`,err.message,'bg-danger text-light');
       }); 
@@ -29,8 +29,8 @@ export class CardsComponent implements OnInit {
   }
 
   unlink(id){
-    CreditApi.unlinkCard(id).then((cards)=>{
-      this.toast.show($localize`Successfull`,$localize`Card successfully unlinked`,'bg-success text-light');
+    CreditApi.unlinkPaymentAccount(id).then((payment_accounts)=>{
+      this.toast.show($localize`Successfull`,$localize`Payment account successfully unlinked`,'bg-success text-light');
       this.modalService.dismissAll();
       this.router.navigate(['/dashboard']); 
     }).catch(err=>{

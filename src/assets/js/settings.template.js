@@ -6,4 +6,5 @@
     window["env"]["websiteID"] = "${WEBSITE_ID}";
     window["env"]["HomeLink"] = "${HOMELINK}";
     window["env"]["ShowMessages"] = "${SHOW_MESSAGES}";
+    window["env"]["DaysBeforePaymentAllowed"] = "${DAYS_BEFORE_PAYMENT_ALLOWED}";
   })(this);

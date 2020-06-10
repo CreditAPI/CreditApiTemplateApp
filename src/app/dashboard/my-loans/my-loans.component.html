@@ -22,7 +22,7 @@
                         <tr *ngIf="loan.status!=-1">
                             <td>{{loan.createdAt|date:"shortDate"}}</td>
                             <td class="text-right">{{loan.amount.toFixed(2)}}</td>
-                            <td class="text-right">{{loan.term}}</td>
+                            <td class="text-right">{{loan.term}} {{getTranslatedTerm(loan.term,loan.type_term)}}</td>
                             <td class="text-center">
                                 <span *ngIf="![0,20,21,25,50,51,60].includes(loan.status)">{{statuses[loan.statusName]||loan.statusName}}</span>
                                 <a href="#" *ngIf="loan.status==60" [routerLink]="['/dashboard']">{{statuses[loan.statusName]||loan.statusName}}</a>

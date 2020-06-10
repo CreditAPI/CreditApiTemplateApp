@@ -1,21 +1,32 @@
 <div class="container my-container mt-100px bg-light mb-4 " >
-  <div *ngIf="!wait">
+  <div *ngIf="!wait && !provider_manual_fields">
     <h2 i18n="@@choosecard.title">Please, choose card</h2>
     <div class="pt-3">
-        <div class="form-check" *ngFor="let card of cards">
-            <input [(ngModel)]="choosed" class="form-check-input" type="radio" name="cards" id="{{card.objectId}}" value="{{card.objectId}}" checked>
-            <label class="form-check-label" for="{{card.objectId}}">{{card.number}}</label>
+        <div class="form-check" *ngFor="let payment_account of payment_accounts">
+            <input [(ngModel)]="choosed" class="form-check-input" type="radio" name="payment_accounts" id="{{payment_account.objectId}}" value="{{payment_account.objectId}}" checked>
+            <label class="form-check-label" for="{{payment_account.objectId}}">{{payment_account.label}} {{payment_account.number}}</label>
         </div>
-        <div class="form-check mb-5">
-            <input [(ngModel)]="choosed" class="form-check-input" type="radio" name="cards" id="new" value="new">
+        <div class="mb-2">&nbsp;</div>
+        <div class="form-check" *ngFor="let payment_provider of payment_providers">
+          <input [(ngModel)]="choosed" class="form-check-input" type="radio" name="payment_accounts" id="new_{{payment_provider.objectId}}" value="new_{{payment_provider.objectId}}" checked>
+          <label class="form-check-label" for="new_{{payment_provider.objectId}}">+ {{payment_provider.label}}</label>
+        </div>
+       <!-- <div class="form-check mb-5">
+            <input [(ngModel)]="choosed" class="form-check-input" type="radio" name="payment_accounts" id="new" value="new">
             <label class="form-check-label" for="new" i18n="@@choosecard.add_new">Add new card</label>
-        </div>
-        <span class="btn btn-primary" (click)="next()">
+        </div> -->
+        <span class="btn btn-primary mt-5" (click)="next()">
           <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loading"></span>
           <span i18n="@@choosecard.button.next">Next</span>
         </span>
     </div>
   </div>
+  <div *ngIf="!wait && provider_manual_fields">
+    <h2 >{{provider_label}}</h2>
+    <div class="mt-5 pb-5">
+        <app-freeform [fields]="provider_manual_fields" [url]="provider_save_url" [callback]="onNewAccountSave"></app-freeform>
+    </div>
+</div>
   <div *ngIf="wait">
     <h2 i18n="@@choosecard.wait">Please, wait</h2>
     <div class="spinner-border" role="status">

@@ -65,7 +65,14 @@ export class AppToastService {
                 'New passwords not match':$localize`:@@errors.new_passwords_not_match:New passwords not match`,
                 'Password reset requested. Please check your inbox':$localize`:@@errors.password_reset_requested:Password reset requested. Please check your inbox`,
                 'Invalid email':$localize`:@@errors.invalid_email:Invalid email`,
-                'Only one active application/loan allowed':$localize`:@@errors.only_one_application_allowed:Only one active application/loan allowed`};
+                'Only one active application/loan allowed':$localize`:@@errors.only_one_application_allowed:Only one active application/loan allowed`,
+                'Selected payment provider is not available for reccurent payment':$localize`:@@errors.provider_not_avilable_for_reccurent:Selected payment provider is not available for reccurent payment`,
+                'Selected payment provider is disabled':$localize`:@@errors.provider_disabled:Selected payment provider is disabled`,
+                "Internal server error: Can't make reccurent payment":$localize`:@@errors.reccurent_error:Internal server error: Can't make reccurent payment`,
+                'No payment providers available':$localize`:@@errors.no_providers:No payment providers available`,
+                'Selected payment provider is not available for payment':$localize`:@@errors.provider_not_avilable_for_payment:Selected payment provider is not available for payment`,
+                'Payment provider error':$localize`:@@errors.provider_error:Payment provider error`
+              };
 
   constructor() { }
 

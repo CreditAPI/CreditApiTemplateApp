@@ -11,22 +11,11 @@ import { Router } from '@angular/router';
 })
 export class SidemenuComponent implements OnInit {
   creditApi=CreditApi;
-  cards;
   show_messages=environment['ShowMessages'];
   constructor(private toast: AppToastService,private router: Router) {  }
 
   ngOnInit(): void {
-    CreditApi.getCards().then((cards)=>{
-      this.cards=cards;
-    });
-  }
-
-  newCard(){
-    CreditApi.linkCard(environment.MyUrl+'/dashboard').then((url)=>{
-      window.location.href=url;
-    }).catch(err=>{
-      this.toast.show($localize`Error`,err.message,'bg-danger text-light');
-    });
+    CreditApi.getPaymentAccounts();
   }
 
   logout(){

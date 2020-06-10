@@ -34,7 +34,7 @@ export class WizardComponent implements OnInit {
                          {name: "passport.number","label":$localize`Number`,mask:"000000",mask_typed:true},
                          {name: "passport.issued_at","label":$localize`Issued at`,type:"date"},
                          {name: "passport.issued_by","label":$localize`Issued by`},
-                         {name: "passport.code","label":$localize`Authority code`,mask:"000-000",mask_typed:true},
+                         {name: "passport.code","label":$localize`Authority code`,mask:"000-000",mask_typed:true,mask_save_spec:true},
                          {name: "passport.snils","label":$localize`SNILS`,mask:"00000000000",mask_typed:true}]},
                 {"label":$localize`Address`,
                 "fields":[{name: "res","label":$localize`Residential address`,col_size:12,type:"title",unmapped:true},

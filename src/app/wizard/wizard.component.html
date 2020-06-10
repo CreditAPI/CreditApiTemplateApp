@@ -16,6 +16,7 @@
                             [formControlName]="field.name" 
                             [mask]="field.mask||null" 
                             [showMaskTyped]="field.mask_typed"
+                            [dropSpecialCharacters]="field.mask_save_spec?false:true"
                             (keyup)="field.autocompleteAddress?onAddressChange($event):null"
                             autocomplete="off">  
                     <label for="{{field.name}}">{{field.label}}</label>

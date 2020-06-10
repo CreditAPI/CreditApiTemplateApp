@@ -10,9 +10,18 @@
                     <span class="text-secondary" i18n="@@dashboard.current_loan.agreement_number">Agreement #</span>: {{loan.agreement_number}}<br>
                     <span *ngIf="loan.issuedAt" ><span class="text-secondary" i18n="@@dashboard.current_loan.issued_at">Issued At</span>: {{loan.issuedAt|date:"shortDate"}}<br></span>
                     <span class="text-secondary" i18n="@@dashboard.current_loan.amount">Amount</span>: {{loan.amount.toFixed(2)}}<br>
-                    <span class="text-secondary" i18n="@@dashboard.current_loan.term">Term</span>: {{loan.term}}<br>
+                    <span class="text-secondary" i18n="@@dashboard.current_loan.term">Term</span>: {{loan.term}} {{getTranslatedTerm(loan.term,loan.type_term)}}<br>
                     <span class="text-secondary" i18n="@@dashboard.current_loan.next_payment">Next payment</span>: {{loan.next_payment_date.iso|date:"shortDate"}}<br>
-                    <div *ngIf="loan.payment_schedule" class="pb-5">
+                    <div *ngIf="transactions_in_process && transactions_in_process.length>0" class="alert alert-warning mt-3">
+                        <p i18n="@@dashboard.current_loan.transactions_in_process">Transactions in process</p>
+                        <table class="table">
+                            <tr *ngFor="let tr of transactions_in_process">
+                                <td>{{tr.createdAt|date:"shortDate"}}</td>
+                                <td class="text-right">{{tr.amount.toFixed(2)}} <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div *ngIf="payment_schedule" class="pb-5">
                         <h5 class="pt-3" i18n="@@dashboard.current_loan.payment_schedule.title">Payment schedule</h5>
                         <table class="table mb-5">
                             <thead>
@@ -20,20 +29,38 @@
                                     <th i18n="@@dashboard.current_loan.payment_schedule.date">Date</th>
                                     <th class="text-right" i18n="@@dashboard.current_loan.payment_schedule.amount">Amount</th>
                                     <th class="text-center" i18n="@@dashboard.current_loan.payment_schedule.status">Status</th>
+                                    <th>&nbsp;</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let pmnt of loan.payment_schedule">
-                                    <td>{{pmnt.date.iso|date:"shortDate"}}</td>
+                                <tr *ngFor="let pmnt of payment_schedule">
+                                    <td>{{pmnt.date|date:"shortDate"}}</td>
                                     <td class="text-right">{{pmnt.amount.toFixed(2)}}</td>
-                                    <td class="text-center"><span *ngIf="!pmnt.status" i18n="@@dashboard.current_loan.payment_schedule.status.scheduled">Scheduled</span>{{pmnt.status}}</td>
+                                    <td class="text-center">
+                                       <span > {{payment_statuses[pmnt.status]||pmnt.status}}</span>
+                                    </td>
+                                    <td class="text-right">
+                                        <button (click)="openPaymentDialog(paymentModal,'extend')"  class="btn btn-sm btn-outline-primary mx-1 mb-1" *ngIf="loan.allow_extension&&(pmnt.status=='delayed'||(pmnt.status=='scheduled'&&((pmnt.date|date)>=date_to_allow_payment)))" i18n="@@dashboard.current_loan.buttons.extend loan">Extend loan</button>
+                                        <button (click)="openPaymentDialog(paymentModal,'pay_current')"  class="btn btn-sm btn-primary mx-1 mb-1" *ngIf="pmnt.status=='delayed'||(pmnt.status=='scheduled'&&((pmnt.date|date)>=date_to_allow_payment))" i18n="@@dashboard.current_loan.buttons.pay_now">Pay now</button>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
-                        <span class="clickable text-secondary text-sm float-right" i18n="@@dashboard.current_loan.button.early_payment">Early payment</span>
+                        <span *ngIf="payment_schedule&&loan.allow_early_payments && payment_schedule[payment_schedule.length-1].status!='delayed'" (click)="openPaymentDialog(paymentModal,'early')" class="clickable text-secondary text-sm float-right" i18n="@@dashboard.current_loan.button.early_payment">Early payment</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<ng-template #paymentModal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title" i18n="@@dashboard.current_loan.payment_modal.title">Payment</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <app-payment [loan]="loan" [dismiss]="c" [action]="payment_action"></app-payment>
+    </div>
+</ng-template>

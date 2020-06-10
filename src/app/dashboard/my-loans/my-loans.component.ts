@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import CreditApi from 'credit-api';
 import { AppToastService } from './../../services/app-toast.service';
 
+
 @Component({
   selector: 'app-my-loans',
   templateUrl: './my-loans.component.html',
@@ -40,4 +41,12 @@ export class MyLoansComponent implements OnInit {
     });
   }
 
+  getTranslatedTerm(term,type){
+    let types={1:[$localize`:@@one_day:day`,$localize`:@@two_days:days`,$localize`:@@many_days:days`],
+               2:[$localize`:@@one_week:week`,$localize`:@@two_weeks:weeks`,$localize`:@@many_weeks:weeks`],
+               3:[$localize`:@@one_month:month`,$localize`:@@two_months:months`,$localize`:@@many_months:months`]};
+    
+    let plural=(term%10==1 && term%100!=11 ? 0 : term%10>=2 && term%10<=4 && (term%100<10 || term%100>=20) ? 1 : 2);
+    return types[type][plural];
+  }
 }

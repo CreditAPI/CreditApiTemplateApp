@@ -7,4 +7,5 @@
     window["env"]["MyUrl"] = 'PUT YOUR DOMAIN URL HERE';
     window["env"]["HomeLink"] = '';
     window["env"]["ShowMessages"] = 'no';
+    window["env"]["DaysBeforePaymentAllowed"]=3;
   })(this);

@@ -1,0 +1,92 @@
+<div *ngIf="wait" class="text-center">
+    <p i18n="@@choosecard.wait">Please, wait</p>
+    <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+<div *ngIf="error">
+    <div>{{error}}</div>
+    <button  type="button" class="btn btn-outline-primary mx-2 mt-2" (click)="dismiss('error')" i18n="@@payment.modal.close">Close</button>
+</div>
+<div *ngIf="!error && !wait && step==1">
+    <div class="form-group">
+        <div class="alert alert-info pb-3">
+            <span i18n="@@payment.modal.close_loan_message">You can close your loan today by paing </span> {{payment_amounts.full.toFixed(2)}} <span i18n="@@calculator.currency">rub</span><br>
+            <div *ngIf="payment_amounts.full!=payment_amounts.min">
+                <span i18n="@@payment.modal.any_amount_message">Also, you can make pay any amount more than </span> {{payment_amounts.min.toFixed(2)}} <span i18n="@@calculator.currency">rub</span>. <span i18n="@@payment.modal.schedule_recalculated_message">Payment schedule will be recalculated</span>
+            </div>
+        </div>
+        <div *ngIf="payment_amounts.full!=payment_amounts.min">
+        <label for="formControlRange" i18n="@@payment.modal.choose_amount" class="range_label">Please, choose amount to pay </label>
+        <input type="number" class="form-control form-control-sm w-auto float-right calculator-input" id="amount" [(ngModel)]="amount" >
+        <input type="range" class="custom-range" [(ngModel)]="amount" min="{{payment_amounts.min}}" max="{{payment_amounts.full}}"  id="payment-amount"  >
+        <span class="badge badge-secondary pointer" (click)="amount=payment_amounts.min" >{{payment_amounts.min.toFixed(2)}}</span>
+        <span class="badge badge-secondary pointer float-right" (click)="amount=payment_amounts.full">{{payment_amounts.full.toFixed(2)}}</span>
+        </div>
+    </div>
+    <div class="text-center pb-2">
+    <button type="button" class="btn btn-primary" (click)="goToStep2()" i18n="@@payment.modal.next">Next</button>
+    </div>
+</div>
+<div *ngIf="!error && !wait && step==2">
+    <div class="alert alert-info" *ngIf="action=='extend'" i18n="@@payment.modal.extending_message">In order to extend the loan it's required to pay current interest amount</div>
+    <h5><span i18n="@@payment.modal.payment_amount">Payment amount</span>: {{amount}} <span i18n="@@calculator.currency">rub</span></h5>
+    <h5 i18n="@@payment.modal.choose_payment_account">Please, choose payment account</h5>
+    <div class="pt-3 pb-3">
+        <ng-container *ngFor="let payment_account of payment_accounts">
+        <div class="form-check" *ngIf="payment_account.enabled_for_pay">
+            <input [(ngModel)]="choosed" class="form-check-input" type="radio" name="payment_accounts" id="{{payment_account.objectId}}" value="{{payment_account.objectId}}" checked>
+            <label class="form-check-label" for="{{payment_account.objectId}}">{{payment_account.label}} {{payment_account.number}}</label>
+        </div>
+        </ng-container>
+        <h5 class="mt-3" i18n="@@payment.modal.other_payment_methods" *ngIf="payment_accounts.length>0">or use other payment methods</h5>
+        <ng-container *ngFor="let payment_provider of payment_providers">
+        <div class="form-check" *ngIf="payment_provider.enabled_for_pay">
+          <input [(ngModel)]="choosed" class="form-check-input" type="radio" name="payment_accounts" id="new_{{payment_provider.objectId}}" value="new_{{payment_provider.objectId}}" checked>
+          <label class="form-check-label" for="new_{{payment_provider.objectId}}">{{payment_provider.label}}</label>
+        </div>
+        </ng-container>
+    </div>
+    <div class="text-center pb-2">
+        <button *ngIf="step_1_enabled" type="button" class="btn btn-outline-primary mx-2" (click)="step=1" i18n="@@payment.modal.back">Back</button>
+        <button type="button" class="btn btn-primary mx-2" (click)="pay()" i18n="@@payment.modal.next">Next</button>
+    </div>
+</div>
+<div *ngIf="!error && !wait && step==3">
+    <h5><span i18n="@@payment.modal.payment_amount">Payment amount</span>: {{amount}} <span i18n="@@calculator.currency">rub</span></h5>
+    <div class="mt-5 pb-5">
+        <app-freeform [save_btn_name]="next_btn_name" 
+                      [fields]="manual_provider_fields" 
+                      [url]="manual_provider_url" 
+                      [callback]="onManualPayment" 
+                      [onErrorCallback]="onManualError"
+                      [back_btn_click]="onManualPaymentBackClick" 
+                      btns_class="text-center" 
+                      [parent]="this"></app-freeform>
+    </div>
+</div>
+<div *ngIf="!error && !wait && step==4">
+    <div class="pt-3 pb-3">
+        <div [innerHTML]="message"></div>
+    </div>
+    <div class="text-center">
+        <button *ngIf="step_4_show_close_btn_only" type="button" class="btn btn-outline-primary mx-2" (click)="dismiss('success')" i18n="@@payment.modal.close">Close</button>
+        <button *ngIf="!step_4_show_close_btn_only" type="button" class="btn btn-outline-primary mx-2" (click)="step=2" i18n="@@payment.modal.back">Back</button>
+    </div>
+</div>
+<div *ngIf="!error && !wait && step==5">
+    <h5><span i18n="@@payment.modal.payment_amount">Payment amount</span>: {{amount}} <span i18n="@@calculator.currency">rub</span></h5>
+    <div class="alert alert-info" i18n="@@payment.modal.additional_info_required">Additional information required</div>
+    <div class="mt-5 pb-5">
+        <form action="#" #missedform>
+        <div class="form-label-group" *ngFor="let par of missed_parameters" >
+            <input type="text" id="_{{par}}" name="{{par}}">  
+            <label for="_{{par}}">{{par}}</label>
+        </div>
+        </form>
+    </div>
+    <div class="text-center pb-2">
+        <button type="button" class="btn btn-outline-primary mx-2" (click)="step=2" i18n="@@payment.modal.back">Back</button>
+        <button type="button" class="btn btn-primary mx-2" (click)="pay(missedform)" i18n="@@payment.modal.next">Next</button>
+    </div>
+</div>

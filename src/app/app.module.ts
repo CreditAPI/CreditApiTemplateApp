@@ -16,7 +16,6 @@ import { SidemenuComponent } from './dashboard/sidemenu/sidemenu.component';
 import { MyLoansComponent } from './dashboard/my-loans/my-loans.component';
 import { CalculatorComponent } from './services/calculator/calculator.component';
 import { NewLoanComponent } from './dashboard/new-loan/new-loan.component';
-import { CardsComponent } from './dashboard/cards/cards.component';
 import { ApplicationComponent } from './application/application.component';
 import { ChooseCardComponent } from './choose-card/choose-card.component';
 import { DocumentsComponent } from './documents/documents.component';
@@ -26,6 +25,10 @@ import { MainpageComponent } from './mainpage/mainpage.component';
 import { Ng2ImgMaxModule } from 'ng2-img-max';
 import { MessagesComponent } from './dashboard/messages/messages.component';
 import { ChangePwdComponent } from './dashboard/change-pwd/change-pwd.component';
+import { NewPaymentAccountComponent } from './dashboard/new-payment-account/new-payment-account.component';
+import { PaymentAccountComponent } from './dashboard/payment-account/payment-account.component';
+import { FreeformComponent } from './services/freeform/freeform.component';
+import { PaymentComponent } from './services/payment/payment.component';
 
 const maskoptions: Partial<IConfig> | (() => Partial<IConfig>) = {} = {};
 
@@ -41,7 +44,6 @@ const maskoptions: Partial<IConfig> | (() => Partial<IConfig>) = {} = {};
     MyLoansComponent,
     CalculatorComponent,
     NewLoanComponent,
-    CardsComponent,
     ApplicationComponent,
     ChooseCardComponent,
     DocumentsComponent,
@@ -50,7 +52,11 @@ const maskoptions: Partial<IConfig> | (() => Partial<IConfig>) = {} = {};
     NgbdModalContent,
     MainpageComponent,
     MessagesComponent,
-    ChangePwdComponent
+    ChangePwdComponent,
+    NewPaymentAccountComponent,
+    PaymentAccountComponent,
+    FreeformComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,

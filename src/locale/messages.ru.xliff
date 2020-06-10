@@ -1553,7 +1553,227 @@
       </trans-unit>
       <trans-unit id="dashboard.current_loan.payment_schedule.status.scheduled">
         <source>Scheduled</source>
-        <target>Запланировано</target>
+        <target>Запланирован</target>
+      </trans-unit>
+      <trans-unit id="dashboard.side_menu.linked_payment_accounts.title">
+        <source>Linked payment accounts</source>
+        <target>Привязанные карты</target>
+      </trans-unit>
+      <trans-unit id="dashboard.side_menu.linked_payment_accounts.new">
+        <source>+ Add new payment account</source>
+        <target>+ Добавить карту</target>
+      </trans-unit>
+      <trans-unit id="freeform.buttons.save">
+        <source>Save</source>
+        <target>Сохранить</target>
+      </trans-unit>
+      <trans-unit id="5350302496142999222">
+        <source>Unknow provider type:</source>
+        <target>Неизвестный платежный провайдер</target>
+      </trans-unit>
+      <trans-unit id="dashboard.new_payment_account.title">
+        <source>Please, choose payment account type</source>
+        <target>Пожалуйста, выберите тип платежного аккаунта</target>
+      </trans-unit>
+      <trans-unit id="dashboard.payment_accounts.holder">
+        <source>Holder</source>
+        <target>Владелец</target>
+      </trans-unit>
+      <trans-unit id="dashboard.payment_accounts.valid_by">
+        <source>Valid by</source>
+        <target>Срок действия</target>
+      </trans-unit>
+      <trans-unit id="dashboard.payment_accounts.button.unlink">
+        <source>Unlink</source>
+        <target>Отвязать</target>
+      </trans-unit>
+      <trans-unit id="dashboard.payment_accounts.confirm.title">
+        <source>Please, confirm</source>
+        <target>Пожалуйста, подтвердите</target>
+      </trans-unit>
+      <trans-unit id="dashboard.payment_accounts.confirm.subtitle">
+        <source>Are you sure you want to unlink this payment account?</source>
+        <target>Вы уверены что хотите отвязать данный платежный аккаунт?</target>
+      </trans-unit>
+      <trans-unit id="dashboard.payment_accounts.confirm.warning">
+        <source>This operation can not be undone.</source>
+        <target>Операция необратима</target>
+      </trans-unit>
+      <trans-unit id="4566600963375767818">
+        <source>Payment account successfully unlinked</source>
+        <target>Платежный аккаунт удален</target>
+      </trans-unit>
+      <trans-unit id="dashboard.current_loan.payment_modal.title">
+        <source>Payment</source>
+        <target>Оплата</target>
+      </trans-unit>
+      <trans-unit id="dashboard.current_loan.payment_schedule.status.delayed">
+        <source>delayed</source>
+        <target>Просрочен</target>
+      </trans-unit>
+      <trans-unit id="dashboard.current_loan.payment_schedule.status.missed">
+        <source>missed</source>
+        <target>Пропущен</target>
+      </trans-unit>
+      <trans-unit id="dashboard.current_loan.payment_schedule.status.paid">
+        <source>paid</source>
+        <target>Оплачен</target>
+      </trans-unit>
+      <trans-unit id="one_day">
+        <source>day</source>
+        <target>день</target>
+      </trans-unit>
+      <trans-unit id="two_days">
+        <source>days</source>
+        <target>дня</target>
+      </trans-unit>
+      <trans-unit id="many_days">
+        <source>days</source>
+        <target>дней</target>
+      </trans-unit>
+      <trans-unit id="one_week">
+        <source>week</source>
+        <target>неделя</target>
+      </trans-unit>
+      <trans-unit id="two_weeks">
+        <source>weeks</source>
+        <target>недели</target>
+      </trans-unit>
+      <trans-unit id="many_weeks">
+        <source>weeks</source>
+        <target>недель</target>
+      </trans-unit>
+      <trans-unit id="one_month">
+        <source>month</source>
+        <target>месяц</target>
+      </trans-unit>
+      <trans-unit id="two_months">
+        <source>months</source>
+        <target>месяца</target>
+      </trans-unit>
+      <trans-unit id="many_months">
+        <source>months</source>
+        <target>месяцев</target>
+      </trans-unit>
+      <trans-unit id="back">
+        <source>Back</source>
+        <target>Назад</target>
+      </trans-unit>
+      <trans-unit id="payment.modal.back">
+        <source>Back</source>
+        <target>Назад</target>
+      </trans-unit>
+      <trans-unit id="payment.modal.next">
+        <source>Next</source>
+        <target>Далее</target>
+      </trans-unit>
+      <trans-unit id="payment.modal.pay">
+        <source>Pay</source>
+        <target>Оплатить</target>
+      </trans-unit>
+      <trans-unit id="payment.modal.close">
+        <source>Close</source>
+        <target>Закрыть</target>
+      </trans-unit>
+      <trans-unit id="payment.modal.choose_amount">
+        <source>Please, choose amount to pay </source>
+        <target>Сумма платежа</target>
+      </trans-unit>
+      <trans-unit id="payment.modal.choose_payment_account">
+        <source>Please, choose payment account</source>
+        <target>Выберите способ оплаты</target>
+      </trans-unit>
+      <trans-unit id="payment.modal.other_payment_methods">
+        <source>or use other payment methods</source>
+        <target>или используйте новый</target>
+      </trans-unit>
+      <trans-unit id="payment.modal.payment_amount">
+        <source>Payment amount</source>
+        <target>Сумма платежа</target>
+      </trans-unit>
+      <trans-unit id="4178338581113558946">
+        <source>Payment provider error</source>
+        <target>Ошибка на стороне провайдера</target>
+      </trans-unit>
+      <trans-unit id="5779341115787231384">
+        <source>Internal server error</source>
+        <target>Внутренняя ошибка сервера</target>
+      </trans-unit>
+      <trans-unit id="payment.modal.success">
+        <source>Success</source>
+        <target>Успешно</target>
+      </trans-unit>
+      <trans-unit id="payment.modal.transaction_error">
+        <source>Transaction error</source>
+        <target>Ошибка проведения транзакции</target>
+      </trans-unit>
+      <trans-unit id="payment.modal.unknow_transaction_status">
+        <source>Unknow transaction status</source>
+        <target>Неизвестный статус транзакции</target>
+      </trans-unit>
+      <trans-unit id="2308578894290100344">
+        <source>Payment account successfully linked</source>
+        <target>Карта успешно привязана</target>
+      </trans-unit>
+      <trans-unit id="dashboard.current_loan.loan_closed">
+        <source>Loan closed</source>
+        <target>Займ успешно погашен</target>
+      </trans-unit>
+      <trans-unit id="payment.modal.close_loan_message">
+        <source>You can close your loan today by paing </source>
+        <target>Вы можете досрочно погасить текущий кредит оплатив </target>
+      </trans-unit>
+      <trans-unit id="payment.modal.any_amount_message">
+        <source>Also, you can make pay any amount more than</source>
+        <target>Также, доступен частичный досрочный возврат. Минимальная сумма: </target>
+      </trans-unit>
+      <trans-unit id="payment.modal.schedule_recalculated_message">
+        <source>Payment schedule will be recalculated</source>
+        <target>График платежей будет пересчитан в зависимости от суммы платежа.</target>
+      </trans-unit>
+      <trans-unit id="payment.modal.extending_message">
+        <source>In order to extend the loan it's required to pay current interest amount</source>
+        <target>Для продления займа, необходимо оплатить проценты, начисленные на текущий день</target>
+      </trans-unit>
+      <trans-unit id="dashboard.current_loan.buttons.extend loan">
+        <source>Extend loan</source>
+        <target>Продлить</target>
+      </trans-unit>
+      <trans-unit id="dashboard.current_loan.buttons.pay_now">
+        <source>Pay now</source>
+        <target>Оплатить</target>
+      </trans-unit>
+      <trans-unit id="dashboard.current_loan.transactions_in_process">
+        <source>Transactions in process</source>
+        <target>Имеются транзакции в процессе обработки</target>
+      </trans-unit>
+      <trans-unit id="payment.modal.additional_info_required">
+        <source>Additional information required</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="errors.provider_not_avilable_for_reccurent">
+        <source>Selected payment provider is not available for reccurent payment</source>
+        <target>Выбранный провайдер не позволяет осуществлять реккурентные платежи</target>
+      </trans-unit>
+      <trans-unit id="errors.provider_disabled">
+        <source>Selected payment provider is disabled</source>
+        <target>Выбранный провайдер недоступен</target>
+      </trans-unit>
+      <trans-unit id="errors.reccurent_error">
+        <source>Internal server error: Can't make reccurent payment</source>
+        <target>Ошибка проведения реккурентного платежа</target>
+      </trans-unit>
+      <trans-unit id="errors.no_providers">
+        <source>No payment providers available</source>
+        <target>Нет доступных платежных провайдеров</target>
+      </trans-unit>
+      <trans-unit id="errors.provider_not_avilable_for_payment">
+        <source>Selected payment provider is not available for payment</source>
+        <target>Выбранный провайдер недоступен</target>
+      </trans-unit>
+      <trans-unit id="errors.provider_error">
+        <source>Payment provider error</source>
+        <target>Ошибка на стороне платежного провайдера</target>
       </trans-unit>
     </body>
   </file>

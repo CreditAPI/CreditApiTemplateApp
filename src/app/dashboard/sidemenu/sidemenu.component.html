@@ -13,13 +13,13 @@
 
 <div class="card ">
     <div class="card-body bg-light bg-gradient-light">
-        <p i18n="@@dashboard.side_menu.linked_cards.title">Linked cards</p>
+        <p i18n="@@dashboard.side_menu.linked_payment_accounts.title">Linked payment accounts</p>
         <ul class="list-group list-group-flush bg-transparent">
-            <li *ngFor="let card of cards; let i=index" class="list-group-item bg-transparent" >
-                <span class="clickable" [routerLink]="['/dashboard/cards',i]">{{card.number}}</span>
+            <li *ngFor="let payment_account of creditApi.payment_accounts; let i=index" class="list-group-item bg-transparent" >
+                <span class="clickable" [routerLink]="['/dashboard/paymentaccount',i]">{{payment_account.number}}</span>
             </li>
             <li class="list-group-item bg-transparent">
-                <span class="clickable"  (click)="newCard()" i18n="@@dashboard.side_menu.linked_cards.new">+ Add new card</span>
+                <span class="clickable"  [routerLink]="['/dashboard/paymentaccount/new']"i18n="@@dashboard.side_menu.linked_payment_accounts.new">+ Add new payment account</span>
             </li>
         </ul>
     </div>

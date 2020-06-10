@@ -1,0 +1,23 @@
+<form (ngSubmit)="save()" [formGroup]="form" class="myform">
+    <ng-container *ngFor="let field of fields">
+        <div class="form-label-group"  >
+            <input [type]="field.type||'text'" 
+                    id="{{field.name}}" 
+                    class="form-control" 
+                    placeholder="{{field.label}}" 
+                    [formControlName]="field.name" 
+                    [mask]="field.mask||null" 
+                    [showMaskTyped]="field.mask_typed"
+                    [dropSpecialCharacters]="field.mask_save_spec?false:true"
+                    autocomplete="off">  
+            <label for="{{field.name}}">{{field.label}}</label>
+        </div>
+    </ng-container>
+    <div [ngClass]="btns_class">
+        <button *ngIf="back_btn_click" type="button" class="btn btn-outline-primary mr-4" (click)="back_btn_click(parent)" [disabled]="loading" i18n="@@back">Back</button>
+        <button class="btn btn-primary"  type="submit"  [disabled]="!form.valid || loading">
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loading"></span>
+            <span>{{save_btn_name}}</span>
+        </button>
+    </div>
+</form>

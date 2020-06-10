@@ -9,7 +9,8 @@ export const environment = {
   MyUrl: window["env"]["MyUrl"]||"",
   HomeLink: window["env"]["HomeLink"]||"",
   websiteID: window["env"]["websiteID"]||"",
-  ShowMessages: window["env"]["ShowMessages"]||"no"
+  ShowMessages: window["env"]["ShowMessages"]||"no",
+  DaysBeforePaymentAllowed: window["env"]["DaysBeforePaymentAllowed"]||3
 };
 
 /*

@@ -124,5 +124,14 @@ export class CalculatorComponent implements OnInit {
 
   getPaymentAmount(S,p,n) {
 		return S*p/(1-Math.pow(1+p,-n));
-	}
+  }
+  
+  getTranslatedTerm(term,type){
+    let types={1:[$localize`:@@one_day:day`,$localize`:@@two_days:days`,$localize`:@@many_days:days`],
+               2:[$localize`:@@one_week:week`,$localize`:@@two_weeks:weeks`,$localize`:@@many_weeks:weeks`],
+               3:[$localize`:@@one_month:month`,$localize`:@@two_months:months`,$localize`:@@many_months:months`]};
+    
+    let plural=(term%10==1 && term%100!=11 ? 0 : term%10>=2 && term%10<=4 && (term%100<10 || term%100>=20) ? 1 : 2);
+    return types[type][plural];
+  }
 }
