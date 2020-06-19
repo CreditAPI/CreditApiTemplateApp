@@ -7,8 +7,11 @@
             <div class="card p-5 bg-light bg-gradient-light" >
                 
                 <h2 i18n="@@dashboard.my_loans.title">My loans</h2>
+                <div *ngIf="has_update_requests" class="alert alert-warning" i18n="@@dashboard.my_loans.unprocessed_requests_warning" >
+                    Found unprocessed requests for update personal data. New loan applications unavailable
+                </div>
                 <div>
-                    <button *ngIf="!loading && !has_active" type="button" class="btn btn-outline-primary btn-block w-25 mb-3 float-right" [routerLink]="['/dashboard/newloan']" i18n="@@dashboard.my_loans.buttons.new">+ new application</button>
+                    <button *ngIf="!loading && !has_active && !has_update_requests" type="button" class="btn btn-outline-primary btn-block w-25 mb-3 float-right" [routerLink]="['/dashboard/newloan']" i18n="@@dashboard.my_loans.buttons.new">+ new application</button>
                 </div>
                 <table class="table" *ngIf="loans && loans.length>0">
                     <tr>

@@ -124,6 +124,14 @@ export class ChooseCardComponent implements OnInit {
               this.toast.show($localize`Error`,err.message,'bg-danger text-light');
             });
             break;
+          case 37:
+              this.router.navigate(['/dashboard']);
+              this.toast.show($localize`Error`,err.message,'bg-danger text-light');
+              break;
+          case 38:
+              localStorage.removeItem('choosed_card');
+              this.createNewLoanApplication();
+              break;
           default:
             this.loading=false;
             this.toast.show($localize`Error`,err.message,'bg-danger text-light');

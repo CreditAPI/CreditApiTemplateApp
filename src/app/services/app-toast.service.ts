@@ -71,7 +71,11 @@ export class AppToastService {
                 "Internal server error: Can't make reccurent payment":$localize`:@@errors.reccurent_error:Internal server error: Can't make reccurent payment`,
                 'No payment providers available':$localize`:@@errors.no_providers:No payment providers available`,
                 'Selected payment provider is not available for payment':$localize`:@@errors.provider_not_avilable_for_payment:Selected payment provider is not available for payment`,
-                'Payment provider error':$localize`:@@errors.provider_error:Payment provider error`
+                'Payment provider error':$localize`:@@errors.provider_error:Payment provider error`,
+                'Payment account not found':$localize`:@@errors.payment_account_not_found:Payment account not found`,
+                'Loan extenstion is not allowed':$localize`:@@errors.loan_extension_not_allowed:Loan extenstion is not allowed`,
+                'Early repayments not allowed':$localize`:@@errors.early_repayments_not_allowed:Early repayments not allowed`,
+                "Can't create loan application. Found unprocessed request for update personal data.":$localize`:@@errors.unproccessed_update_data_request:Can't create loan application. Found unprocessed request for update personal data.`,
               };
 
   constructor() { }

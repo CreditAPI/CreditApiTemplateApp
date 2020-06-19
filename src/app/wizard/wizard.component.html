@@ -80,3 +80,24 @@
       </ngb-accordion>
     </form>
 </div>
+
+
+<ng-template #updateDataModal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title" i18n="@@dashboard.wizard.modal.update_data.title">Update personal data</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body">
+      <p i18n="@@dashboard.wizard.modal.update_data.message">Are you sure you want to send a request to update personal data?</p>
+      <p i18n="@@dashboard.wizard.modal.update_data.data_to_update">Data to be updated:</p>
+      <ul>
+         <li *ngFor="let field of data_to_update">{{field.label}}: <b>{{field.value}}</b></li>
+      </ul>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="d('cancel click')" i18n="@@dashboard.wizard.modal.update_data.cancel">Cancel</button>
+    <button type="button" class="btn btn-primary" (click)="c('ok')" i18n="@@dashboard.wizard.modal.update_data.send">Send</button>
+  </div>
+</ng-template>

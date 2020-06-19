@@ -1,4 +1,4 @@
-import { Component, OnInit,ElementRef } from '@angular/core';
+import { Component, OnInit,ElementRef, ViewChild } from '@angular/core';
 import CreditApi from 'credit-api';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
@@ -7,6 +7,7 @@ import { environment } from './../../environments/environment';
 import { Router } from '@angular/router';
 import {KladrApiService} from './../services/kladr/kladr-api.service';
 import { Ng2ImgMaxService } from 'ng2-img-max';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-wizard',
@@ -22,6 +23,9 @@ export class WizardComponent implements OnInit {
   gm_session_token;
   newfiles={};
   form_disabled=false;
+  @ViewChild('updateDataModal') updateDataModal;
+  data_to_update=[];
+
   application= [{"label":$localize`Basic info`,
                 "fields":[{name: "last_name","label":$localize`Last name`},
                           {name: "first_name","label":$localize`First name`},
@@ -65,6 +69,7 @@ export class WizardComponent implements OnInit {
              private toast: AppToastService,
              private kladr: KladrApiService,
              private imageResizer: Ng2ImgMaxService,
+             private modalService: NgbModal,
              private router: Router) { 
   }
 
@@ -141,7 +146,6 @@ export class WizardComponent implements OnInit {
         validators=[];
         if (fields[i].required) {
           validators.push(Validators.required);
-          console.log(pre+''+i+':required');
         }
         let parts=pre.split('.');
         let user=CreditApi.User;
@@ -213,9 +217,40 @@ export class WizardComponent implements OnInit {
       } else
         this.router.navigate(['/dashboard']);
     }).catch(err=>{
-      this.toast.show($localize`Error`,err.message,'bg-danger text-light');
+      if ((err.code)&&(err.code==13)) {
+        this.updateDataRequest();
+      } else 
+        this.toast.show($localize`Error`,err.message,'bg-danger text-light');
     });
   }
+
+  updateDataRequest(){
+    this.data_to_update=[];
+    for (const key of Object.keys(this.form.controls)) {
+      if (this.form.controls[key].dirty) {
+        let field=this.findFieldByKey(key);
+        this.data_to_update.push({"key":key,"label":field.label,"value":this.form.controls[key].value});
+      }
+    }
+    if (this.data_to_update.length==0) {
+      this.router.navigate(['/dashboard']);
+    } else {
+      //console.log(this.data_to_update);
+      this.modalService.open(this.updateDataModal).result.then((result) => {
+        if (result=='ok'){
+          CreditApi.createRequestForUpdateUserdata(this.data_to_update).then(udr=>{
+            this.toast.show($localize`Success`,$localize`:@@dashboard.wizard.modal.update_data.request_has_been_sent:Request has been sent`,'bg-success text-light');
+            this.router.navigate(['/dashboard']);
+          }).catch(err=>{
+            this.toast.show($localize`Error`,err.message,'bg-danger text-light');
+          }) ;
+        }
+    }).catch(err=>{}) ;
+    }
+  }
+
+
+
   focusInvalid(){
     for (const key of Object.keys(this.form.controls)) {
       if (this.form.controls[key].invalid) {

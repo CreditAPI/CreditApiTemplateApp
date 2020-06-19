@@ -20,11 +20,13 @@ export class CurrentLoanComponent implements OnInit {
   payment_action;
   date_to_allow_payment;
   transactions_in_process;
+  document;
+
   constructor(private toast: AppToastService,private router: Router,private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.date_to_allow_payment=new Date();
-    this.date_to_allow_payment.setDate(this.date_to_allow_payment.getDate() - environment.DaysBeforePaymentAllowed||3 );
+    this.date_to_allow_payment.setDate(this.date_to_allow_payment.getDate() + environment.DaysBeforePaymentAllowed||3 );
     CreditApi.getOpenedLoans().then(loans=>{
       if ((loans.length==0)||((loans[0].status<60))) {
         this.router.navigate(['/dashboard/myloans']); 
@@ -88,4 +90,13 @@ export class CurrentLoanComponent implements OnInit {
     }).catch(err=>{}) ;
   }
 
+  openContractDialog(modal) {
+    this.document=null;
+    this.modalService.open(modal,{size:"xl"});
+    CreditApi.getSignedDocument(this.loan.signed_documents[0].id).then(doc=>{
+      this.document=doc;
+    }).catch(err=>{
+      this.document={"title":$localize`Error`,"content":$localize`:@@dashboard.current_loan.error_loading_contract:Can't load contract`+": "+err.message};
+    }); 
+  }
 }

@@ -11,6 +11,7 @@ import { AppToastService } from './../../services/app-toast.service';
 export class MyLoansComponent implements OnInit {
   loading=true;
   has_active=false;
+  has_update_requests=false;
   loans;
   statuses={'PREVIEW':$localize`:@@loan_status.preview:Not sended`,
             'NEW':$localize`:@@loan_status.new:Not sended`,
@@ -21,11 +22,13 @@ export class MyLoansComponent implements OnInit {
             'DECLINED_AFTER_MANUAL':$localize`:@@loan_status.declined:Declined`,
             'CANCELED':$localize`:@@loan_status.canceled:Canceled`,
             'CANCELED_TIMEOUT':$localize`:@@loan_status.canceled:Canceled`,
+            'CANCELED_AFTER_APPROVE':$localize`:@@loan_status.canceled:Canceled`,
             'APPROVED':$localize`:@@loan_status.approved:Approved`,
-            'PREAPPROVED':$localize`:@@loan_status.approved:Approved`,
+            'PREAPPROVED':$localize`:@@loan_status.approved:Pre-approved`,
             'ACTIVE':$localize`:@@loan_status.active:Active`,
-            'PREACTIVE':$localize`:@@loan_status.active:Active`,
+            'PREACTIVE':$localize`:@@loan_status.active:Pre-active`,
             'TRANSFER_IN_PROGRESS':$localize`:@@loan_status.wiring_in_process:Wiring`,
+            'SENDING_FAILED':$localize`:@@loan_status.sending_failed:Error`,
             'PAID_INFULL':$localize`:@@loan_status.paid:Paid`};
   constructor(private toast: AppToastService) { }
 
@@ -33,9 +36,24 @@ export class MyLoansComponent implements OnInit {
     CreditApi.getLoans().then(loans=>{
       this.loans=loans; 
       this.has_active=loans.some(loan => {
-        return false;//!loan.closed;
+        return ((!loan.closed) && (loan.status>0));
       });
       this.loading=false;
+    }).catch(err=>{
+      this.toast.show($localize`Error`,err.message,'bg-danger text-light');
+    });
+    this.checkUnprocessedRequests();
+  }
+
+  checkUnprocessedRequests(){
+    CreditApi.getUnprocessedRequestsForUpdateUserdata().then((cdr)=>{
+      if (cdr.results.length>0) {
+        this.has_update_requests=true;
+        setTimeout(()=>{
+          this.checkUnprocessedRequests();
+        },10000);
+      } else
+        this.has_update_requests=false;
     }).catch(err=>{
       this.toast.show($localize`Error`,err.message,'bg-danger text-light');
     });

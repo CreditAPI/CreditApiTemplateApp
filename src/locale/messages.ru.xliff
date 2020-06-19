@@ -1775,6 +1775,70 @@
         <source>Payment provider error</source>
         <target>Ошибка на стороне платежного провайдера</target>
       </trans-unit>
+      <trans-unit id="loan_status.sending_failed">
+        <source>Error</source>
+        <target>Ошибка перечисления</target>
+      </trans-unit>
+      <trans-unit id="dashboard.my_loans.unprocessed_requests_warning">
+        <source> Found unprocessed requests for update personal data. New loan applications unavailable</source>
+        <target>Запрос на обновление персональных данных еще не обработан. Оформление новых займов недоступно.</target>
+      </trans-unit>
+      <trans-unit id="errors.loan_extension_not_allowed">
+        <source>Loan extenstion is not allowed</source>
+        <target>Продление займа невозможно</target>
+      </trans-unit>
+      <trans-unit id="errors.early_repayments_not_allowed">
+        <source>Early repayments not allowed</source>
+        <target>Досрочная оплата невозможна</target>
+      </trans-unit>
+      <trans-unit id="errors.unproccessed_update_data_request">
+        <source>Can't create loan application. Found unprocessed request for update personal data.</source>
+        <target>Невозможно создать новую заявку. Имеется необработанный запрос на обновление персональных данных</target>
+      </trans-unit>
+      <trans-unit id="dashboard.wizard.modal.update_data.title">
+        <source>Update personal data</source>
+        <target>Обновление персональных данных</target>
+      </trans-unit>
+      <trans-unit id="dashboard.wizard.modal.update_data.message">
+        <source>Are you sure you want to send a request to update personal data?</source>
+        <target>Вы уверены что хотите отправить запрос на обновление персональных данных?</target>
+      </trans-unit>
+      <trans-unit id="dashboard.wizard.modal.update_data.data_to_update">
+        <source>Data to be updated:</source>
+        <target>Данные, которые будут обновлены:</target>
+      </trans-unit>
+      <trans-unit id="dashboard.wizard.modal.update_data.cancel">
+        <source>Cancel</source>
+        <target>Отмена</target>
+      </trans-unit>
+      <trans-unit id="dashboard.wizard.modal.update_data.send">
+        <source>Send</source>
+        <target>Отправить</target>
+      </trans-unit>
+      <trans-unit id="dashboard.wizard.modal.update_data.request_has_been_sent">
+        <source>Request has been sent</source>
+        <target>Запрос на обновление персональных данных отправлен</target>
+      </trans-unit>
+      <trans-unit id="dashboard.current_loan.payment_schedule.extension">
+        <source>(Extension)</source>
+        <target>(Продление)</target>
+      </trans-unit>
+      <trans-unit id="dashboard.current_loan.document_preview">
+        <source>Document preview</source>
+        <target>Просмотр документа</target>
+      </trans-unit>
+      <trans-unit id="close">
+        <source>Close</source>
+        <target>Закрыть</target>
+      </trans-unit>
+      <trans-unit id="dashboard.current_loan.error_loading_contract">
+        <source>Can't load contract</source>
+        <target>Невозможно загрузить документу</target>
+      </trans-unit>
+      <trans-unit id="errors.payment_account_not_found">
+        <source>Payment account not found</source>
+        <target>Платежный аккаунт не найден</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
