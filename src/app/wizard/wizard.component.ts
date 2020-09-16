@@ -27,12 +27,12 @@ export class WizardComponent implements OnInit {
   data_to_update=[];
 
   application= [{"label":$localize`Basic info`,
-                "fields":[{name: "last_name","label":$localize`Last name`},
-                          {name: "first_name","label":$localize`First name`},
-                          {name: "patronymic","label":$localize`Patronymic`},
+                "fields":[{name: "last_name","label":$localize`Last name`,capitalized:true},
+                          {name: "first_name","label":$localize`First name`,capitalized:true},
+                          {name: "patronymic","label":$localize`Patronymic`,capitalized:true},
                           {name: "gender","label":$localize`Gender`,type:"choice",choices:{"1":$localize`Male`,"2":$localize`female`}},
                           {name: "birthdate","label":$localize`Date of birth`,type:"date"},
-                          {name: "birth_place","label":$localize`Place of birth`}]},
+                          {name: "birth_place","label":$localize`Place of birth`,capitalized:true}]},
                 {"label":$localize`Passport`,
                 "fields":[{name: "passport.series","label":$localize`Series`,mask:"0000",mask_typed:true},
                          {name: "passport.number","label":$localize`Number`,mask:"000000",mask_typed:true},

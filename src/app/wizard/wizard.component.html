@@ -11,7 +11,7 @@
                   <div class="form-label-group" *ngIf="form.controls[field.name] && !['file','choice','date','checkbox','title'].includes(field.type)" >
                     <input [type]="field.type||'text'" 
                             id="{{field.name}}" 
-                            class="form-control" 
+                            [ngClass]="{'form-control':true, 'capitalized':field.capitalized||false}"
                             placeholder="{{field.label}}" 
                             [formControlName]="field.name" 
                             [mask]="field.mask||null" 
@@ -22,7 +22,7 @@
                     <label for="{{field.name}}">{{field.label}}</label>
                   </div>
                   <div class="form-label-group input-group" *ngIf="form.controls[field.name] && field.type=='date'">
-                      <input type="text" id="{{field.name}}" class="form-control" placeholder="{{field.label}}" [formControlName]="field.name" ngbDatepicker #d="ngbDatepicker" container="body">  
+                      <input type="text" id="{{field.name}}" class="form-control" placeholder="{{field.label}}" [formControlName]="field.name"  ngbDatepicker #d="ngbDatepicker" container="body" [minDate]="{year: 1940, month:1, day: 1}" [maxDate]="{year: 2010, month:12, day: 31}" (click)="d.toggle()">  
                       <div class="input-group-append">
                         <span class="input-group-text calendar" (click)="d.toggle()"></span>
                       </div>
@@ -44,6 +44,7 @@
                   <div class="form-select-group" *ngIf="form.controls[field.name] && field.type=='choice'">
                     <label for="{{field.name}}">{{field.label}}</label>
                     <select id="{{field.name}}" class="form-control" [formControlName]="field.name" >
+                      <option disabled class="hidden-option" value="" i18n="@@wizard.option.please_choose_value">Please, choose</option>
                       <option *ngFor="let choice of field.choices |keyvalue" value="{{choice.key}}">{{choice.value}}</option>
                     </select>
                   </div>

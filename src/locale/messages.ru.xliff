@@ -1839,6 +1839,10 @@
         <source>Payment account not found</source>
         <target>Платежный аккаунт не найден</target>
       </trans-unit>
+      <trans-unit id="wizard.option.please_choose_value">
+        <source>Please, choose</source>
+        <target>Выберите значение</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

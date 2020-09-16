@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModule, NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from "@angular/forms";
 import { FormsModule } from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
@@ -29,6 +29,8 @@ import { NewPaymentAccountComponent } from './dashboard/new-payment-account/new-
 import { PaymentAccountComponent } from './dashboard/payment-account/payment-account.component';
 import { FreeformComponent } from './services/freeform/freeform.component';
 import { PaymentComponent } from './services/payment/payment.component';
+import { SafePipe } from './pipes/safe.pipe';
+import { NgbDateCustomParserFormatter } from './services/NgbDateFormatter/NgbDateCustomParserFormatter';
 
 const maskoptions: Partial<IConfig> | (() => Partial<IConfig>) = {} = {};
 
@@ -56,7 +58,8 @@ const maskoptions: Partial<IConfig> | (() => Partial<IConfig>) = {} = {};
     NewPaymentAccountComponent,
     PaymentAccountComponent,
     FreeformComponent,
-    PaymentComponent
+    PaymentComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,
@@ -67,7 +70,9 @@ const maskoptions: Partial<IConfig> | (() => Partial<IConfig>) = {} = {};
     Ng2ImgMaxModule,
     NgxMaskModule.forRoot(maskoptions)
   ],
-  providers: [],
+  providers: [
+    {provide: NgbDateParserFormatter, useClass: NgbDateCustomParserFormatter}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

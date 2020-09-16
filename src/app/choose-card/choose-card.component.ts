@@ -117,6 +117,7 @@ export class ChooseCardComponent implements OnInit {
             this.toast.show($localize`Error`,err.message,'bg-danger text-light');
             break;
           case 33:
+          case 34:
             CreditApi.getCreditProduct(localStorage.getItem('product')).then(credit_product=>{
               this.router.navigate(['/document/sign/',credit_product.KI_agreement_name,'']);
             }).catch(err=>{

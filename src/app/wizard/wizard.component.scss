@@ -1,0 +1,10 @@
+.capitalized{
+    text-transform: capitalize;
+}
+.hidden-option{
+    display:none;
+    opacity: 0;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+}
