@@ -90,10 +90,10 @@ export class CurrentLoanComponent implements OnInit {
     }).catch(err=>{}) ;
   }
 
-  openContractDialog(modal) {
+  openContractDialog(modal,num=0) {
     this.document=null;
     this.modalService.open(modal,{size:"xl"});
-    CreditApi.getSignedDocument(this.loan.signed_documents[0].id).then(doc=>{
+    CreditApi.getSignedDocument(this.loan.signed_documents[num].id).then(doc=>{
       this.document=doc;
     }).catch(err=>{
       this.document={"title":$localize`Error`,"content":$localize`:@@dashboard.current_loan.error_loading_contract:Can't load contract`+": "+err.message};

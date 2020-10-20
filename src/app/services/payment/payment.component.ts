@@ -171,7 +171,7 @@ export class PaymentComponent implements OnInit {
 
   updateTransactionStatus(res,parent){
     setTimeout(()=>{
-      console.log('Updating transaction '+res.objectId);
+      //console.log('Updating transaction '+res.objectId);
       CreditApi.getTransaction(res.objectId).then(transaction=>{
         switch(transaction.status) {
           case 'created':

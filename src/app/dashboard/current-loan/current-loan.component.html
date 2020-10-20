@@ -49,6 +49,12 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <div *ngIf="loan.addons">
+                            <h6 i18n="@@dashboard.current_loan.other_documents">Other documents</h6>
+                            <div *ngFor="let doc of loan.signed_documents; let i=index" >
+                                <span *ngIf="i!=0" (click)="openContractDialog(contractModal,i)" class="text-secondary clickable">{{doc.label}}</span>
+                            </div>
+                        </div>
                         <span *ngIf="payment_schedule&&loan.allow_early_payments && payment_schedule[payment_schedule.length-1].status!='delayed'" (click)="openPaymentDialog(paymentModal,'early')" class="clickable text-secondary text-sm float-right" i18n="@@dashboard.current_loan.button.early_payment">Early payment</span>
                     </div>
                 </div>

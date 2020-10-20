@@ -34,15 +34,17 @@ export class VerificationComponent implements OnInit {
           this.toast.show($localize`Error`,err.message,'bg-danger text-light');
         }
       });
-    } else if (((CreditApi.User))&&(!CreditApi.User.verificationFinished)) {
-      this.wait=false;
+    } else if (((CreditApi.User))&&(CreditApi.User.verificationStarted)&&(!CreditApi.User.verificationFinished)) {
+      this.wait_until_finished();
+    } else {
+      this.router.navigate(['/dashboard']);
     }
   }
 
   check_sms_code(sms_code){
     this.loading=true;
     CreditApi.checkVerificationCode(sms_code).then((res)=>{
-      console.log(res);
+      //console.log(res);
       this.loading=false;
       this.wait_until_finished();
     }).catch(err=>{
@@ -54,7 +56,8 @@ export class VerificationComponent implements OnInit {
 
   wait_until_finished(){
     this.wait=true;
-    CreditApi.refreshUser().then(user=>{
+    CreditApi.checkVerificationStatus().then(user=>{
+      //console.log(user);
       if (user.verificationFinished)
         this.router.navigate(['/choosecard']);
       else

@@ -23,7 +23,10 @@ export class SignupComponent implements OnInit {
 
   doSignUp() {
     this.loading=true;
-    CreditApi.signup(this.form.get('email').value,'7'+this.form.get('phone').value,this.form.get('password').value).then(res=>{
+    CreditApi.signup(this.form.get('email').value,
+                     '7'+this.form.get('phone').value,
+                     this.form.get('password').value,
+                     localStorage.getItem("queryparams") !== null?{queryparams:JSON.parse(localStorage.getItem("queryparams"))}:null).then(res=>{
       this.loading=false;
       this.router.navigate(['/wizard']);
     }).catch(err=>{

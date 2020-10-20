@@ -13,7 +13,7 @@ import { Component, Input } from '@angular/core';
       </button>
     </div>
     <div class="modal-body">
-      <div class="p-2">{{content}}</div>
+      <div class="p-2" [innerHTML]="content"></div>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')" i18n="@@documentmodal.buttons.close">Close</button>
@@ -35,7 +35,7 @@ export class DocumentModalService {
 
   show(name){
     CreditApi.getDocument(name).then((content)=>{
-      console.log('LOADED',content);
+      //console.log('LOADED',content);
       const modalRef = this.modalService.open(NgbdModalContent,{ size: 'xl' });
       modalRef.componentInstance.content = content;
     }).catch(err=>{

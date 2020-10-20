@@ -4,6 +4,7 @@ import { AppToastService } from './../services/app-toast.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { DocumentModalService } from './../services/document-modal.service';
 
 @Component({
   selector: 'app-signing',
@@ -18,7 +19,8 @@ export class SigningComponent implements OnInit {
   content;
   app_id;
   sms_trys=0;
-  constructor(private toast: AppToastService,private router: Router,private _Activatedroute:ActivatedRoute,private modalService: NgbModal) { }
+  addons=[];
+  constructor(private toast: AppToastService,private router: Router,private _Activatedroute:ActivatedRoute,private modalService: NgbModal,public ms: DocumentModalService) { }
 
   ngOnInit(): void {
     this.getContent().then(content=>{
@@ -33,8 +35,12 @@ export class SigningComponent implements OnInit {
     this.loading=true;
     return new Promise((resolve,reject)=>{
       this._Activatedroute.paramMap.subscribe(params => { 
-        if ((params.get('app_id'))&&((params.get('app_id'))!=''))
+        if ((params.get('app_id'))&&((params.get('app_id'))!='')) {
           this.app_id=params.get('app_id');
+          CreditApi.getLoan(this.app_id).then(loan=>{
+            if (loan.available_addons) this.addons=loan.available_addons;
+          }); 
+        }
         if (params.get('name')) {
           this.name=params.get('name');
           CreditApi.getDocument(params.get('name')).then((content)=>{
@@ -53,14 +59,20 @@ export class SigningComponent implements OnInit {
   }
 
   sign(agree,modal){
+    let data=null;
+    if (this.addons.length>0) {
+      data={addons:[]};
+      this.addons.forEach(addon=>{
+        if (addon.checked) data.addons.push(addon);
+      });
+    }
     if (agree.checked) {
-      CreditApi.signDocument(this.name).then(res=>{
+      CreditApi.signDocument(this.name,data).then(res=>{
         if (this.app_id)
           this.router.navigate(['/application',this.app_id]);
         else
           this.router.navigate(['/choosecard']);
       }).catch(err=>{
-        console.log('signing',err); 
         switch(err.code) {
            case 40:
              CreditApi.sendSMSforSigning(this.name).then(res=>{
@@ -89,7 +101,14 @@ export class SigningComponent implements OnInit {
       this.toast.show($localize`Error`,'Please, enter the code','bg-danger text-light');
       return;
     }
-    CreditApi.signDocument(this.name,code).then(res=>{
+    let data={'sms_code':code};
+    if (this.addons.length>0) {
+      data['addons']=[];
+      this.addons.forEach(addon=>{
+        if (addon.checked) data['addons'].push(addon);
+      });
+    }
+    CreditApi.signDocument(this.name,data).then(res=>{
       this.modalService.dismissAll();
       if (this.app_id)
         this.router.navigate(['/application',this.app_id]);

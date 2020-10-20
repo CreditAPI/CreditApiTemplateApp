@@ -909,6 +909,10 @@
           <context context-type="linenumber">20</context>
         </context-group>
       <target>Я прочитал текст данного документа и полностью согласен с его условиями</target></trans-unit>
+      <trans-unit id="signing.purchase" datatype="html">
+        <source>Purchase</source>
+        <target>Приобрести</target>
+      </trans-unit>
       <trans-unit id="signing.buttons.cancel" datatype="html">
         <source>Cancel</source>
         <context-group purpose="location">
@@ -1555,6 +1559,10 @@
         <source>Scheduled</source>
         <target>Запланирован</target>
       </trans-unit>
+      <trans-unit id="dashboard.current_loan.other_documents">
+        <source>Other documents</source>
+        <target>Другие документы</target>
+      </trans-unit>
       <trans-unit id="dashboard.side_menu.linked_payment_accounts.title">
         <source>Linked payment accounts</source>
         <target>Привязанные карты</target>
@@ -1842,6 +1850,46 @@
       <trans-unit id="wizard.option.please_choose_value">
         <source>Please, choose</source>
         <target>Выберите значение</target>
+      </trans-unit>
+      <trans-unit id="739674259033360184">
+        <source>Job info</source>
+        <target>Информация о работе</target>
+      </trans-unit>
+      <trans-unit id="1826215573205981970">
+        <source>Company</source>
+        <target>Компания</target>
+      </trans-unit>
+      <trans-unit id="4145496584631696119">
+        <source>Role</source>
+        <target>Должность</target>
+      </trans-unit>
+      <trans-unit id="207657694852777040">
+        <source>Work phone</source>
+        <target>Рабочий телефон</target>
+      </trans-unit>
+      <trans-unit id="7721988664027512739">
+        <source>Income</source>
+        <target>Ежемесячный доход</target>
+      </trans-unit>
+      <trans-unit id="3678791363651313162">
+        <source>Month expenses</source>
+        <target>Ежемесячные расходы</target>
+      </trans-unit>
+      <trans-unit id="8510266129310499156">
+        <source>Contact person</source>
+        <target>ФИО контактного лица</target>
+      </trans-unit>
+      <trans-unit id="9104840375386649333">
+        <source>Contact person's phone</source>
+        <target>Телефон контактного лица</target>
+      </trans-unit>
+      <trans-unit id="8614203626607405520">
+        <source>Selfie with passport</source>
+        <target>Селфи с разворотом паспорта</target>
+      </trans-unit>
+      <trans-unit id="8392507067612185844">
+        <source>Credit card photo</source>
+        <target>Фото кредитной карты</target>
       </trans-unit>
     </body>
   </file>

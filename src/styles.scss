@@ -464,3 +464,18 @@ input.ng-valid.ng-touched {
   height: 0.8rem;
   font-size: 0.5em;
 }
+.black-bordered-table{
+  border-collapse: collapse;
+}
+.black-bordered-table,
+.black-bordered-table td,
+.black-bordered-table th {
+  border:1px solid black;
+}
+.black-bordered-table td,
+.black-bordered-table th {
+  padding:0.3em;
+}
+.table-4cols td{
+  width:25%;
+}

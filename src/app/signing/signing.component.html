@@ -19,6 +19,10 @@
                         <input type="checkbox" id="agree_flag" #agree>
                         <label i18n="@@signing.i_agree">I agree with this document</label>
                     </div>
+                    <div *ngFor="let addon of addons">
+                        <input type="checkbox" [id]="addon.id" [(ngModel)]="addon.checked">
+                        <label><span *ngIf="addon.confirm_text">{{addon.confirm_text}} </span><span *ngIf="!addon.confirm_text"  i18n="@@signing.purchase">Purchase </span>  <span class="clickable" (click)="ms.show(addon.docname)"> {{addon.label}}</span></label>
+                    </div>
                     <div class="text-center">
                         <button class="btn btn-outline-primary mr-5" [routerLink]="['/dashboard']" i18n="@@signing.buttons.cancel">Cancel</button>
                         <button class="btn btn-primary ml-5" (click)="sign(agree,modal_sms)" i18n="@@signing.buttons.sign">Sign</button>

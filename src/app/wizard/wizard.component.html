@@ -22,7 +22,7 @@
                     <label for="{{field.name}}">{{field.label}}</label>
                   </div>
                   <div class="form-label-group input-group" *ngIf="form.controls[field.name] && field.type=='date'">
-                      <input type="text" id="{{field.name}}" class="form-control" placeholder="{{field.label}}" [formControlName]="field.name"  ngbDatepicker #d="ngbDatepicker" container="body" [minDate]="{year: 1940, month:1, day: 1}" [maxDate]="{year: 2010, month:12, day: 31}" (click)="d.toggle()">  
+                      <input type="text" id="{{field.name}}" class="form-control" placeholder="{{field.label}}" [formControlName]="field.name"  ngbDatepicker #d="ngbDatepicker" container="body" [minDate]="{year: 1940, month:1, day: 1}" [maxDate]="{year: 2030, month:12, day: 31}" (click)="d.toggle()">  
                       <div class="input-group-append">
                         <span class="input-group-text calendar" (click)="d.toggle()"></span>
                       </div>

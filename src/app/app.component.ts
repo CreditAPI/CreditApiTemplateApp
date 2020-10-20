@@ -38,6 +38,7 @@ export class AppComponent {
       localStorage.setItem('term',params['term']);
       localStorage.setItem('product',params['product']);
     }
+    if (Object.keys(params).length>1) localStorage.setItem('queryparams', JSON.stringify(params));
     this.homelink=environment['HomeLink'];
     if (environment.CreditApiOrgId=='PUT YOUR ORG ID HERE') {
       console.error('APP is not initialized. If you are the owner of this website please enter your ORG ID settings in src/assets/js/settings.js');
@@ -159,6 +160,9 @@ export class AppComponent {
 
         node.innerHTML=styles;
         document.head.append(node); 
+        if (website['additional_scripts']) {
+          document.body.append(website['additional scripts']);
+        }
         resolve(true);
       }).catch(err=>{
         reject(err);

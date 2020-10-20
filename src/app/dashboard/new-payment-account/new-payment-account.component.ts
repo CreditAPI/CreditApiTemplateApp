@@ -49,7 +49,7 @@ export class NewPaymentAccountComponent implements OnInit {
     this.router.navigate(['/dashboard']);
     CreditApi.getPaymentAccounts(true);
     //localStorage.setItem('choosed_card',res.objectId);
-    console.log("SAVED",res);
+    //console.log("SAVED",res);
   }
 
 }
