@@ -1891,6 +1891,10 @@
         <source>Credit card photo</source>
         <target>Фото кредитной карты</target>
       </trans-unit>
+      <trans-unit id="errors.filename_contains_invalid_characters">
+        <source>Filename contains invalid characters</source>
+        <target>В имени файла используются недопустимые символы</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

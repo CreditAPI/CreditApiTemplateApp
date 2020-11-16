@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import {KladrApiService} from './../services/kladr/kladr-api.service';
 import { Ng2ImgMaxService } from 'ng2-img-max';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import unidecode from 'unidecode';
 
 @Component({
   selector: 'app-wizard',
@@ -378,7 +379,7 @@ export class WizardComponent implements OnInit {
       reader.onload = e => {
         field.value.url = reader.result;
         //
-        CreditApi.uploadFile("1.jpg"/*file.name*/,file.type,this.b64toBlob(reader.result,file.type)).then(pfile=>{ 
+        CreditApi.uploadFile(unidecode(file.name),file.type,this.b64toBlob(reader.result,file.type)).then(pfile=>{ 
           this.newfiles[field.name]=pfile;
           this.newfiles[field.name]["__type"]="File";
           this.form_disabled=false;

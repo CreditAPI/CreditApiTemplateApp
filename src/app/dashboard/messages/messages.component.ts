@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import CreditApi from 'credit-api';
+import unidecode from 'unidecode';
 import { AppToastService } from 'src/app/services/app-toast.service';
 import { Ng2ImgMaxService } from 'ng2-img-max';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap'; 
@@ -123,7 +124,7 @@ export class MessagesComponent implements OnInit {
   uploadFile(file,el){
       const reader = new FileReader();
       reader.onload = e => {
-        CreditApi.uploadFile(file.name,file.type,this.b64toBlob(reader.result,file.type)).then(pfile=>{ 
+        CreditApi.uploadFile(unidecode(file.name),file.type,this.b64toBlob(reader.result,file.type)).then(pfile=>{ 
           el['loading']=false;
           el['url']=pfile.url;
           pfile["__type"]="File";

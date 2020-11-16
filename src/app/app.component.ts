@@ -68,6 +68,7 @@ export class AppComponent {
             this.router.navigate(['/dashboard']);
         }
       }).catch(err=>{
+        console.log(err);
         this.toast.show($localize`Error`,err.message,'bg-danger text-light');
         if ((!regex_opened.test(current_path)))
           this.router.navigate(['/login']);
