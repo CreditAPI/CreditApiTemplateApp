@@ -75,6 +75,7 @@ export class AppToastService {
                 'Payment account not found':$localize`:@@errors.payment_account_not_found:Payment account not found`,
                 'Loan extenstion is not allowed':$localize`:@@errors.loan_extension_not_allowed:Loan extenstion is not allowed`,
                 'Early repayments not allowed':$localize`:@@errors.early_repayments_not_allowed:Early repayments not allowed`,
+                'Filename contains invalid characters.':$localize`:@@errors.filename_contains_invalid_characters:Filename contains invalid characters`,
                 "Can't create loan application. Found unprocessed request for update personal data.":$localize`:@@errors.unproccessed_update_data_request:Can't create loan application. Found unprocessed request for update personal data.`,
               };
 

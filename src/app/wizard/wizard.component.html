@@ -14,6 +14,7 @@
                             [ngClass]="{'form-control':true, 'capitalized':field.capitalized||false}"
                             placeholder="{{field.label}}" 
                             [formControlName]="field.name" 
+                            [prefix]="field.prefix||''"
                             [mask]="field.mask||null" 
                             [showMaskTyped]="field.mask_typed"
                             [dropSpecialCharacters]="field.mask_save_spec?false:true"

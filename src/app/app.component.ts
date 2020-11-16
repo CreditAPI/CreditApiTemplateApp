@@ -19,6 +19,7 @@ export class AppComponent {
   public location;
   brand= environment['brand']||$localize`SuperLOANS`;
   homelink;
+  cso_by_lender; 
   organization='ООО "Тестовая организация"';
   organization_id='012349823194';
   lender='ООО МКК "Тестовая микрокредитная компания "';
@@ -88,7 +89,7 @@ export class AppComponent {
           link.rel  = 'stylesheet';
           link.type = 'text/css';
           link.href=website['css_theme'];
-          document.head.append(link);
+          document.head.appendChild(link);
         }
         if (website['show_messages']) {
            environment['ShowMessages']=website['show_messages'];
@@ -157,11 +158,14 @@ export class AppComponent {
                   '.btn-outline-secondary, .btn-outline-secondary:focus { border-color:'+website['secondary_color']+'; color:'+website['secondary_color']+' ;} ' +
                   '.text-secondary {color:'+website['secondary_color']+';} ';          
         } 
+        if (website['cso_by_lender']) {
+          this.cso_by_lender=website['cso_by_lender'];
+        } 
 
         node.innerHTML=styles;
-        document.head.append(node); 
+        document.head.appendChild(node); 
         if (website['additional_scripts']) {
-          document.body.append(website['additional scripts']);
+          document.body.appendChild(website['additional scripts']);
         }
         resolve(true);
       }).catch(err=>{

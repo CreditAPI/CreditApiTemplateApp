@@ -7,4 +7,5 @@
     window["env"]["HomeLink"] = "${HOMELINK}";
     window["env"]["ShowMessages"] = "${SHOW_MESSAGES}";
     window["env"]["DaysBeforePaymentAllowed"] = "${DAYS_BEFORE_PAYMENT_ALLOWED}";
+    window["env"]["MinEarlyAmount"]="${MIN_EARLY_AMOUNT}";
   })(this);

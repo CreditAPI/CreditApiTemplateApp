@@ -3,6 +3,7 @@ import CreditApi from 'credit-api';
 //import { AppToastService } from './../../services/app-toast.service';
 import { environment } from './../../../environments/environment';
 import { AppToastService } from '../app-toast.service';
+import { DocumentModalService } from '../document-modal.service';
 
 @Component({
   selector: 'app-payment',
@@ -31,9 +32,12 @@ export class PaymentComponent implements OnInit {
   step_4_show_close_btn_only=false;
   missed_parameters;
 
-  constructor(private toast: AppToastService) { }
+  addons=[];
+
+  constructor(private toast: AppToastService,public ms: DocumentModalService) { }
 
   ngOnInit(): void {
+    this.addons=[];
     this.updatePaymentAmounts();
     this.updatePaymentAccounts();
   }
@@ -43,7 +47,11 @@ export class PaymentComponent implements OnInit {
       this.payment_amounts=res.result;
       switch (this.action) {
         case 'early': 
-          this.payment_amounts.min=this.payment_amounts.current;
+          if (environment['MinEarlyAmount']) {
+            this.payment_amounts.min=environment['MinEarlyAmount'];
+          } else {
+            this.payment_amounts.min=this.payment_amounts.current;
+          }
           this.amount=res.result.full.toFixed(2);
           this.step_1_enabled=true;
           this.step=1;
@@ -52,6 +60,11 @@ export class PaymentComponent implements OnInit {
           this.amount=res.result.min.toFixed(2);
           this.step_1_enabled=false;
           this.step=2;
+          if (this.loan.available_addons) {
+            this.loan.available_addons.forEach(addon=>{
+              if (addon["use_with_prolongation"]) this.addons.push(addon);
+            });
+          }
           break;
         case 'pay_current':
           this.amount=res.result.current.toFixed(2);
@@ -65,6 +78,7 @@ export class PaymentComponent implements OnInit {
       this.error=err.message;
     })
   }
+
 
   updatePaymentAccounts(){
     CreditApi.getPaymentAccounts().then((payment_accounts)=>{

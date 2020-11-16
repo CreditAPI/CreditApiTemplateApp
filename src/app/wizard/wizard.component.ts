@@ -59,11 +59,11 @@ export class WizardComponent implements OnInit {
                 {"label":$localize`Job info`,
                 "fields":[{name: "job.company","label":$localize`Company`},
                          {name: "job.role","label":$localize`Role`},
-                         {name: "job.mainphone","label":$localize`Work phone`},
+                         {name: "job.mainphone","label":$localize`Work phone`,prefix:"+7",mask:"(000)000-0000",mask_typed:true},
                          {name: "job.income","label":$localize`Income`},
                          {name: "job.monthexpenses","label":$localize`Month expenses`},
                          {name: "job.contact_person","label":$localize`Contact person`},
-                         {name: "job.contact_phone","label":$localize`Contact person's phone`}]},
+                         {name: "job.contact_phone","label":$localize`Contact person's phone`,prefix:"+7",mask:"(000)000-0000",mask_typed:true}]},
                 {"label":$localize`Documents`,
                 "fields":[{name: "passport_scan_first","label":$localize`Passport first page`,type:"file",value:{name:$localize`Choose file`,url:'assets/img/noimage.jpeg',loading:false}},
                           {name: "passport_scan_second","label":$localize`Passport second page`,type:"file",value:{name:$localize`Choose file`,url:'assets/img/noimage.jpeg',loading:false}},
@@ -84,8 +84,10 @@ export class WizardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    CreditApi.getApplicationFields().then(fields=>{
+
+    CreditApi.getApplicationFields(localStorage.getItem('product')||null).then(fields=>{
       this.fields=fields;
+      //console.log(fields);
       this.excludeNotExistedFields();
       this.includeNotListedFields();
       this.generateForm();
@@ -101,13 +103,11 @@ export class WizardComponent implements OnInit {
 
   excludeNotExistedFields(){
     var count=0;
-    for (var i in this.application) {
+    for (var i=0;i<this.application.length;i++) {
       count=0;
       for (var j=0;j<this.application[i].fields.length;j++) {
         let appfieldname=this.application[i].fields[j].name.split(".")[0];
-        //console.log('Checking '+j+'('+appfieldname+')')
         if ((!this.fields[appfieldname]) && (!this.application[i].fields[j]['unmapped'])) {
-          //console.log('excluding '+j+'('+appfieldname+')')
           this.application[i].fields.splice(j,1);
           j-=1;
         } else { 
@@ -120,8 +120,10 @@ export class WizardComponent implements OnInit {
           }
         }
       }
-      if (count==0)
-        this.application.splice(parseInt(i),1);
+      if (count==0) {
+        this.application.splice(i,1);
+        i=i-1;
+      }
     }
   }
   includeNotListedFields(){
@@ -375,7 +377,8 @@ export class WizardComponent implements OnInit {
       const reader = new FileReader();
       reader.onload = e => {
         field.value.url = reader.result;
-        CreditApi.uploadFile(file.name,file.type,this.b64toBlob(reader.result,file.type)).then(pfile=>{ 
+        //
+        CreditApi.uploadFile("1.jpg"/*file.name*/,file.type,this.b64toBlob(reader.result,file.type)).then(pfile=>{ 
           this.newfiles[field.name]=pfile;
           this.newfiles[field.name]["__type"]="File";
           this.form_disabled=false;

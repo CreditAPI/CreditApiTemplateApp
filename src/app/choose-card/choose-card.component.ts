@@ -116,6 +116,9 @@ export class ChooseCardComponent implements OnInit {
             this.router.navigate(['/wizard']);
             this.toast.show($localize`Error`,err.message,'bg-danger text-light');
             break;
+          case 31:
+            this.router.navigate(['/wizard']);
+            break;
           case 33:
           case 34:
             CreditApi.getCreditProduct(localStorage.getItem('product')).then(credit_product=>{

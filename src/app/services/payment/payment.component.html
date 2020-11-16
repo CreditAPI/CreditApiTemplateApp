@@ -19,8 +19,8 @@
         <div *ngIf="payment_amounts.full!=payment_amounts.min">
         <label for="formControlRange" i18n="@@payment.modal.choose_amount" class="range_label">Please, choose amount to pay </label>
         <input type="number" class="form-control form-control-sm w-auto float-right calculator-input" id="amount" [(ngModel)]="amount" >
-        <input type="range" class="custom-range" [(ngModel)]="amount" min="{{payment_amounts.min}}" max="{{payment_amounts.full}}"  id="payment-amount"  >
-        <span class="badge badge-secondary pointer" (click)="amount=payment_amounts.min" >{{payment_amounts.min.toFixed(2)}}</span>
+        <input type="range" class="custom-range" [(ngModel)]="amount" min="{{payment_amounts.min>100?payment_amounts.min:100}}" max="{{payment_amounts.full}}"  id="payment-amount"  >
+        <span class="badge badge-secondary pointer" (click)="amount=payment_amounts.min>100?payment_amounts.min:100" >{{payment_amounts.min>100?payment_amounts.min:'100.00'}}</span>
         <span class="badge badge-secondary pointer float-right" (click)="amount=payment_amounts.full">{{payment_amounts.full.toFixed(2)}}</span>
         </div>
     </div>
@@ -31,6 +31,10 @@
 <div *ngIf="!error && !wait && step==2">
     <div class="alert alert-info" *ngIf="action=='extend'" i18n="@@payment.modal.extending_message">In order to extend the loan it's required to pay current interest amount</div>
     <h5><span i18n="@@payment.modal.payment_amount">Payment amount</span>: {{amount}} <span i18n="@@calculator.currency">rub</span></h5>
+    <div *ngFor="let addon of addons">
+        <input type="checkbox" [id]="addon.id" [(ngModel)]="addon.checked">
+        <label><span *ngIf="addon.confirm_text">{{addon.confirm_text}} </span><span *ngIf="!addon.confirm_text"  i18n="@@signing.purchase">Purchase </span>  <span (click)="ms.show(addon.docname+'?loan_id='+loan.objectId)" class="clickable" > {{addon.label}}</span></label>
+    </div>
     <h5 i18n="@@payment.modal.choose_payment_account">Please, choose payment account</h5>
     <div class="pt-3 pb-3">
         <ng-container *ngFor="let payment_account of payment_accounts">

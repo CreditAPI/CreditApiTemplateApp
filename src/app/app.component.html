@@ -45,7 +45,7 @@
 <footer class="footer mt-auto py-3 my-footer " *ngIf="initialized">
   <div class="container">
     <div *ngIf="organization">{{organization}}, <span i18n="@@footer.company_id" *ngIf="organization_id">Reg # </span> {{organization_id}} <br></div>
-    <div *ngIf="lender"> <span i18n="@@footer.loan_orinated_by">Loan originated by </span> {{lender}} , <span i18n="@@footer.company_id" *ngIf="lender_id">Reg # </span> {{lender_id}} <br>
+    <div *ngIf="lender"> <span *ngIf="!cso_by_lender" i18n="@@footer.loan_orinated_by">Loan originated by </span> <span *ngIf="!cso_by_lender"> {{lender}} ,</span> <span i18n="@@footer.company_id" *ngIf="lender_id && !cso_by_lender">Reg # </span> <span *ngIf="!cso_by_lender">{{lender_id}} <br></span>
     {{license}} <br></div>
     <span class="clickable" [routerLink]="['document','privacy_policy']" i18n="@@footer.docs.privacy_policy">Privacy policy</span> <br>
     <span class="clickable" [routerLink]="['document','important_information']" i18n="@@footer.important_information">Important information</span> 

@@ -48,4 +48,5 @@ Thumbs.db
 
 #Deploy files
 Deploy.sh
+Deploy_sur.sh
 .env
