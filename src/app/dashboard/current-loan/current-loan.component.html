@@ -10,15 +10,16 @@
                     <span class="text-secondary" i18n="@@dashboard.current_loan.agreement_number">Agreement #</span>: 
                         <span *ngIf="loan.signed_documents[0] && loan.signed_documents[0].doc_id" class="clickable" (click)="openContractDialog(contractModal)" >{{loan.agreement_number}}</span>
                         <span *ngIf="!loan.signed_documents[0] || !loan.signed_documents[0].doc_id"> {{loan.agreement_number}}</span><br>
-                    <span *ngIf="loan.issuedAt" ><span class="text-secondary" i18n="@@dashboard.current_loan.issued_at">Issued At</span>: {{loan.issuedAt|date:"shortDate"}}<br></span>
+                    <span *ngIf="loan.issuedAt" ><span class="text-secondary" i18n="@@dashboard.current_loan.issued_at">Issued At</span>: {{loan.issuedAt|date:"shortDate":timezone}}<br></span>
                     <span class="text-secondary" i18n="@@dashboard.current_loan.amount">Amount</span>: {{loan.amount.toFixed(2)}}<br>
                     <span class="text-secondary" i18n="@@dashboard.current_loan.term">Term</span>: {{loan.term}} {{getTranslatedTerm(loan.term,loan.type_term)}}<br>
-                    <span class="text-secondary" i18n="@@dashboard.current_loan.next_payment">Next payment</span>: {{loan.next_payment_date.iso|date:"shortDate"}}<br>
+                    <ng-container *ngIf="loan.total_extended_for"><span class="text-secondary" i18n="@@dashboard.extended_for">Extended for</span>: {{loan.total_extended_for}} {{getTranslatedTerm(loan.total_extended_for,loan.type_term)}}<br></ng-container>
+                    <span class="text-secondary" i18n="@@dashboard.current_loan.next_payment">Next payment</span>: {{loan.next_payment_date.iso|date:"shortDate":timezone}}<br>
                     <div *ngIf="transactions_in_process && transactions_in_process.length>0" class="alert alert-warning mt-3">
                         <p i18n="@@dashboard.current_loan.transactions_in_process">Transactions in process</p>
                         <table class="table">
                             <tr *ngFor="let tr of transactions_in_process">
-                                <td>{{tr.createdAt|date:"shortDate"}}</td>
+                                <td>{{tr.createdAt|date:"shortDate":timezone}}</td>
                                 <td class="text-right">{{tr.amount.toFixed(2)}} <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span></td>
                             </tr>
                         </table>
@@ -36,15 +37,15 @@
                             </thead>
                             <tbody>
                                 <tr *ngFor="let pmnt of payment_schedule">
-                                    <td>{{pmnt.date|date:"shortDate"}}</td>
+                                    <td>{{pmnt.date|date:"shortDate":timezone}}</td>
                                     <td class="text-right">{{pmnt.amount.toFixed(2)}}</td>
                                     <td class="text-center">
                                        <span > {{payment_statuses[pmnt.status]||pmnt.status}} </span>
                                        <span *ngIf="pmnt.prolongation" i18n="@@dashboard.current_loan.payment_schedule.extension">(Extension)</span>
                                     </td>
                                     <td class="text-right">
-                                        <button (click)="openPaymentDialog(paymentModal,'extend')"  class="btn btn-sm btn-outline-primary mx-1 mb-1" *ngIf="loan.allow_extension&&(pmnt.status=='delayed'||(pmnt.status=='scheduled'&&((pmnt.date| date:'yMMdd')<=(date_to_allow_payment| date:'yMMdd'))))" i18n="@@dashboard.current_loan.buttons.extend loan">Extend loan</button>
-                                        <button (click)="openPaymentDialog(paymentModal,'pay_current')"  class="btn btn-sm btn-primary mx-1 mb-1" *ngIf="pmnt.status=='delayed'||(pmnt.status=='scheduled'&&((pmnt.date| date:'yMMdd')<=(date_to_allow_payment| date:'yMMdd')))" i18n="@@dashboard.current_loan.buttons.pay_now">Pay now</button>
+                                        <button (click)="extendLoan(paymentModal)"  class="btn btn-sm btn-outline-primary mx-1 mb-1" *ngIf="(loan.extensions_count||0)<(loan.credit_product.max_extensions_count||1000) && loan.allow_extension&&(pmnt.status=='delayed'||(pmnt.status=='scheduled'&&((pmnt.date| date:'yMMdd':timezone)<=(date_to_allow_payment| date:'yMMdd':timezone))))" i18n="@@dashboard.current_loan.buttons.extend loan">Extend loan</button>
+                                        <button (click)="openPaymentDialog(paymentModal,'pay_current')"  class="btn btn-sm btn-primary mx-1 mb-1" *ngIf="pmnt.status=='delayed'||(pmnt.status=='scheduled'&&((pmnt.date| date:'yMMdd':timezone)<=(date_to_allow_payment| date:'yMMdd':timezone)))" i18n="@@dashboard.current_loan.buttons.pay_now">Pay now</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -52,7 +53,7 @@
                         <div *ngIf="loan.signed_documents && loan.signed_documents.length>1">
                             <h6 i18n="@@dashboard.current_loan.other_documents">Other documents</h6>
                             <div *ngFor="let doc of loan.signed_documents; let i=index" >
-                                <span *ngIf="i!=0 && !doc.canceled" (click)="openContractDialog(contractModal,i)" class="text-secondary clickable">{{doc.label}}</span>
+                                <span *ngIf="i!=0 && !doc.canceled && !doc.hide_in_user_dashboard && !doc.hidden" (click)="openContractDialog(contractModal,i)" class="text-secondary clickable">{{doc.label}}</span>
                             </div>
                         </div>
                         <span *ngIf="payment_schedule&&loan.allow_early_payments && payment_schedule[payment_schedule.length-1].status!='delayed'" (click)="openPaymentDialog(paymentModal,'early')" class="clickable text-secondary text-sm float-right" i18n="@@dashboard.current_loan.button.early_payment">Early payment</span>
@@ -87,7 +88,10 @@
                 <span class="sr-only">Loading...</span>
             </div>
         </div>
-        <div *ngIf="document" [innerHTML]="document.content"></div>
+        <div *ngIf="document && document.document_type!='google.docs'" [innerHTML]="document.content"></div>
+        <iframe *ngIf="document && document.document_type=='google.docs'"  frameborder="0" [src]="('https://drive.google.com/file/d/'+document.content+'/preview') | safe"  style="width: 100%; height: 700px;">
+            Невозможно отобразить документ онлайн. Вы можете скачать его по <a href="https://drive.google.com/file/d/{{document.content}}/preview" target="_blank">ссылке</a>
+        </iframe>
     </div>
     <div class="modal-footer">
         <button type="button" ngbAutofocus class="btn btn-outline-secondary" (click)="d('Cancel')" i18n="@@close">Close</button>

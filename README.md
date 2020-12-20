@@ -44,6 +44,6 @@ https://creditapi.ru
 
 #### Используемая среда
 
-Angular CLI: 9.1.0
+Angular CLI: 11.0.0
 Node: 13.11.0
 Bootstrap: 4.0

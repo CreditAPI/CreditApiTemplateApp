@@ -1,0 +1,15 @@
+<div class="container my-container mt-100px bg-light mb-4 " >
+   <div *ngIf="!wait && !error">
+    <app-payment [loan_prolongation_request]="loan_prolongation_request" [loan]="loan_prolongation_request.loan" [dismiss]="gohome" action="extend" ></app-payment>
+   </div>
+   <div *ngIf="wait">
+      <h2 i18n="@@choosecard.wait">Please, wait</h2>
+      <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+    <div *ngIf="!wait && error">
+        <h5 >{{error}}</h5>
+    </div> 
+  </div>
+  

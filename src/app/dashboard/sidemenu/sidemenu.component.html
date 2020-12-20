@@ -1,7 +1,7 @@
 <div class="card mb-3">
     <div class="card-body bg-light bg-gradient-light">
         <p class="title mb-0">{{creditApi.User?.last_name}} {{creditApi.User?.first_name}}</p>
-        <span class="text-secondary">{{creditApi.User?.email}}</span>
+        <span class="text-secondary">{{creditApi.User?.emailOriginal}}</span>
         <ul class="list-group list-group-flush mt-5">
             <li class="list-group-item bg-transparent" ><span class="clickable" [routerLink]="['/dashboard/myloans']" i18n="@@dashboard.side_menu.my_loans">My loans</span></li>
             <li class="list-group-item bg-transparent" *ngIf="show_messages=='always'||(show_messages=='if_unreaded' && (creditApi.last_message_unreaded))"><span class="clickable" [routerLink]="['/dashboard/mymessages']" i18n="@@dashboard.side_menu.my_messages">My messages</span> <span *ngIf="creditApi.last_message_unreaded" class="badge badge-secondary ml-1">1</span></li>
@@ -23,4 +23,7 @@
             </li>
         </ul>
     </div>
+</div>
+<div class="text-center">
+    <span class="text-secondary" style="font-size: 0.4em;">{{current_date|date:"short":timezone}}</span>
 </div>

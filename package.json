@@ -1,6 +1,6 @@
 {
   "name": "credit-api-template-app",
-  "version": "1.0.11",
+  "version": "2.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

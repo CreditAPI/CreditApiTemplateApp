@@ -14,7 +14,10 @@ import { DomSanitizer } from '@angular/platform-browser';
       </button>
     </div>
     <div class="modal-body">
-      <div class="p-2" [innerHTML]="content"></div>
+      <div *ngIf="type=='html'" class="p-2" [innerHTML]="content"></div>
+      <iframe *ngIf="type=='google.docs'"  frameborder="0" [src]="('https://drive.google.com/file/d/'+content+'/preview') | safe"  style="width: 100%; height: 700px;">
+          Невозможно отобразить документ онлайн. Вы можете скачать его по <a href="https://drive.google.com/file/d/{{content}}/preview" target="_blank">ссылке</a>
+      </iframe>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')" i18n="@@documentmodal.buttons.close">Close</button>
@@ -23,7 +26,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class NgbdModalContent {
   @Input() content;
-
+  type='html';
   constructor(public activeModal: NgbActiveModal) {}
 }
 
@@ -34,11 +37,16 @@ export class NgbdModalContent {
 export class DocumentModalService {
   constructor(public modalService: NgbModal,private sanitizer: DomSanitizer) { }
 
-  show(name,data=null){
+  show(name,data=null,type="html"){
     CreditApi.getDocument(name,data).then((content)=>{
       //console.log('LOADED',content);
       const modalRef = this.modalService.open(NgbdModalContent,{ size: 'xl' });
-      modalRef.componentInstance.content = this.sanitizer.bypassSecurityTrustHtml(content);
+      if (type=='html') {
+        modalRef.componentInstance.content = this.sanitizer.bypassSecurityTrustHtml(content);
+      } else {
+        modalRef.componentInstance.content = content;
+      }
+      modalRef.componentInstance.type=type||"html";
     }).catch(err=>{
       console.log('ERROR',err);
       const modalRef = this.modalService.open(NgbdModalContent,{ size: 'xl' });

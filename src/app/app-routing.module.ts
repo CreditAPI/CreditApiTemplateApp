@@ -16,6 +16,8 @@ import { MessagesComponent } from './dashboard/messages/messages.component';
 import { ChangePwdComponent } from './dashboard/change-pwd/change-pwd.component';
 import { NewPaymentAccountComponent } from './dashboard/new-payment-account/new-payment-account.component';
 import { PaymentAccountComponent } from './dashboard/payment-account/payment-account.component';
+import { SignComponent } from './prolongation/sign/sign.component';
+import { PayComponent } from './prolongation/pay/pay.component';
 
 
 const routes: Routes = [
@@ -36,7 +38,9 @@ const routes: Routes = [
   {path:'documents',component:DocumentsComponent},
   {path:'document/sign/:name/:app_id',component:SigningComponent},
   {path:'document/sign/:name',component:SigningComponent},
-  {path:'document/:name',component:DocumentsComponent}
+  {path:'document/:name',component:DocumentsComponent},
+  {path:'prolongation/sign',component:SignComponent},
+  {path:'prolongation/pay/:id',component:PayComponent},
 ];
 
 @NgModule({

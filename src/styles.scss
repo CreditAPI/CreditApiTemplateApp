@@ -230,6 +230,11 @@ input.ng-valid.ng-touched {
     color:#afafaf;
   }
   
+  .prompt-value li span {
+    font-size: 0.7em;
+    color:  var(--secondary);
+  }
+
   .calculated_values {
     overflow: hidden;
     white-space: nowrap;
@@ -478,4 +483,29 @@ input.ng-valid.ng-touched {
 }
 .table-4cols td{
   width:25%;
+}
+
+
+.qr-code {
+  width: 10vw; 
+  min-width: 6rem;
+  float:left;
+}
+.psk-info {
+  border:2px solid black;
+  height: 17vw;
+  width: 17vw;
+  min-width: 15rem;
+  min-height: 15rem;
+  margin-left:0.4em;
+}
+.psk-info .bignum {
+  display:inline-block;
+}
+.psk-info .bignum span{
+  font-size:2.3em;
+}
+.psk-info .number_text {
+  margin-top: 1em;
+  text-transform: uppercase;
 }

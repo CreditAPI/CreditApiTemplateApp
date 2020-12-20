@@ -22,7 +22,10 @@ export class LoginComponent implements OnInit {
 
   doLogin() {
     this.loading=true;
-    CreditApi.login(this.form.get('username').value,this.form.get('password').value).then(res=>{
+    let username=this.form.get('username').value;
+    if (username.substr(0,1)=="+") username=username.substr(1); 
+    else if (username.substr(0,1)=="8") username='7'+username.substr(1); 
+    CreditApi.login(username,this.form.get('password').value).then(res=>{
       this.loading=false;
       if (localStorage.getItem('amount'))
         this.router.navigate(['/choosecard']);

@@ -31,6 +31,9 @@ import { FreeformComponent } from './services/freeform/freeform.component';
 import { PaymentComponent } from './services/payment/payment.component';
 import { SafePipe } from './pipes/safe.pipe';
 import { NgbDateCustomParserFormatter } from './services/NgbDateFormatter/NgbDateCustomParserFormatter';
+import { SignComponent } from './prolongation/sign/sign.component';
+import { PayComponent } from './prolongation/pay/pay.component';
+import { ResultComponent } from './prolongation/result/result.component';
 
 const maskoptions: Partial<IConfig> | (() => Partial<IConfig>) = {} = {};
 
@@ -59,7 +62,10 @@ const maskoptions: Partial<IConfig> | (() => Partial<IConfig>) = {} = {};
     PaymentAccountComponent,
     FreeformComponent,
     PaymentComponent,
-    SafePipe
+    SafePipe,
+    SignComponent,
+    PayComponent,
+    ResultComponent
   ],
   imports: [
     BrowserModule,

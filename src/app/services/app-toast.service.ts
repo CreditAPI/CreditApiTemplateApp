@@ -39,6 +39,7 @@ export class AppToastService {
                 'Loan term too small':$localize`:@@errors.loan_term_too_small:Loan term too small`,
                 'Loan term too large':$localize`:@@errors.loan_term_too_large:Loan term too large`,
                 'Card not found':$localize`:@@errors.card_not_found:Card not found`,
+                'Max extensions count reached':$localize`:@@errors.max_extensions_count_reached:Max extensions count reached`,
                 'Inappropriate сard':$localize`:@@errors.inappropriate_сard:Inappropriate сard`,
                 'Credit history agreement not signed':$localize`:@@errors.credit_history_agreement_not_signed:Credit history agreement not signed`,
                 'Credit history agreement expired and should be signed again':$localize`:@@errors.credit_history_agreement_expired:Credit history agreement expired and should be signed again`,
@@ -75,6 +76,7 @@ export class AppToastService {
                 'Payment account not found':$localize`:@@errors.payment_account_not_found:Payment account not found`,
                 'Loan extenstion is not allowed':$localize`:@@errors.loan_extension_not_allowed:Loan extenstion is not allowed`,
                 'Early repayments not allowed':$localize`:@@errors.early_repayments_not_allowed:Early repayments not allowed`,
+                'Please check neccessary flags':$localize`:@@errors.please_check_neccessary_flags:Please check neccessary flags`,
                 'Filename contains invalid characters.':$localize`:@@errors.filename_contains_invalid_characters:Filename contains invalid characters`,
                 "Can't create loan application. Found unprocessed request for update personal data.":$localize`:@@errors.unproccessed_update_data_request:Can't create loan application. Found unprocessed request for update personal data.`,
               };

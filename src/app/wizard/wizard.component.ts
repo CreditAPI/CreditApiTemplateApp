@@ -215,6 +215,14 @@ export class WizardComponent implements OnInit {
     if (!this.form.valid){
       let firstInvalid=this.focusInvalid();
       this.toast.show($localize`Error`,{message:"Please, correct mistakes",field:firstInvalid},'bg-danger text-light');
+      if (!this.form.controls['address_res.region'].value) {
+        let field=this.findFieldByKey('address_res.region');
+        field['type']="text";
+      }
+      if (!this.form.controls['address_reg.region'].value) {
+        let field=this.findFieldByKey('address_reg.region');
+        field['type']="text";
+      }
       return;
     }
     let data=this.getDataFromForm(this.fields);
@@ -242,7 +250,12 @@ export class WizardComponent implements OnInit {
     for (const key of Object.keys(this.form.controls)) {
       if (this.form.controls[key].dirty) {
         let field=this.findFieldByKey(key);
-        this.data_to_update.push({"key":key,"label":field.label,"value":this.form.controls[key].value});
+        let value=this.form.controls[key].value;
+        if ((typeof value=='object') && (value.year)) {
+           /** если это объект - это дата */
+           value=value.year+'-'+value.month+'-'+value.day;
+        }
+        this.data_to_update.push({"key":key,"label":field.label,"value":value});
       }
     }
     if (this.data_to_update.length==0) {
@@ -472,13 +485,17 @@ export class WizardComponent implements OnInit {
     let prompt=target.parentNode.parentNode.querySelector('.prompt-value');
     prompt.innerHTML="";
     var classname="";
+    //console.log(predictions);
     predictions.forEach(function(prediction) {
       classname="available";
       if (prediction.id=="Free") {
-        classname="unavailable"; // ;-)
+        classname="unavailable"; 
       } 
       var li = document.createElement('li');
-      li.appendChild(document.createTextNode(prediction.name));
+      let name=prediction.name;
+      if ((prediction.contentType=="city") && (prediction.parents) && (prediction.parents[0]))
+        name+=' <span>'+prediction.parents[0].name+' '+prediction.parents[0].type+'</span>';
+      li.innerHTML=name;
       li.setAttribute("data-prediction", JSON.stringify(prediction));
       li.setAttribute("class",classname);
       prompt.appendChild(li);

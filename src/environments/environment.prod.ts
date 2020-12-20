@@ -7,5 +7,6 @@ export const environment = {
   websiteID: window["env"]["websiteID"]||"",
   ShowMessages: window["env"]["ShowMessages"]||"no",
   DaysBeforePaymentAllowed: window["env"]["DaysBeforePaymentAllowed"]||3,
-  MinEarlyAmount: window["env"]["MinEarlyAmount"]||null
+  MinEarlyAmount: window["env"]["MinEarlyAmount"]||null,
+  TimeZone: window["env"]["TimeZone"]||""
 };

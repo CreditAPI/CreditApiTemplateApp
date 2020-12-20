@@ -4,6 +4,7 @@ import CreditApi from 'credit-api';
 import { environment } from './../../../environments/environment';
 import { AppToastService } from '../app-toast.service';
 import { DocumentModalService } from '../document-modal.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-payment',
@@ -12,8 +13,10 @@ import { DocumentModalService } from '../document-modal.service';
 })
 export class PaymentComponent implements OnInit {
   @Input() loan;
+  @Input() loan_prolongation_request;
   @Input() dismiss;
   @Input() action;
+  total_amount;
   amount;
 
   next_btn_name=$localize`:@@payment.modal.next:Pay`;
@@ -34,21 +37,30 @@ export class PaymentComponent implements OnInit {
 
   addons=[];
 
-  constructor(private toast: AppToastService,public ms: DocumentModalService) { }
+  constructor(private toast: AppToastService,public ms: DocumentModalService,private router: Router) { }
 
   ngOnInit(): void {
     this.addons=[];
-    this.updatePaymentAmounts();
+    if (this.loan_prolongation_request) {
+      console.log("using loan_prolongation_request");
+      this.total_amount=(this.loan_prolongation_request.amount + this.loan_prolongation_request.total_addons_amount).toFixed(2);
+      this.amount=this.loan_prolongation_request.amount.toFixed(2);
+      this.step_1_enabled=false;
+      this.step=2;
+      this.wait=false;
+    } else {
+      this.updatePaymentAmounts();
+    }
     this.updatePaymentAccounts();
   }
 
   updatePaymentAmounts(){
-    CreditApi.calculatePayment(this.loan.objectId).then(res=>{
-      this.payment_amounts=res.result;
+    CreditApi.calculatePayment(this.loan?this.loan.objectId:null).then(res=>{
+      this.payment_amounts=res.result||{};
       switch (this.action) {
         case 'early': 
           if (environment['MinEarlyAmount']) {
-            this.payment_amounts.min=environment['MinEarlyAmount'];
+            this.payment_amounts.min=parseFloat(environment['MinEarlyAmount']);
           } else {
             this.payment_amounts.min=this.payment_amounts.current;
           }
@@ -60,11 +72,11 @@ export class PaymentComponent implements OnInit {
           this.amount=res.result.min.toFixed(2);
           this.step_1_enabled=false;
           this.step=2;
-          if (this.loan.available_addons) {
+          /*if (this.loan.available_addons) {
             this.loan.available_addons.forEach(addon=>{
               if (addon["use_with_prolongation"]) this.addons.push(addon);
             });
-          }
+          }*/
           break;
         case 'pay_current':
           this.amount=res.result.current.toFixed(2);
@@ -117,7 +129,7 @@ export class PaymentComponent implements OnInit {
     } else {
       account_id=this.choosed;
     }
-      CreditApi.makePayment(this.loan.id,this.amount,this.action=='extend'?true:null,provider_id,account_id,environment.MyUrl+'/dashboard?wait',extra).then(result=>{
+      CreditApi.makePayment(this.loan.id,this.amount,this.action=='extend'?true:null,provider_id,account_id,environment.MyUrl+'/dashboard?wait',extra,this.loan_prolongation_request?true:null).then(result=>{
         switch(result.type) {
           case 'external':
             window.location.href=result.url;
@@ -163,7 +175,12 @@ export class PaymentComponent implements OnInit {
         }
       }).catch(err=>{
         this.wait=false;
-        this.error=err.message;
+        if (err.code==45) {
+          this.router.navigate(['/prolongation/sign']);
+          this.ms.modalService.dismissAll();
+        } else {
+          this.error=err.message;
+        }
       }); 
   }
 

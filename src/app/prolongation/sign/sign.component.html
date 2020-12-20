@@ -10,20 +10,20 @@
                             <span class="sr-only">Loading...</span>
                         </div>
                     </div>
-                    <div *ngIf="!loading" [innerHTML]="content"></div>
+                    <div *ngIf="!loading" [innerHTML]="data?.content"></div>
                 </div>
                 <div class="card-footer" *ngIf="show_buttons">
                     <div >
                         <input type="checkbox" id="agree_flag" #agree>
                         <label i18n="@@signing.i_agree">I agree with this document</label>
                     </div>
-                    <div *ngFor="let checkbox of checkboxes" [hidden]="checkbox.hidden">
+                    <div *ngFor="let checkbox of data?.checkboxes" [hidden]="checkbox.hidden">
                         <input type="checkbox" [(ngModel)]="checkbox.checked">
                         <label><span *ngIf="checkbox.confirm_text">{{checkbox.confirm_text}} </span><span *ngIf="!checkbox.confirm_text"  i18n="@@signing.i_agree_with_">I agree with </span>  <span *ngIf="checkbox.docname" class="clickable" (click)="ms.show(checkbox.docname,null,checkbox.doctype)"> {{checkbox.label}}</span></label>
                     </div>
-                    <div *ngFor="let addon of addons">
+                    <div *ngFor="let addon of data?.addons">
                         <input type="checkbox" [id]="addon.id" [(ngModel)]="addon.checked" >
-                        <label><span *ngIf="addon.confirm_text">{{addon.confirm_text}} </span><span *ngIf="!addon.confirm_text"  i18n="@@signing.purchase">Purchase </span>  <span class="clickable" (click)="ms.show(addon.docname,null,addon.doctype)"> {{addon.label}}</span></label>
+                        <label><span *ngIf="addon.confirm_text">{{addon.confirm_text}} </span><span *ngIf="!addon.confirm_text"  i18n="@@signing.purchase">Purchase </span>  <span class="clickable" (click)="ms.show(addon.docname,{loan_id:data.loan_id},addon.doctype)"> {{addon.label}}</span></label>
                     </div>
                     <div class="text-center">
                         <button class="btn btn-outline-primary mr-5" [routerLink]="['/dashboard']" i18n="@@signing.buttons.cancel">Cancel</button>

@@ -12,10 +12,19 @@ import { Router } from '@angular/router';
 export class SidemenuComponent implements OnInit {
   creditApi=CreditApi;
   show_messages=environment['ShowMessages'];
-  constructor(private toast: AppToastService,private router: Router) {  }
+  current_date;
+  timezone;
+  constructor(private toast: AppToastService,private router: Router) { }
 
   ngOnInit(): void {
+    this.timezone=environment.TimeZone;
     CreditApi.getPaymentAccounts();
+    CreditApi.makeRequest('POST','/functions/current_date').then(res=>{
+      console.log("Current time",res.result);
+      this.current_date=res.result.iso;
+    }).catch(err=>{
+      console.log("Error getting current time",err);
+    })
   }
 
   logout(){

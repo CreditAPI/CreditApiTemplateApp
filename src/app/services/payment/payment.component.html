@@ -30,7 +30,7 @@
 </div>
 <div *ngIf="!error && !wait && step==2">
     <div class="alert alert-info" *ngIf="action=='extend'" i18n="@@payment.modal.extending_message">In order to extend the loan it's required to pay current interest amount</div>
-    <h5><span i18n="@@payment.modal.payment_amount">Payment amount</span>: {{amount}} <span i18n="@@calculator.currency">rub</span></h5>
+    <h5><span i18n="@@payment.modal.payment_amount">Payment amount</span>: {{total_amount||amount}} <span i18n="@@calculator.currency">rub</span></h5>
     <div *ngFor="let addon of addons">
         <input type="checkbox" [id]="addon.id" [(ngModel)]="addon.checked">
         <label><span *ngIf="addon.confirm_text">{{addon.confirm_text}} </span><span *ngIf="!addon.confirm_text"  i18n="@@signing.purchase">Purchase </span>  <span (click)="ms.show(addon.docname+'?loan_id='+loan.objectId)" class="clickable" > {{addon.label}}</span></label>

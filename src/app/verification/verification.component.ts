@@ -32,6 +32,7 @@ export class VerificationComponent implements OnInit {
           this.router.navigate(['/wizard']);
         } else {
           this.toast.show($localize`Error`,err.message,'bg-danger text-light');
+          this.router.navigate(['/dashboard']);
         }
       });
     } else if (((CreditApi.User))&&(CreditApi.User.verificationStarted)&&(!CreditApi.User.verificationFinished)) {
@@ -61,7 +62,7 @@ export class VerificationComponent implements OnInit {
       if (user.verificationFinished)
         this.router.navigate(['/choosecard']);
       else
-        setTimeout(this.wait_until_finished,3000);
+        setTimeout(()=>{this.wait_until_finished();},3000);
     }).catch(err=>{
       this.toast.show($localize`Error`,err.message,'bg-danger text-light');
     });

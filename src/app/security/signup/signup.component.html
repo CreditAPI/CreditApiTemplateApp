@@ -21,8 +21,12 @@
   
     <div class="checkbox mb-3">
       <input type="checkbox" formControlName="agree_flag"> 
-      <span>
+      <span *ngIf="!registration_checkbox">
         <span i18n="@@signup.i_agree">I agree with </span> <span class="clickable" (click)="ms.show('terms')" i18n="@@signup.terms">terms</span> <span i18n="@@signup.and"> and </span> <span class="clickable"  (click)="ms.show('conditions')"  i18n="@@signup.conditions">conditions</span> 
+      </span>
+      <span *ngIf="registration_checkbox">
+        {{registration_checkbox.label}}<br>
+        <span *ngFor="let field of registration_checkbox.fields " class="clickable" (click)="ms.show(field.doc,null,field.type)" >{{field.label}}<br></span>
       </span>
     </div>
     <button class="btn btn-lg btn-primary btn-block"  type="submit" [disabled]="!form.valid">

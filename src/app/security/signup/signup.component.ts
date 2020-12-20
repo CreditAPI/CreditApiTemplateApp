@@ -15,10 +15,14 @@ export class SignupComponent implements OnInit {
 
   loading=false;
   form;
+  registration_checkbox;
   constructor(private fb: FormBuilder,private toast: AppToastService,private router: Router,public ms: DocumentModalService) { }
 
   ngOnInit() {
     this.form = this.fb.group({phone:['', Validators.required],email:['', Validators.required],password:['', Validators.required],agree_flag:['', Validators.required]});
+    if (CreditApi.website.registration_checkbox) {
+      this.registration_checkbox=CreditApi.website.registration_checkbox;
+    }
   }
 
   doSignUp() {

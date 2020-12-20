@@ -21,10 +21,12 @@ export class CurrentLoanComponent implements OnInit {
   date_to_allow_payment;
   transactions_in_process;
   document;
+  timezone;
 
   constructor(private toast: AppToastService,private router: Router,private modalService: NgbModal) { }
 
   ngOnInit(): void {
+    this.timezone=environment.TimeZone;
     this.date_to_allow_payment=new Date();
     this.date_to_allow_payment.setDate(this.date_to_allow_payment.getDate() + environment.DaysBeforePaymentAllowed||3 );
     CreditApi.getOpenedLoans().then(loans=>{
@@ -72,6 +74,13 @@ export class CurrentLoanComponent implements OnInit {
     });
   }
 
+  extendLoan(modal){
+    if (this.loan.credit_product.prolongation_contract){
+      this.router.navigate(['/prolongation/sign']);
+    } else {
+      this.openPaymentDialog(modal,'extend');
+    }
+  }
 
   openPaymentDialog(modal,payment_action="early"){
     this.payment_action=payment_action;

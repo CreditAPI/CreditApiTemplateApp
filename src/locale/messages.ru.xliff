@@ -1889,11 +1889,35 @@
       </trans-unit>
       <trans-unit id="8392507067612185844">
         <source>Credit card photo</source>
-        <target>Фото кредитной карты</target>
+        <target>Фото банковской карты</target>
       </trans-unit>
       <trans-unit id="errors.filename_contains_invalid_characters">
         <source>Filename contains invalid characters</source>
         <target>В имени файла используются недопустимые символы</target>
+      </trans-unit>
+      <trans-unit id="signing.i_agree_with_">
+        <source>I agree with </source>
+        <target>Я согласен с </target>
+      </trans-unit>
+      <trans-unit id="5699525983749698251">
+        <source>Blank document</source>
+        <target>Пустой документ</target>
+      </trans-unit>
+      <trans-unit id="verification.wait_text">
+        <source>We are checking provided information</source>
+        <target>Мы проверяем введенную информацию</target>
+      </trans-unit>
+      <trans-unit id="dashboard.extended_for">
+        <source>Extended for</source>
+        <target>Продлено на </target>
+      </trans-unit>
+      <trans-unit id="errors.max_extensions_count_reached">
+        <source>Max extensions count reached</source>
+        <target>Превышено число возможных продлений</target>
+      </trans-unit>
+      <trans-unit id="errors.please_check_neccessary_flags">
+        <source>Please check neccessary flags</source>
+        <target>Пожалуйста, установите необходимые флажки</target>
       </trans-unit>
     </body>
   </file>

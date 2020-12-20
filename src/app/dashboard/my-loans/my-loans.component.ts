@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import CreditApi from 'credit-api';
 import { AppToastService } from './../../services/app-toast.service';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -9,6 +10,7 @@ import { AppToastService } from './../../services/app-toast.service';
   styleUrls: ['./my-loans.component.scss']
 })
 export class MyLoansComponent implements OnInit {
+  timezone;
   loading=true;
   has_active=false;
   has_update_requests=false;
@@ -33,6 +35,7 @@ export class MyLoansComponent implements OnInit {
   constructor(private toast: AppToastService) { }
 
   ngOnInit(): void {
+    this.timezone=environment.TimeZone;
     CreditApi.getLoans().then(loans=>{
       this.loans=loans; 
       this.has_active=loans.some(loan => {

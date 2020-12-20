@@ -23,7 +23,7 @@
                     <tbody>
                         <ng-container *ngFor="let loan of loans">
                         <tr *ngIf="loan.status!=-1">
-                            <td>{{loan.createdAt|date:"shortDate"}}</td>
+                            <td>{{loan.createdAt|date:"shortDate":timezone}}</td>
                             <td class="text-right">{{loan.amount.toFixed(2)}}</td>
                             <td class="text-right">{{loan.term}} {{getTranslatedTerm(loan.term,loan.type_term)}}</td>
                             <td class="text-center">

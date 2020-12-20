@@ -8,4 +8,5 @@
     window["env"]["ShowMessages"] = "${SHOW_MESSAGES}";
     window["env"]["DaysBeforePaymentAllowed"] = "${DAYS_BEFORE_PAYMENT_ALLOWED}";
     window["env"]["MinEarlyAmount"]="${MIN_EARLY_AMOUNT}";
+    window["env"]["TimeZone"]="${TIMEZONE}";
   })(this);
