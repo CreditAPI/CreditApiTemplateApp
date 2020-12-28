@@ -1919,6 +1919,10 @@
         <source>Please check neccessary flags</source>
         <target>Пожалуйста, установите необходимые флажки</target>
       </trans-unit>
+      <trans-unit id="errors.invalid_username_password">
+        <source>Invalid username/password.</source>
+        <target>Неверный логин/пароль.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

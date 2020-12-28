@@ -12,6 +12,7 @@ export class AppToastService {
                 'Credit product error': $localize`:@@errors.credit_product_error:Credit product error`,
                 'Changing is not allowed':$localize`:@@errors.changing_not_allowed:Changing is not allowed`,
                 'Unknow field':$localize`:@@errors.unknow_field:Unknow field`,
+                'Invalid username/password.':$localize`:@@errors.invalid_username_password:Invalid username/password.`,
                 'Value should be number':$localize`:@@errors.value_should_be_number:Value should be number`,
                 'Value should be string':$localize`:@@errors.value_should_be_string:Value should be string`,
                 'Value should be object':$localize`:@@errors.value_should_be_object:Value should be object`,
