@@ -41,8 +41,7 @@ export class PaymentComponent implements OnInit {
 
   ngOnInit(): void {
     this.addons=[];
-    if (this.loan_prolongation_request) {
-      console.log("using loan_prolongation_request");
+    if (this.loan_prolongation_request) { //it can be loan_closing_request also
       this.total_amount=(this.loan_prolongation_request.amount + this.loan_prolongation_request.total_addons_amount).toFixed(2);
       this.amount=this.loan_prolongation_request.amount.toFixed(2);
       this.step_1_enabled=false;
@@ -79,9 +78,14 @@ export class PaymentComponent implements OnInit {
           }*/
           break;
         case 'pay_current':
-          this.amount=res.result.current.toFixed(2);
-          this.step_1_enabled=false;
-          this.step=2;
+          if (res.result.current>=res.result.full && this.loan.credit_product.closing_contract)  {
+            this.router.navigate(['/closing/sign']);
+            this.ms.modalService.dismissAll();
+          } else {
+            this.amount=res.result.current.toFixed(2);
+            this.step_1_enabled=false;
+            this.step=2;
+          }
           break;
       }
       this.wait=false;
@@ -107,7 +111,11 @@ export class PaymentComponent implements OnInit {
   goToStep2(){
     if (this.amount>this.payment_amounts.full) this.amount=this.payment_amounts.full;
     if (this.amount<this.payment_amounts.min) this.amount=this.payment_amounts.min;
-    this.step=2;
+    if (this.amount==this.payment_amounts.full && this.loan.credit_product.closing_contract)  {
+      this.router.navigate(['/closing/sign']);
+      this.ms.modalService.dismissAll();
+    } else
+      this.step=2;
   }
 
 
@@ -178,7 +186,10 @@ export class PaymentComponent implements OnInit {
         if (err.code==45) {
           this.router.navigate(['/prolongation/sign']);
           this.ms.modalService.dismissAll();
-        } else {
+        } else if (err.code==48) {
+          this.router.navigate(['/closing/sign']);
+          this.ms.modalService.dismissAll();
+        }  else {
           this.error=err.message;
         }
       }); 

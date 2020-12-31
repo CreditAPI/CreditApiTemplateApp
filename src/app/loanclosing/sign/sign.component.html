@@ -1,0 +1,66 @@
+<div class="text-center mt-50px"><h2 i18n="@@signing.title">Document signing</h2></div>
+<div class="container mb-4 " >
+    <div class="row justify-content-center">
+        <div class="col-md-9 align-self-center">
+            <div class="card">
+                <div class="card-body">
+                    <div *ngIf="loading">
+                        <h2 i18n="@@signing.wait">Please, wait</h2>
+                        <div class="spinner-border" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                    <div *ngIf="!loading" [innerHTML]="data?.content"></div>
+                </div>
+                <div class="card-footer" *ngIf="show_buttons">
+                    <div [hidden]="!should_agree">
+                        <input type="checkbox" id="agree_flag" #agree>
+                        <label i18n="@@signing.i_agree">I agree with this document</label>
+                    </div>
+                    <div *ngFor="let checkbox of data?.checkboxes" [hidden]="checkbox.hidden">
+                        <input type="checkbox" [(ngModel)]="checkbox.checked">
+                        <label><span *ngIf="checkbox.confirm_text">{{checkbox.confirm_text}} </span><span *ngIf="!checkbox.confirm_text"  i18n="@@signing.i_agree_with_">I agree with </span>  <span *ngIf="checkbox.docname" class="clickable" (click)="ms.show(checkbox.docname,null,checkbox.doctype)"> {{checkbox.label}}</span></label>
+                    </div>
+                    <div *ngFor="let addon of data?.addons">
+                        <input type="checkbox" [id]="addon.id" [(ngModel)]="addon.checked" >
+                        <label><span *ngIf="addon.confirm_text">{{addon.confirm_text}} </span><span *ngIf="!addon.confirm_text"  i18n="@@signing.purchase">Purchase </span>  <span class="clickable" (click)="ms.show(addon.docname,{loan_id:data.loan_id},addon.doctype)"> {{addon.label}}</span></label>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-outline-primary mr-5" [routerLink]="['/dashboard']" i18n="@@signing.buttons.cancel">Cancel</button>
+                        <button class="btn btn-primary ml-5" (click)="sign(agree,modal_sms)" [disabled]="btn_loading || sign_disabled" >
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="btn_loading"></span>
+                            <span i18n="@@signing.buttons.sign">Sign</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #modal_sms let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" i18n="@@signing.modal_sms.title">Please, enter SMS-code</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click');sign_disabled=false;">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <p><span i18n="@@signing.modal_sms.message">To sign this agreement please enter an SMS code sent to</span> <strong> {{creditApi.User.phone}}</strong></p>
+        <div class="form-label-group" >
+            <input type="text" 
+                    class="form-control" 
+                    placeholder="Code" 
+                    i18n-placeholder="@@signing.modal_sms.code"
+                    #sms_code>  
+            <label for="sms_code" i18n="@@signing.modal_sms.code">Code</label>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" ngbAutofocus class="btn btn-outline-secondary" (click)="d('Cancel');sign_disabled=false;" i18n="@@cancel">Cancel</button>
+      <button type="button"  class="btn btn-primary" (click)="signWithSMS(sms_code.value);"  [disabled]="btn_loading" >
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="btn_loading"></span>
+        <span i18n="@@next">Next</span>
+      </button>
+    </div>
+</ng-template>

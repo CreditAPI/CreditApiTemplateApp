@@ -17,6 +17,8 @@ import { ChangePwdComponent } from './dashboard/change-pwd/change-pwd.component'
 import { NewPaymentAccountComponent } from './dashboard/new-payment-account/new-payment-account.component';
 import { PaymentAccountComponent } from './dashboard/payment-account/payment-account.component';
 import { SignComponent } from './prolongation/sign/sign.component';
+import { SignComponent as  ClosingSignComponent} from './loanclosing/sign/sign.component';
+import { PayComponent as  ClosingPayComponent} from './loanclosing/pay/pay.component';
 import { PayComponent } from './prolongation/pay/pay.component';
 
 
@@ -41,6 +43,8 @@ const routes: Routes = [
   {path:'document/:name',component:DocumentsComponent},
   {path:'prolongation/sign',component:SignComponent},
   {path:'prolongation/pay/:id',component:PayComponent},
+  {path:'closing/sign',component:ClosingSignComponent},
+  {path:'closing/pay/:id',component:ClosingPayComponent},
 ];
 
 @NgModule({
