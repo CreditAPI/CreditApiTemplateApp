@@ -1923,6 +1923,18 @@
         <source>Invalid username/password.</source>
         <target>Неверный логин/пароль.</target>
       </trans-unit>
+      <trans-unit id="419059454229055001">
+        <source>Employer address</source>
+        <target>Адрес работодателя</target>
+      </trans-unit>
+      <trans-unit id="8116147809961744808">
+        <source>Office</source>
+        <target>Офис</target>
+      </trans-unit>
+      <trans-unit id="6595008830732269870">
+        <source>Not found</source>
+        <target>Не найдено</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

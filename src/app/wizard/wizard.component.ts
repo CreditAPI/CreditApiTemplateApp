@@ -64,7 +64,14 @@ export class WizardComponent implements OnInit {
                          {name: "job.income","label":$localize`Income`},
                          {name: "job.monthexpenses","label":$localize`Month expenses`},
                          {name: "job.contact_person","label":$localize`Contact person`},
-                         {name: "job.contact_phone","label":$localize`Contact person's phone`,prefix:"+7",mask:"(000)000-0000",mask_typed:true}]},
+                         {name: "job.contact_phone","label":$localize`Contact person's phone`,prefix:"+7",mask:"(000)000-0000",mask_typed:true},
+                         {name: "job_address","label":$localize`Employer address`,col_size:12,type:"title",unmapped:true},
+                         {name: "job.city","label":$localize`City`,autocompleteAddress:"city"},
+                         {name: "job.street","label":$localize`Street`,autocompleteAddress:"street"},
+                         {name: "job.house","label":$localize`House`,autocompleteAddress:"house"},
+                         {name: "job.office","label":$localize`Office`},
+                         {name: "job.index","label":$localize`ZIP`,type:"hidden"}
+                        ]},
                 {"label":$localize`Documents`,
                 "fields":[{name: "passport_scan_first","label":$localize`Passport first page`,type:"file",value:{name:$localize`Choose file`,url:'assets/img/noimage.jpeg',loading:false}},
                           {name: "passport_scan_second","label":$localize`Passport second page`,type:"file",value:{name:$localize`Choose file`,url:'assets/img/noimage.jpeg',loading:false}},
@@ -472,10 +479,12 @@ export class WizardComponent implements OnInit {
       let id_parts=fieldname.split(".");
       switch(id_parts[1]){
         case 'city':
-          this.form.controls[id_parts[0]+'.region'].setValue(choosed.id.substr(0,2));
+          if (this.form.controls[id_parts[0]+'.region'])
+            this.form.controls[id_parts[0]+'.region'].setValue(choosed.id.substr(0,2));
           break;
         case 'house':
-          this.form.controls[id_parts[0]+'.index'].setValue(choosed["zip"]);
+          if (this.form.controls[id_parts[0]+'.zip'])
+            this.form.controls[id_parts[0]+'.index'].setValue(choosed["zip"]);
           break;
       }
     }
@@ -490,6 +499,7 @@ export class WizardComponent implements OnInit {
       classname="available";
       if (prediction.id=="Free") {
         classname="unavailable"; 
+        return;
       } 
       var li = document.createElement('li');
       let name=prediction.name;
