@@ -2,8 +2,8 @@
     window["env"] = window["env"] || {};
   
     // Environment variables
-    window["env"]["CreditApiHost"] = "https://sbapi.creditapi.ru/api";
-    window["env"]["CreditApiOrgId"] = "HRmag0NBwP";//"9vbNQ74drJ";//'PUT YOUR ORG ID HERE';
+    window["env"]["CreditApiHost"] = "http://localhost:1341/api";
+    window["env"]["CreditApiOrgId"] = "6Hg3Sd1pBS";//"9vbNQ74drJ";//'PUT YOUR ORG ID HERE';
     window["env"]["MyUrl"] = 'PUT YOUR DOMAIN URL HERE';
     window["env"]["HomeLink"] = '';
     window["env"]["ShowMessages"] = 'no';
@@ -11,7 +11,7 @@
     window["env"]["websiteID"] = ""; //'PUT YOUR WEBSITE ID HERE';
     window["env"]["TimeZone"]="UTC+3"; 
     
-  /*  window["env"]["CreditApiHost"] = "https://sbapi.creditapi.ru/api";
+  /* window["env"]["CreditApiHost"] = "https://sbapi.creditapi.ru/api";
     window["env"]["CreditApiOrgId"] = "HRmag0NBwP";//'PUT YOUR ORG ID HERE';
     window["env"]["MyUrl"] = 'PUT YOUR DOMAIN URL HERE';
     window["env"]["HomeLink"] = '';

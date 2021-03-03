@@ -1935,6 +1935,22 @@
         <source>Not found</source>
         <target>Не найдено</target>
       </trans-unit>
+      <trans-unit id="7884846163224325908">
+        <source>string contains string</source>
+        <target>подстрока содержится в</target>
+      </trans-unit>
+      <trans-unit id="512337625909895805">
+        <source>string doesn't contain string</source>
+        <target>подстрока не содержится в</target>
+      </trans-unit>
+      <trans-unit id="7588456452293364762">
+        <source>Add list</source>
+        <target>Добавить список</target>
+      </trans-unit>
+      <trans-unit id="1233098772771835850">
+        <source>My lists</source>
+        <target>Мои списки</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

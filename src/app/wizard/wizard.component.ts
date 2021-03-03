@@ -483,7 +483,7 @@ export class WizardComponent implements OnInit {
             this.form.controls[id_parts[0]+'.region'].setValue(choosed.id.substr(0,2));
           break;
         case 'house':
-          if (this.form.controls[id_parts[0]+'.zip'])
+          if (this.form.controls[id_parts[0]+'.index'])
             this.form.controls[id_parts[0]+'.index'].setValue(choosed["zip"]);
           break;
       }

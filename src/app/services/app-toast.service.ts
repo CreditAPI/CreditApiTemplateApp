@@ -80,6 +80,7 @@ export class AppToastService {
                 'Please check neccessary flags':$localize`:@@errors.please_check_neccessary_flags:Please check neccessary flags`,
                 'Filename contains invalid characters.':$localize`:@@errors.filename_contains_invalid_characters:Filename contains invalid characters`,
                 "Can't create loan application. Found unprocessed request for update personal data.":$localize`:@@errors.unproccessed_update_data_request:Can't create loan application. Found unprocessed request for update personal data.`,
+                "There are temporary restrictions on your loan request": $localize`:@@errors.temporary_restrictions_on_loan_request:There are temporary restrictions on your loan request`,
               };
 
   constructor() { }
