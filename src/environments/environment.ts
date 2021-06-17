@@ -12,7 +12,8 @@ export const environment = {
   ShowMessages: window["env"]["ShowMessages"]||"no",
   DaysBeforePaymentAllowed: window["env"]["DaysBeforePaymentAllowed"]||3,
   MinEarlyAmount: window["env"]["MinEarlyAmount"]||null,
-  TimeZone: window["env"]["TimeZone"]||""
+  TimeZone: window["env"]["TimeZone"]||"",
+  DisableVerification: window["env"]["DisableVerification"]||false
 };
 
 /*

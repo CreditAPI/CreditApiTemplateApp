@@ -5,6 +5,7 @@ import { environment } from './../../environments/environment';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 
+
 @Component({
   selector: 'app-choose-card',
   templateUrl: './choose-card.component.html',
@@ -43,6 +44,7 @@ export class ChooseCardComponent implements OnInit {
   }
 
   loadPaymentAccounts(){
+    console.log(environment["DisableVerification"]);
     CreditApi.getPayoutAccountsOnly().then((payment_accounts)=>{
       if (this.queryparams['wait']!==undefined) {     
           this.wait=true;
@@ -53,9 +55,9 @@ export class ChooseCardComponent implements OnInit {
           } else if ((payment_accounts.length==0)&&((now.getTime()-this.pageloadedat.getTime())>40000)) {
             delete(this.queryparams['wait']);//will wait longer if user have no cards
           }
-      } else if (!CreditApi.User.verificationFinished) {
+      } else if ((!CreditApi.User.verificationFinished)&&(!environment["DisableVerification"])) { 
         this.router.navigate(['/verification']);
-      }  else {
+      } else {
         this.payment_accounts=payment_accounts;
         this.wait=false;
       }

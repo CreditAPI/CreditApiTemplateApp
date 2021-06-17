@@ -25,6 +25,9 @@ export class AppComponent {
   lender='ООО МКК "Тестовая микрокредитная компания "';
   lender_id="009218945354";
   license='Свидетельство о внесении сведений в государственный реестр микрофинансовых организаций №000000001 от 01.01.2001 года.';
+  logged_as=false;
+  user;
+  
   constructor(private toast: AppToastService,private router: Router,location: Location){
     this.location=location;
     this.initialize();
@@ -38,6 +41,16 @@ export class AppComponent {
       localStorage.setItem('amount',params['amount']);
       localStorage.setItem('term',params['term']);
       localStorage.setItem('product',params['product']);
+    }
+    if (localStorage.getItem('logged_as')) {
+      localStorage.removeItem('logged_as');
+      CreditApi.logout();
+    }
+    if (params["token"]) {
+      localStorage.setItem('logged_as','true');
+      this.logged_as=true;
+      localStorage.setItem('token',params['token']);
+      delete params['token'];
     }
     if (Object.keys(params).length>1) localStorage.setItem('queryparams', JSON.stringify(params));
     this.homelink=environment['HomeLink'];
@@ -55,6 +68,7 @@ export class AppComponent {
       .then(res=>{
         return CreditApi.refreshUser();
       }).then(user=>{
+        this.user=user;
         if (environment['ShowMessages']!='no') {
           CreditApi.enableLastMessageAutoupdate();
         }
@@ -196,6 +210,8 @@ export class AppComponent {
     localStorage.removeItem('amount');
     localStorage.removeItem('term');
     localStorage.removeItem('product');
+    localStorage.removeItem('logged_as');
+    this.logged_as=false;
     this.router.navigate(['login']);
   }
 }

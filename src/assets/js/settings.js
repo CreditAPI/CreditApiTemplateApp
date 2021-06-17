@@ -29,6 +29,6 @@
     window["env"]["ShowMessages"] = 'no';
     window["env"]["DaysBeforePaymentAllowed"]=3;
     window["env"]["websiteID"] = "LkFwIvcn7t"; //'PUT YOUR WEBSITE ID HERE';
-    window["env"]["MinEarlyAmount"]=0.01;*/
-    
+    window["env"]["MinEarlyAmount"]=0.01;
+    window["env"]["DisableVerification"]=true;  */
   })(this);

@@ -238,7 +238,8 @@ export class WizardComponent implements OnInit {
     CreditApi.saveUserdata(data).then(fields=>{
       //console.log('SAVED');
       //this.toast.show($localize`Success`,'Successfully saved','bg-success');//do we need show it?
-      if (!CreditApi.User.verificationFinished) {
+      if ((!CreditApi.User.verificationFinished)&&(!environment["DisableVerification"])) {
+        console.log(environment["DisableVerification"]);
         this.router.navigate(['/verification']);
       } else if (localStorage.getItem('amount')) {
         this.router.navigate(['/choosecard']);
@@ -264,6 +265,10 @@ export class WizardComponent implements OnInit {
         }
         this.data_to_update.push({"key":key,"label":field.label,"value":value});
       }
+    }
+    for (const key of Object.keys(this.newfiles)) {
+      let field=this.findFieldByKey(key);
+      this.data_to_update.push({"key":key,"label":field.label,"value": this.newfiles[key]});
     }
     if (this.data_to_update.length==0) {
       this.router.navigate(['/dashboard']);

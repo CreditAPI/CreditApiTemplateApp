@@ -8,8 +8,8 @@
                 <div class="card-body p-3 bg-light bg-gradient-light">
                     <h2 i18n="@@dashboard.current_loan.title">Current loan</h2>
                     <span class="text-secondary" i18n="@@dashboard.current_loan.agreement_number">Agreement #</span>: 
-                        <span *ngIf="loan.signed_documents[0] && loan.signed_documents[0].doc_id" class="clickable" (click)="openContractDialog(contractModal)" >{{loan.agreement_number}}</span>
-                        <span *ngIf="!loan.signed_documents[0] || !loan.signed_documents[0].doc_id"> {{loan.agreement_number}}</span><br>
+                        <span *ngIf="loan.signed_documents && loan.signed_documents[0] && loan.signed_documents[0].doc_id" class="clickable" (click)="openContractDialog(contractModal)" >{{loan.agreement_number}}</span>
+                        <span *ngIf="!loan.signed_documents || !loan.signed_documents[0] || !loan.signed_documents[0].doc_id"> {{loan.agreement_number}}</span><br>
                     <span *ngIf="loan.issuedAt" ><span class="text-secondary" i18n="@@dashboard.current_loan.issued_at">Issued At</span>: {{loan.issuedAt|date:"shortDate":timezone}}<br></span>
                     <span class="text-secondary" i18n="@@dashboard.current_loan.amount">Amount</span>: {{loan.amount.toFixed(2)}}<br>
                     <span class="text-secondary" i18n="@@dashboard.current_loan.term">Term</span>: {{loan.term}} {{getTranslatedTerm(loan.term,loan.type_term)}}<br>

@@ -9,4 +9,5 @@
     window["env"]["DaysBeforePaymentAllowed"] = "${DAYS_BEFORE_PAYMENT_ALLOWED}";
     window["env"]["MinEarlyAmount"]="${MIN_EARLY_AMOUNT}";
     window["env"]["TimeZone"]="${TIMEZONE}";
+    window["env"]["DisableVerification"]="${DISABLE_VERIFICATION}";
   })(this);

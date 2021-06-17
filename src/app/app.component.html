@@ -39,6 +39,10 @@
   </div>
 </nav>
 <main role="main" class="flex-shrink-0" *ngIf="initialized">
+<div class="alert alert-danger" role="alert" *ngIf="logged_as">
+    <span i18n="@@main.logged_as">Logged in as</span>: {{user.emailOriginal}} 
+    <a class="float-right" (click)="logout()" i18n="@@navbar.items.logout">Logout</a>
+</div>
 <router-outlet ></router-outlet>
 </main>
 <app-app-toasts aria-live="polite" aria-atomic="true"></app-app-toasts>
