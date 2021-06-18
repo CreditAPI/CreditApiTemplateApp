@@ -6,6 +6,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { environment } from './../environments/environment';
 import  Mainpage  from './mainpage/mainpage.js';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -28,7 +29,7 @@ export class AppComponent{
   logged_as=false;
   user;
   
-  constructor(private toast: AppToastService,private router: Router,location: Location){
+  constructor(private toast: AppToastService,private router: Router,location: Location,private sanitizer: DomSanitizer){
     this.location=location;
     this.initialize();
     router.events.subscribe((val) => {
@@ -151,7 +152,10 @@ export class AppComponent{
               styles+='.mainpage { background:url("' + website['homepage_background_image'].url+'") no-repeat; }';
             }
             if (website['homepage_content']){
-              Mainpage.content=website['homepage_content'];
+              Mainpage.content=this.sanitizer.bypassSecurityTrustHtml(website['homepage_content']);
+            }
+            if (website['homepage_additional_content']){
+              Mainpage.additional_content=this.sanitizer.bypassSecurityTrustHtml(website['homepage_additional_content']);
             }
           }
         }

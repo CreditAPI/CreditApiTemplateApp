@@ -22,7 +22,7 @@
     <div class="checkbox mb-3">
       <input type="checkbox" formControlName="agree_flag"> 
       <span *ngIf="!registration_checkbox">
-        <span i18n="@@signup.i_agree">I agree with </span> <span class="clickable" (click)="ms.show('terms')" i18n="@@signup.terms">terms</span> <span i18n="@@signup.and"> and </span> <span class="clickable"  (click)="ms.show('conditions')"  i18n="@@signup.conditions">conditions</span> 
+        <span i18n="@@signup.i_agree">I agree with </span> <span class="clickable" (click)="ms.show('privacy_policy',null,'google.docs')" i18n="@@signup.terms">terms</span> <span i18n="@@signup.and"> and </span> <span class="clickable"  (click)="ms.show('electron_agreement',null,'google.docs')"  i18n="@@signup.conditions">conditions</span> 
       </span>
       <span *ngIf="registration_checkbox">
         {{registration_checkbox.label}}<br>
