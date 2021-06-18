@@ -13,7 +13,7 @@
             <div class="card ">
                 <div class="card-body bg-light bg-gradient-light">
                     <div *ngIf="content">
-                        <h5>{{document?.title}}</h5>
+                        <!--<h5>{{document?.title}}</h5>-->
                         <div *ngIf=" document && type=='google.docs'"  class="text-right mr-3"> <a href="https://drive.google.com/file/d/{{content}}/preview" target="_blank">Версия для скачивания</a></div>
                         <div class="document-content">
                             <div *ngIf="document && type=='html'" class="html-doc" [innerHtml]="content"></div>

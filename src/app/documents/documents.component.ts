@@ -24,8 +24,10 @@ export class DocumentsComponent implements OnInit {
         this.documents=documents;
         if (name)
           this.documents.forEach(doc => {
-            if (doc.name==name) 
+            if (doc.name==name) {
               this.document=doc;
+              this.type=doc.document_type;
+            }
           });
       }).catch(err=>{
         this.toast.show($localize`Error`,err.message,'bg-danger text-light');

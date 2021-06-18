@@ -41,6 +41,7 @@ export class AppComponent{
 
 
   initialize() {
+    console.log("CAT v.2.1.1");
     var current_path=this.location.path().split('?')[0];
     var page=current_path.split('/')[1];
     document.body.className="d-flex flex-column h-100 my-body my-body-"+page;
