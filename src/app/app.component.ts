@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import CreditApi from 'credit-api';
 import '@angular/localize/init';
 import { AppToastService } from './services/app-toast.service';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { environment } from './../environments/environment';
 import  Mainpage  from './mainpage/mainpage.js';
@@ -12,7 +12,7 @@ import  Mainpage  from './mainpage/mainpage.js';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent{
   initialized=false;
   public isMenuCollapsed = true;
   creditApi=CreditApi;
@@ -31,10 +31,19 @@ export class AppComponent {
   constructor(private toast: AppToastService,private router: Router,location: Location){
     this.location=location;
     this.initialize();
+    router.events.subscribe((val) => {
+      if (val instanceof NavigationEnd) {
+        var page=location.path().split('?')[0].split('/')[1];
+        document.body.className="d-flex flex-column h-100 my-body my-body-"+page;
+      }
+  });
   }
+
 
   initialize() {
     var current_path=this.location.path().split('?')[0];
+    var page=current_path.split('/')[1];
+    document.body.className="d-flex flex-column h-100 my-body my-body-"+page;
     var regex_opened = /(document|register|^$|^\/$)/
     var params=this.getQueryParameters();
     if (params['amount']&&params['term']&&params['product']) {
@@ -121,9 +130,9 @@ export class AppComponent {
         var bodystyle="";
         if (website['body_background_type']) {
           if (website['body_background_type']=='color') {
-            bodystyle+=' background:'+website['body_background']+' !important;';
+            bodystyle+=' background-color:'+website['body_background']+' !important;';
           } else if (website['body_background_type']=='image') { 
-            bodystyle=' background:url("' + website['body_image'].url+'") no-repeat center center fixed !important; background-size: cover !important';
+            bodystyle=' background: '+website['body_background']+' url("' + website['body_image'].url+'") no-repeat center center fixed !important; background-size: cover !important';
           }
         }
         if (website['font']) {

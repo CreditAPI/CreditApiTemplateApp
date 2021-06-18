@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import CreditApi from 'credit-api';
 import { AppToastService } from './../services/app-toast.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-documents',
@@ -9,11 +9,14 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./documents.component.scss']
 })
 export class DocumentsComponent implements OnInit {
-  documents;
+  documents=[];
   loading=true;
   document;
   content='';
-  constructor(private toast: AppToastService,private _Activatedroute:ActivatedRoute) { }
+  type='html';
+  constructor(private toast: AppToastService,private _Activatedroute:ActivatedRoute) {
+
+  }
 
   ngOnInit(): void {
     this.getContent().then(name=>{
@@ -21,7 +24,7 @@ export class DocumentsComponent implements OnInit {
         this.documents=documents;
         if (name)
           this.documents.forEach(doc => {
-            if (doc.name==name)
+            if (doc.name==name) 
               this.document=doc;
           });
       }).catch(err=>{
@@ -31,12 +34,19 @@ export class DocumentsComponent implements OnInit {
         this.toast.show($localize`Error`,err.message,'bg-danger text-light');
     });     
   }
+  
 
   getContent(){
     this.document=null;
     return new Promise((resolve,reject)=>{
       this._Activatedroute.paramMap.subscribe(params => { 
-        if (params.get('name'))
+        this.content='';
+        this.loading=true;
+        if (params.get('name')) {
+          this.documents.forEach(doc => {
+            if (doc.name==params.get('name')) 
+              this.type=doc.document_type;
+          });
           CreditApi.getDocument(params.get('name')).then((content)=>{
             this.content=content;
             this.loading=false;
@@ -46,7 +56,7 @@ export class DocumentsComponent implements OnInit {
             this.loading=false;
             reject(err);
           }); 
-        else {
+        } else {
           this.loading=false;
           resolve(null);
         }

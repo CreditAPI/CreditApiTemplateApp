@@ -119,7 +119,7 @@ export class WizardComponent implements OnInit {
           this.application[i].fields.splice(j,1);
           j-=1;
         } else { 
-          count++;
+          if (!this.application[i].fields[j]['unmapped']) count++;
           if (this.fields[appfieldname]) { 
             this.fields[appfieldname].included=true;
             if ((this.fields[appfieldname].type=='FILE')&&(CreditApi.User[appfieldname])) {

@@ -14,10 +14,10 @@
                 <div class="card-body bg-light bg-gradient-light">
                     <div *ngIf="content">
                         <h5>{{document?.title}}</h5>
-                        <div *ngIf=" document && document.document_type=='google.docs'"  class="text-right mr-3"> <a href="https://drive.google.com/file/d/{{content}}/preview" target="_blank">Версия для скачивания</a></div>
+                        <div *ngIf=" document && type=='google.docs'"  class="text-right mr-3"> <a href="https://drive.google.com/file/d/{{content}}/preview" target="_blank">Версия для скачивания</a></div>
                         <div class="document-content">
-                            <div *ngIf="document && document.document_type=='html'" >{{content}}</div>
-                            <iframe *ngIf=" document && document.document_type=='google.docs'"  frameborder="0" [src]="('https://drive.google.com/file/d/'+content+'/preview') | safe"  style="width: 100%; height: 700px;">
+                            <div *ngIf="document && type=='html'" class="html-doc" [innerHtml]="content"></div>
+                            <iframe *ngIf=" document && type=='google.docs'"  frameborder="0" [src]="('https://drive.google.com/file/d/'+content+'/preview') | safe"  style="width: 100%; height: 700px;">
                                     Невозможно отобразить документ онлайн. Вы можете скачать его по ссылке ниже
                             </iframe>
                         </div>

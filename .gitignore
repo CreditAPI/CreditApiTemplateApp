@@ -50,3 +50,6 @@ Thumbs.db
 Deploy.sh
 Deploy_sur.sh
 .env
+
+#custom dev csc
+src/assets/custom_css
