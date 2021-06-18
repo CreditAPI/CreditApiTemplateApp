@@ -10,6 +10,7 @@ import { AppToastService } from './../services/app-toast.service';
 })
 export class MainpageComponent implements OnInit {
   public content=Mainpage.content;
+  public additional_content=Mainpage.additional_content;
   creditProduct;
   constructor(private toast: AppToastService) { }
 

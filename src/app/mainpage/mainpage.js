@@ -5,7 +5,8 @@ const Mainpage={
                     '<li>100% онлайн</li>' +
                     '<li>Без справок и поручителей</li>' +
                     '<li>Рассмотрение заявки за 5 минут </li>' +
-                  '</ul>'
+                  '</ul>',
+    additional_content: ''
 }
 Mainpage.Mainpage = Mainpage;
 export default Mainpage;
